@@ -2,7 +2,10 @@
 
 ## Requirements
  - [Nodejs (npm)](https://nodejs.org/en/)
+ - [Composer](https://getcomposer.org/download/)
 
+## Documentation
+ - [laravel](https://laravel.com/docs/8.x/readme)
 
 ## Installing
 ### Write permissions:
@@ -38,3 +41,8 @@
     php artisan migrate --seed
     ~~~
     Generates migrations and populates the DB with default data
+    
+ ### Starting a local development server
+    ~~~
+    php artisan server
+    ~~~
