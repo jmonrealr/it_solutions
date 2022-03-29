@@ -5,9 +5,9 @@
 <!-- CABECERA -->
 <div class="page-header d-xl-flex d-block">
     <div class="page-leftheader">
-        <h4 class="page-title">Dashboard</h4>
+        <h4 class="page-title">TITULO DE LA VISTA AQUI</h4>
     </div>
-    {{-- DESCOMENTAR DIV PARA MOSTRAR BOTON DE AGREGAR --}}
+{{-- DESCOMENTAR DIV PARA MOSTRAR BOTON DE AGREGAR --}}
     {{-- <div class="page-rightheader ml-md-auto">
         <div class="align-items-end flex-wrap my-auto right-content breadcrumb-right">
             <div class="btn-list">
@@ -15,7 +15,6 @@
                     Agregar cosa</a>
             </div>
         </div> --}}
-    </div>
 </div>
 <!-- FIN CABECERA -->
 

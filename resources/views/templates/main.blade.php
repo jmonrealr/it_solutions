@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,64 +8,57 @@
 
         <title>{{ config('app.name', 'It Solutions') }}</title>
 
+        <!-- Bootstrap css -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+		<!-- Style css -->
+		<link href="{{ asset('css/style.css') }}" rel="stylesheet" />
+		<!--Sidemenu css -->
+        <link  href="{{ asset('css/sidemenu.css') }}" rel="stylesheet">
+		<!-- P-scroll bar css: Desplazamiento en panel de navegación-->
+		<link href="{{ asset('plugins/p-scrollbar/p-scrollbar.css') }}" rel="stylesheet" />
 
-        <!-- Styles -->
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-        <!-- JS -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
+		<!-- Fuente Poppins -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     </head>
-    <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                    </li>
-                </ul>
-                <div class="d-flex">
-                    @if (Route::has('login'))
-                        <div>
-                            @auth
-                                <a href="{{ url('/home') }}">Home</a>
-                            @else
-                                <a role="button" class="btn btn-outline-success" href="{{ route('login') }}">Log in</a>
 
-                                @if (Route::has('register'))
-                                    <a role="button" class="btn btn-outline-primary" href="{{ route('register') }}" >Register</a>
-                                @endif
-                            @endauth
-                        </div>
-                    @endif
-                </div>
-            </div>
-        </div>
-    </nav>
 
-        <main class="container">
-            @yield('content')
-        </main>
-    </body>
+
+	<body class="app sidebar-mini" id="index1">
+
+
+		<div class="page">
+			<div class="page-main">
+
+                <!--aside open-->
+				<x-menu-vertical />
+				<!--aside closed-->
+
+				<div class="app-content main-content">
+					<div class="side-app">
+
+                    <!--app header-->
+                    <x-navbar />
+                    <!--/app header-->
+						<!--Row-->
+						@yield('content')
+				</div><!-- end app-content-->
+			</div>
+		</div>
+
+		<!-- JQuery-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<!-- Bootstrap5 js-->
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+		<!--Ocultar/Mostrar panel de navegación-->
+		<script src="{{ asset('plugins/sidemenu/sidemenu.js') }}"></script>
+		<!-- P-scroll js: Desplazamiento en panel de navegación-->
+		<script src="{{ asset('plugins/p-scrollbar/p-scrollbar.js') }}"></script>
+		<script src="{{ asset('plugins/p-scrollbar/p-scroll1.js') }}"></script>
+		<!-- Custom js-->
+		<script src="{{ asset('js/custom.js') }}"></script>
+
+	</body>
 </html>
