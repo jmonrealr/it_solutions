@@ -41,4 +41,32 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get the Department that owns the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function deparments(){
+        return $this->belongsToMany('App\Models\Department');
+    }
+
+    /**
+     * Check if current user has any department
+     * @param string $deparment
+     * @return bool
+     */
+    public function hasAnyDepartment(string $deparment)
+    {
+        return null !== $this->deparments()->where('name', $deparment)->first();
+    }
+    /**
+     * Check if current user has any department
+     * @param array $department
+     * @return bool
+     */
+    public function hasAnyDepartments(array $department)
+    {
+        return null !== $this->deparments()->whereIn('name', $department)->first();
+    }
 }
