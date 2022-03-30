@@ -21,11 +21,11 @@
 <!-- CONTENIDO -->
 <div class="row">
     <div class="col-xl-12 col-md-12 col-lg-12">
-        
-        {{-- 
-            AQUI VA EL CONTENIDO DE LA VISTA 
+
+        {{--
+            AQUI VA EL CONTENIDO DE LA VISTA
         --}}
-    
+
     </div>
 </div>
 <!-- FIN CONTENIDO -->
