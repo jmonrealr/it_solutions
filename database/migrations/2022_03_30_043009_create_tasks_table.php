@@ -17,8 +17,8 @@ class CreateTasksTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
-            $table->timestamp('start_date');
-            $table->timestamp('end_date');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->Integer('time_hour');
             $table->foreignId('user_id');
             $table->foreignId('project_id');

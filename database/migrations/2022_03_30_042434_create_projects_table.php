@@ -17,8 +17,8 @@ class CreateProjectsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
-            $table->timestamp('start_date');
-            $table->timestamp('end_date');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->decimal('total_cost',13, 3);
             $table->decimal('total_time', 10, 2);
             $table->foreignId('user_id')->constrained();

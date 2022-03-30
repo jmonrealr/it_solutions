@@ -18,10 +18,12 @@ class CreateContractsTable extends Migration
             $table->string('subject');
             $table->string('description')->nullable();
             $table->string('initiated_by')->nullable();
-            $table->timestamp('start_date');
-            $table->timestamp('end_date');
+            $table->date('start_date');
+            $table->date('end_date');
+
             $table->foreignId('status_id')->constrained();
             $table->foreignId('type_contract_id')->constrained();
+            
             $table->timestamps();
         });
     }

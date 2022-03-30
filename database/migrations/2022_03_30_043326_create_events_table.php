@@ -18,7 +18,7 @@ class CreateEventsTable extends Migration
             $table->string('name');
             $table->string('description')->nullable();
             $table->string('location');
-            $table->timestamp('start_date');
+            $table->date('start_date');
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });

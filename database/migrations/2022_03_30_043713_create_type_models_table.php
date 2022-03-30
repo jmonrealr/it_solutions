@@ -27,6 +27,6 @@ class CreateTypeModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('type_model');
+        Schema::dropIfExists('type_models');
     }
 }
