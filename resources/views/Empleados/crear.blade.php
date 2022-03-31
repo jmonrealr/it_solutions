@@ -7,7 +7,7 @@
     <div class="page-leftheader">
         <h4 class="page-title">Agregar empleado</h4>
         <ul class="breadcrumb">
-            <li class="mb-1 fs-16"><a href="#">Empleado</a></li>
+            <li class="mb-1 fs-16"><a href="#">Empleados</a></li>
             <li class="text-muted mb-1 fs-16 ml-2 mr-2"> / </li>
             <li class="text-muted mb-1 fs-16">Agregar empleado</li>
         </ul>
@@ -78,7 +78,7 @@
 									<input class="form-control" type="text" placeholder="Ingresa su edad" name="edad" maxlength="16">
 								</div>
 							</div>
-                            <div class="col-md-4">
+                            <div class="col-md-5">
 								<div class="form-group">
 									<label class="form-label">Departamento</label>
 									<input class="form-control" type="text" placeholder="Ingresa su departamento" name="departamento" maxlength="16">
@@ -97,15 +97,16 @@
 
 
 						<div class="row">
-							<div class="col-md-3">
+							<div class="col-md-4">
 								<div class="form-group">
 									<label class="form-label">Actividades a desempeñar</label>
-									<input class="form-control" type="text" placeholder="Ingresa las actividades" name="actividad" maxlength="20">
+                                    <textarea class="form-control" type="text" rows="6" placeholder="Ingresa las actividades a desempeñar" name="actividad"></textarea>
 								</div>
 							</div>
-							<div class="col-md-3">
-                            <div class="form-group">
-									<label class="form-label mb-0 mt-2">Tipo de contrato</label>
+
+							<div class="col-md-4">
+                                <div class="form-group">
+									<label class="form-label">Tipo de contrato</label>
 									<select name="genero" class="form-control custom-select select2" data-placeholder="Selecciona contrato">
 										<option label="Selecciona contrato"></option>
 										<option value="1">Temporal</option>
