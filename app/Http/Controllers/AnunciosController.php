@@ -17,7 +17,7 @@ class AnunciosController extends Controller
     public function index()
     {
         $anuncios = Announcement::get();
-        return view('Anuncios.index',get_defined_vars());
+        return view('anuncios.index',get_defined_vars());
     }
 
     /**
@@ -30,7 +30,7 @@ class AnunciosController extends Controller
     public function create()
     {
         
-        return view('Anuncios.crear');
+        return view('anuncios.crear');
     }
 
     /**
