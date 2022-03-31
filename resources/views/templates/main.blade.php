@@ -65,6 +65,35 @@
 		<script src="{{ asset('plugins/p-scrollbar/p-scroll1.js') }}"></script>
 		<!-- Custom js-->
 		<script src="{{ asset('js/custom.js') }}"></script>
+		
+		<!-- DataTable -->
+		<script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
+		<script type="text/javascript">
+    		$(document).ready( function () {
+    		     $("#project-list").DataTable({
+    		        "language": {
+    		            "url": "//cdn.datatables.net/plug-ins/1.11.4/i18n/es-mx.json"
+    		        }
+    		    });
+    		});
+    		$('.show_confirm').click(function(event) {
+    		      var form =  $(this).closest("form");
+    		      event.preventDefault();
+    		      swal({
+    		          title: "¿Esta seguro de eliminar esta reservación?",
+    		          icon: "warning",
+    		          buttons: true,
+    		          dangerMode: true,
+    		          buttons: ["Cancelar", "Eliminar"],
+    		      })
+    		      .then((willDelete) => {
+    		        if (willDelete) {
+    		          form.submit();
+    		        }
+    		      });
+    		  });
+	</script>
 
 	</body>
 </html>
