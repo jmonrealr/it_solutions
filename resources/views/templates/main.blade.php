@@ -25,6 +25,9 @@
         <!-- FONTAWESOME -->
         <script src="https://kit.fontawesome.com/a36cdd0297.js" crossorigin="anonymous"></script>
 
+		<!-- DataTables -->
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css"/>
+
     </head>
 
 
@@ -71,7 +74,7 @@
 		<script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
 		<script type="text/javascript">
     		$(document).ready( function () {
-    		     $("#project-list").DataTable({
+    		     $("table").DataTable({
     		        "language": {
     		            "url": "//cdn.datatables.net/plug-ins/1.11.4/i18n/es-mx.json"
     		        }
@@ -81,7 +84,7 @@
     		      var form =  $(this).closest("form");
     		      event.preventDefault();
     		      swal({
-    		          title: "¿Esta seguro de eliminar esta reservación?",
+    		          title: "¿Esta seguro de eliminar este registro?",
     		          icon: "warning",
     		          buttons: true,
     		          dangerMode: true,
