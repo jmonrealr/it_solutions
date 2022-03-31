@@ -11,7 +11,7 @@
     <div class="page-rightheader ml-md-auto">
         <div class="align-items-end flex-wrap my-auto right-content breadcrumb-right">
             <div class="btn-list">
-                <a href="clientes/crear" class="btn btn-primary mr-3">
+                <a href="anuncios/create" class="btn btn-primary mr-3">
                     <i class="feather  feather-plus sidemenu_icon"></i>Agregar Anuncio</a>
             </div>
         </div>
@@ -58,14 +58,11 @@
                                 </td>
                                 <td>
                                     <div class="d-flex">
-                                        <a href="empleados/ver" class="action-btns1" data-toggle="tooltip" data-placement="top" title="Ver"><i class="feather feather-eye text-primary"></i></a>
                                         <a href="#" class="action-btns1" data-toggle="tooltip" data-placement="top" title="Editar"><i class="feather feather-edit-2  text-success"></i></a>
                                         <button class="action-btns1" onclick="mensaje()" data-toggle="tooltip" data-placement="top" title="Eliminar" type="submit"><i class="feather feather-trash-2 text-danger"></i></button>
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                        <tbody>
                             <tr>
                                 <td>02</td>
                                 <td>
@@ -83,14 +80,11 @@
                                 </td>
                                 <td>
                                     <div class="d-flex">
-                                        <a href="empleados/ver" class="action-btns1" data-toggle="tooltip" data-placement="top" title="Ver"><i class="feather feather-eye text-primary"></i></a>
                                         <a href="#" class="action-btns1" data-toggle="tooltip" data-placement="top" title="Editar"><i class="feather feather-edit-2  text-success"></i></a>
                                         <button class="action-btns1" onclick="mensaje()" data-toggle="tooltip" data-placement="top" title="Eliminar" type="submit"><i class="feather feather-trash-2 text-danger"></i></button>
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                        <tbody>
                             <tr>
                                 <td>03</td>
                                 <td>
@@ -108,7 +102,6 @@
                                 </td>
                                 <td>
                                     <div class="d-flex">
-                                        <a href="empleados/ver" class="action-btns1" data-toggle="tooltip" data-placement="top" title="Ver"><i class="feather feather-eye text-primary"></i></a>
                                         <a href="#" class="action-btns1" data-toggle="tooltip" data-placement="top" title="Editar"><i class="feather feather-edit-2  text-success"></i></a>
                                         <button class="action-btns1" onclick="mensaje()" data-toggle="tooltip" data-placement="top" title="Eliminar" type="submit"><i class="feather feather-trash-2 text-danger"></i></button>
                                     </div>
@@ -138,18 +131,18 @@
         })
 
         swalWithBootstrapButtons.fire({
-          title: '¿Eliminar empleado?',
-          text: "Si eliminas a este empleado se eliminará permanentemente del sistema.",
+          title: '¿Eliminar anuncio?',
+          text: "Si eliminas a este anuncio se eliminará permanentemente del sistema.",
           icon: 'warning',
           showCancelButton: true,
-          confirmButtonText: 'Si, eliminar empleado!.',
-          cancelButtonText: 'No, mantener empleado!.',
+          confirmButtonText: 'Si, eliminar anuncio!.',
+          cancelButtonText: 'No, mantener anuncio!.',
           reverseButtons: true
         }).then((result) => {
           if (result.isConfirmed) {
             swalWithBootstrapButtons.fire(
               'Eliminado!',
-              'El empleado se ha eliminado correctamente.',
+              'El anuncio se ha eliminado correctamente.',
               'success'
             )
           } else if (
