@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+
 class BasesDatosController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Index para las bases de datos
+     * 
+     * Despliega una lista de las bases de datos 
      *
      * @return \Illuminate\Http\Response
      */
