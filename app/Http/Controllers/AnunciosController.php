@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Announcement;
+use App\Models\User;
 
 class AnunciosController extends Controller
 {
@@ -29,8 +30,8 @@ class AnunciosController extends Controller
      */
     public function create()
     {
-        
-        return view('anuncios.crear');
+        $users = User::get();
+        return view('anuncios.crear',get_defined_vars());
     }
 
     /**
@@ -62,7 +63,7 @@ class AnunciosController extends Controller
         ]);
 
         Alert::success('Éxito', 'Anuncio creado con éxito');
-        return redirect()->route('anuncions.index');
+        return redirect()->route('anuncios.index');
     }
 
     /**
@@ -76,20 +77,23 @@ class AnunciosController extends Controller
     public function show($id)
     {
         $anuncio = Announcement::findOrFail($id);
+        $user = User::findOrFail($anuncio->user_id);
         return view('anuncios.ver',get_defined_vars());
     }
 
     /**
      * Editar anuncio
      * 
-     * muetra el formulario de edicion del anuncio
+     * Muetra el formulario de edicion del anuncio
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
+        $users = User::get();
         $anuncio = Announcement::findOrFail($id);
+        $last_user = User::findOrFail($anuncio->user_id);
         return view('anuncios.editar', get_defined_vars());
     }
 
@@ -125,7 +129,7 @@ class AnunciosController extends Controller
         ]);
 
         Alert::success('Éxito', 'Anuncio actualizado con éxito');
-        return redirect()->route('anuncions.index');
+        return redirect()->route('anuncios.index');
     }
 
     /**
@@ -140,6 +144,6 @@ class AnunciosController extends Controller
     {
         $anuncio = Announcement::findOrFail($id);
         $anuncio->delete();
-        return redirect()->route('anuncions.index');
+        return redirect()->route('anuncios.index');
     }
 }
