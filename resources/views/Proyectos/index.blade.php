@@ -15,7 +15,7 @@
                     Agregar proyecto</a>
             </div>
         </div>
-    </div>{{-- </div>   --}}
+    </div>
 </div>
 <!-- FIN CABECERA -->
 
@@ -26,9 +26,6 @@
 <div class="row">
     <div class="col-xl-12 col-md-12 col-lg-12">
         <div class="card">
-            <div class="card-header  border-0">
-                <h4 class="card-title">Lista de proyectos</h4>
-            </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table  table-vcenter text-wrap table-bordered border-bottom" id="project-list">
