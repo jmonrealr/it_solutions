@@ -3,64 +3,95 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Comment;
 
 class ComentariosController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Index para los comentarios
+     * 
+     * Despliega una lista de los comentarios
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return view('Comentarios.index');
+        $comentario = Comment::get();
+        return view('comentarios.index',get_defined_vars());
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Crear comentario
+     * 
+     * Despliega la vista para crear el comentario
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        return view('Comentarios.crear');
+        $users = User::get();
+        return view('comentarios.crear',get_defined_vars());
     }
 
-    /**
-     * Store a newly created resource in storage.
+   /**
+     * Guardar comentario
+     * 
+     * Guarda el comentario en la base de datos
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'          =>  'required|max:255',
+            'user_id'       =>  'required|numeric',
+        ]);
+
+        $comentario = Comment::create([
+            'body'              =>  $request['body'],
+            'user_id'           =>  $request['user_id'],
+        ]);
+
+        Alert::success('Éxito', 'Comentario creado con éxito');
+        return redirect()->route('comentarios.index');
     }
 
     /**
-     * Display the specified resource.
+     * Mostrar comentario
+     * 
+     * Muestra el comentario especificado
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        $comentario = Comment::findOrFail($id);
+        $user = User::findOrFail($comentario->user_id);
+        return view('comentarios.ver',get_defined_vars());
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Editar comentario
+     * 
+     * Muetra el formulario de edicion del comentario
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        $users = User::get();
+        $comentario = Comment::findOrFail($id);
+        $last_user = User::findOrFail($comentario->user_id);
+        return view('comentarios.editar', get_defined_vars());
     }
 
     /**
-     * Update the specified resource in storage.
+     * Actualizacion del comentario
+     * 
+     * Actualiza el comentario especificado
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -68,17 +99,34 @@ class ComentariosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name'          =>  'required|max:255',
+            'user_id'       =>  'required|numeric',
+        ]);
+
+        $comentario = Comment::findOrFail($id);
+
+        $comentario->update([
+            'body'              =>  $request['body'],
+            'user_id'           =>  $request['user_id'],
+        ]);
+
+        Alert::success('Éxito', 'Comentario actualizado con éxito');
+        return redirect()->route('comentarios.index');
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Eliminar comentario
+     * 
+     * Elimina el comentario especificado
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        $cometnario = Comment::findOrFail($id);
+        $comentario->delete();
+        return redirect()->route('comentarios.index');
     }
 }
