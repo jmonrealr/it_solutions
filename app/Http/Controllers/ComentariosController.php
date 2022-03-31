@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Comment;
+use App\Models\User;
 
 class ComentariosController extends Controller
 {
@@ -44,7 +45,7 @@ class ComentariosController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'          =>  'required|max:255',
+            'body'          =>  'required|max:255',
             'user_id'       =>  'required|numeric',
         ]);
 
@@ -100,7 +101,7 @@ class ComentariosController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name'          =>  'required|max:255',
+            'body'          =>  'required|max:255',
             'user_id'       =>  'required|numeric',
         ]);
 
