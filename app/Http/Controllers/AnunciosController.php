@@ -21,7 +21,9 @@ class AnunciosController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Crear anuncio
+     * 
+     * Despliega la vista para crear el anuncio
      *
      * @return \Illuminate\Http\Response
      */
@@ -32,7 +34,9 @@ class AnunciosController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Guardar anuncio
+     * 
+     * Guarda el anuncio en la base de datos
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -76,7 +80,9 @@ class AnunciosController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Editar anuncio
+     * 
+     * muetra el formulario de edicion del anuncio
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -123,7 +129,9 @@ class AnunciosController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Eliminar anuncio
+     * 
+     * Elimina el anuncio especificado
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -131,5 +139,7 @@ class AnunciosController extends Controller
     public function destroy($id)
     {
         $anuncio = Announcement::findOrFail($id);
+        $anuncio->delete();
+        return redirect()->route('anuncions.index');
     }
 }
