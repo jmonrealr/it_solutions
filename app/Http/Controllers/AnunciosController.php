@@ -3,17 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Announcement;
 
 class AnunciosController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Index para los anuncios
+     * 
+     * Despliega una lista de los anuncios 
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return view('Anuncios.index');
+        $anuncios = Announcement::get();
+        return view('Anuncios.index',get_defined_vars());
     }
 
     /**
@@ -23,6 +27,7 @@ class AnunciosController extends Controller
      */
     public function create()
     {
+        
         return view('Anuncios.crear');
     }
 
@@ -34,18 +39,40 @@ class AnunciosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'          =>  'required|max:255',
+            'description'   =>  'required|max:255',
+            'location'      =>  'required|max:255',
+            'total_cost'    =>  'required|decimal',
+            'views_conter'  =>  'required|numeric',
+            'user_id'       =>  'required|numeric',
+        ]);
+
+        $anuncio = Announcement::create([
+            'name'              =>  $request['name'],
+            'description'       =>  $request['description'],
+            'location'          =>  $request['location'],
+            'total_cost'        =>  $request['total_cost'],
+            'views_counter'     =>  $request['views_counter'],
+            'user_id'           =>  $request['user_id'],
+        ]);
+
+        Alert::success('Éxito', 'Anuncio creado con éxito');
+        return redirect()->route('anuncions.index');
     }
 
     /**
-     * Display the specified resource.
+     * Mostrar Anuncio
+     * 
+     * Muestra el anuncio especificado
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        $anuncio = Announcement::findOrFail($id);
+        return view('anuncios.ver',get_defined_vars());
     }
 
     /**
@@ -56,11 +83,14 @@ class AnunciosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $anuncio = Announcement::findOrFail($id);
+        return view('anuncios.editar', get_defined_vars());
     }
 
     /**
-     * Update the specified resource in storage.
+     * Actualizacion del anuncio
+     * 
+     * Actualiza el anuncio especificado
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -68,7 +98,28 @@ class AnunciosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name'          =>  'required|max:255',
+            'description'   =>  'required|max:255',
+            'location'      =>  'required|max:255',
+            'total_cost'    =>  'required|decimal',
+            'views_conter'  =>  'required|numeric',
+            'user_id'       =>  'required|numeric',
+        ]);
+
+        $anuncio = Announcement::findOrFail($id);
+
+        $anuncio->update([
+            'name'              =>  $request['name'],
+            'description'       =>  $request['description'],
+            'location'          =>  $request['location'],
+            'total_cost'        =>  $request['total_cost'],
+            'views_counter'     =>  $request['views_counter'],
+            'user_id'           =>  $request['user_id'],
+        ]);
+
+        Alert::success('Éxito', 'Anuncio actualizado con éxito');
+        return redirect()->route('anuncions.index');
     }
 
     /**
@@ -79,6 +130,6 @@ class AnunciosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $anuncio = Announcement::findOrFail($id);
     }
 }
