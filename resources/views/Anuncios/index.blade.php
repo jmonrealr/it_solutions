@@ -11,7 +11,7 @@
     <div class="page-rightheader ml-md-auto">
         <div class="align-items-end flex-wrap my-auto right-content breadcrumb-right">
             <div class="btn-list">
-                <a href="anuncios/create" class="btn btn-primary mr-3">
+                <a href="{{route('anuncios.create')}}" class="btn btn-primary mr-3">
                     <i class="feather  feather-plus sidemenu_icon"></i>Agregar Anuncio</a>
             </div>
         </div>
@@ -41,28 +41,31 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($anuncios as $anuncio)
                             <tr>
-                                <td>01</td>
+                                <td>{{$anuncio->id}}</td>
                                 <td>
                                     <div class="d-flex">
                                         <div class="mr-3 mt-0 mt-sm-1 d-block">
-                                            <h6 class="mb-1 fs-14">Lorem ipsum dolor</h6>
+                                            <h6 class="mb-1 fs-14">{{$anuncio->name}}</h6>
                                         </div>
                                     </div>
                                 </td>
                                 <td width="350px">
-                                    <span>Facebook</span>
+                                    <span>{{$anuncio->description}}</span>
                                 </td>
                                 <td>
-                                    <span>100</span>
+                                    <span>{{$anuncio->views_counter}}</span>
                                 </td>
                                 <td>
                                     <div class="d-flex">
-                                        <a href="#" class="action-btns1" data-toggle="tooltip" data-placement="top" title="Editar"><i class="feather feather-edit-2  text-success"></i></a>
+                                        <a href="{{route('anuncios.edit',$anuncio->id)}}" class="action-btns1" data-toggle="tooltip" data-placement="top" title="Editar"><i class="feather feather-edit-2  text-success"></i></a>
                                         <button class="action-btns1" onclick="mensaje()" data-toggle="tooltip" data-placement="top" title="Eliminar" type="submit"><i class="feather feather-trash-2 text-danger"></i></button>
                                     </div>
                                 </td>
-                            </tr>
+                            </tr>        
+                            @endforeach
+                            
                             <tr>
                                 <td>02</td>
                                 <td>

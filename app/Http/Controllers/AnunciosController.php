@@ -91,9 +91,9 @@ class AnunciosController extends Controller
      */
     public function edit($id)
     {
-        $users = User::get();
+        //$users = User::get();
         $anuncio = Announcement::findOrFail($id);
-        $last_user = User::findOrFail($anuncio->user_id);
+        //$last_user = User::findOrFail($anuncio->user_id);
         return view('anuncios.editar', get_defined_vars());
     }
 
