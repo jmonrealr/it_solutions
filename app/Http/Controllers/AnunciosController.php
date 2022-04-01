@@ -77,7 +77,7 @@ class AnunciosController extends Controller
     public function show($id)
     {
         $anuncio = Announcement::findOrFail($id);
-        $user = User::findOrFail($anuncio->user_id);
+        //$user = User::findOrFail($anuncio->user_id);
         return view('anuncios.ver',get_defined_vars());
     }
 
