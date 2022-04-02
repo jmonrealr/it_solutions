@@ -13,7 +13,7 @@ class RiesgosController extends Controller
      */
     public function index()
     {
-        return view('Riesgos.index');
+        return view('riesgos.index');
     }
 
     /**
@@ -23,7 +23,7 @@ class RiesgosController extends Controller
      */
     public function create()
     {
-        return view('Riesgos.crear');
+        return view('riesgos.crear');
     }
 
     /**
@@ -34,7 +34,8 @@ class RiesgosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Alert::success('Éxito', 'Riesgo guardado con éxito');
+        return redirect()->route('riesgos.index');
     }
 
     /**
@@ -45,7 +46,7 @@ class RiesgosController extends Controller
      */
     public function show($id)
     {
-        return view('Riesgos.ver');
+        return view('riesgos.ver');
     }
 
     /**
@@ -56,7 +57,7 @@ class RiesgosController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('riesgos.editar');
     }
 
     /**
@@ -68,7 +69,8 @@ class RiesgosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Alert::success('Éxito', 'Riesgo actualizado con éxito');
+        return redirect()->route('riesgos.index');
     }
 
     /**
@@ -79,6 +81,7 @@ class RiesgosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Alert::success('Éxito', 'Riesgo eliminado con éxito');
+        return redirect()->route('riesgos.index');
     }
 }
