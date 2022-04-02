@@ -13,7 +13,7 @@ class ProyectosController extends Controller
      */
     public function index()
     {
-        return view('Proyectos.index');
+        return view('proyectos.index');
     }
 
     /**
@@ -23,7 +23,7 @@ class ProyectosController extends Controller
      */
     public function create()
     {
-        return view('Proyectos.crear');
+        return view('proyectos.crear');
     }
 
     /**
@@ -34,7 +34,8 @@ class ProyectosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Alert::success('Éxito', 'Proyecto guardado con éxito');
+        return redirect()->route('proyectos.index');
     }
 
     /**
@@ -45,7 +46,7 @@ class ProyectosController extends Controller
      */
     public function show($id)
     {
-        return view('Proyectos.ver');
+        return view('proyectos.ver');
     }
 
     /**
@@ -56,7 +57,7 @@ class ProyectosController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('proyectos.editar');
     }
 
     /**
@@ -68,7 +69,8 @@ class ProyectosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Alert::success('Éxito', 'Proyecto actualizado con éxito');
+        return redirect()->route('proyectos.index');
     }
 
     /**
@@ -79,6 +81,7 @@ class ProyectosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Alert::success('Éxito', 'Proyecto eliminado con éxito');
+        return redirect()->route('proyectos.index');
     }
 }
