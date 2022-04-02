@@ -49,7 +49,6 @@ class AnunciosController extends Controller
             'location'      =>  'required|max:255',
             'total_cost'    =>  'required|decimal',
             'views_conter'  =>  'required|numeric',
-            'user_id'       =>  'required|numeric',//Para este de preferencia agregar un select con ajax que agarre los usuarios existentes
         ]);
 
         $anuncio = Announcement::create([
@@ -110,7 +109,6 @@ class AnunciosController extends Controller
             'location'      =>  'required|max:255',
             'total_cost'    =>  'required|decimal',
             'views_conter'  =>  'required|numeric',
-            'user_id'       =>  'required|numeric',
         ]);
 
         $anuncio = Announcement::findOrFail($id);
