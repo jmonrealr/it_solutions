@@ -34,7 +34,8 @@ class EmpleadosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Alert::success('Éxito', 'Empleado guardado con éxito');
+        return redirect()->route('empleados.index');
     }
 
     /**
@@ -68,7 +69,8 @@ class EmpleadosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Alert::success('Éxito', 'Empleado actualizado con éxito');
+        return redirect()->route('empleados.index');
     }
 
     /**
@@ -79,6 +81,7 @@ class EmpleadosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Alert::success('Éxito', 'Empleado eliminado con éxito');
+        return redirect()->route('empleados.index');
     }
 }
