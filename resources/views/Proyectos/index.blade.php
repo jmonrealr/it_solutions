@@ -39,34 +39,42 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>01</td>
-                                <td><h6 class="mb-1 fs-14">Lorem ipsum dolor sit.</h6></td>
-                                <td>
-                                    <div class="d-flex">
-                                        <span class="avatar avatar-md brround mr-3" style="background-image: url({{asset('images/usuario.png')}}"></span>
-                                        <div class="mr-3 mt-0 mt-sm-1 d-block">
-                                            <h6 class="mb-1 fs-14">Lorem ipsum dolor sit.</h6>
-                                            <p class="text-muted mb-0 fs-12">example@email.com</p>
+                            @isset($projects)
+                                @foreach ($projects as $project)
+                                <tr>
+                                    <td>01</td>
+                                    <td><h6 class="mb-1 fs-14">{{$project->name}}</h6></td>
+                                    <td>
+                                        <div class="d-flex">
+                                            <span class="avatar avatar-md brround mr-3" style="background-image: url({{asset('images/usuario.png')}}"></span>
+                                            <div class="mr-3 mt-0 mt-sm-1 d-block">
+                                                <h6 class="mb-1 fs-14">{{$project->users->name}}</h6>
+                                                <p class="text-muted mb-0 fs-12">{{$project->users->email}}</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="d-flex">
-                                        <div class="mr-3 mt-0 mt-sm-1 d-block">
-                                            <h6 class="mb-1 fs-14"><span class="text-muted mb-0 fs-14">Inicio: </span>01/01/2022</h6>
-                                            <h6 class="mb-1 fs-14"><span class="text-muted mb-0 fs-14">Fin: </span>01/12/2022</h6>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex">
+                                            <div class="mr-3 mt-0 mt-sm-1 d-block">
+                                                <h6 class="mb-1 fs-14"><span class="text-muted mb-0 fs-14">Inicio: </span>{{$project->start_date}}</h6>
+                                                <h6 class="mb-1 fs-14"><span class="text-muted mb-0 fs-14">Fin: </span>{{$project->end_date}}</h6>
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td width='100px'>
-                                    <div class="d-flex">
-                                        <a href="empleados/ver" class="action-btns1" data-toggle="tooltip" data-placement="top" title="Ver"><i class="fa-solid fa-eye text-primary"></i></a>
-                                        <a href="#" class="action-btns1" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa-solid fa-pen text-success"></i></a>
-                                        <button class="action-btns1" data-toggle="tooltip" data-placement="top" title="Eliminar" type="submit"><i class="fa-regular fa-trash-can text-danger"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
+                                    </td>
+                                    <td width='100px'>
+                                        <div class="d-flex">
+                                            <a href="{{route('proyectos.show', $project->id)}}" class="action-btns1" data-toggle="tooltip" data-placement="top" title="Ver"><i class="fa-solid fa-eye text-primary"></i></a>
+                                            <a href="{{route('proyectos.edit', $project->id)}}" class="action-btns1" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa-solid fa-pen text-success"></i></a>
+                                            <form action="{{route('proyectos.destroy', $project->id)}}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="action-btns1" data-toggle="tooltip" data-placement="top" title="Eliminar" type="submit"><i class="fa-regular fa-trash-can text-danger"></i></button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            @endisset
                         </tbody>
                     </table>
                 </div>
