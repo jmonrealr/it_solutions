@@ -5,7 +5,7 @@
 <!-- CABECERA -->
 <div class="page-header d-xl-flex d-block">
     <div class="page-leftheader">
-        <h4 class="page-title">Ver proyecto #01</h4>
+        <h4 class="page-title">Ver proyecto #{{$project->id}}</h4>
         <ul class="breadcrumb">
             <li class="mb-1 fs-16"><a href="/proyectos">Proyectos</a></li>
             <li class="text-muted mb-1 fs-16 ml-2 mr-2"> / </li>
@@ -31,27 +31,24 @@
             <div class="card-body">
                 <div class="row">
                     <font style="vertical-align: inherit; font-weight:bold">Nombre del proyecto:</font>
-                    <span class="mb-2 fs-14">Lorem, ipsum.</span>
+                    <span class="mb-2 fs-14">{{$project->name}}</span>
                 </div>
                 <div class="row">
                     <font style="vertical-align: inherit; font-weight:bold">Cliente:</font>
-                    <span class="mb-2 fs-14">UPVictoria</span>
+                    <span class="mb-2 fs-14">{{$project->customers->first_name}}</span>
                 </div>
                 <div class="row">
                     <font style="vertical-align: inherit; font-weight:bold">Fecha de inicio:</font> <br>
-                    <span class="mb-2 fs-14">01/01/2022</span>
+                    <span class="mb-2 fs-14">{{$project->start_date}}</span>
                 </div>
                 <div class="row">
                     <font style="vertical-align: inherit; font-weight:bold">Fecha de finalización:</font> <br>
-                    <span class="mb-2 fs-14">01/12/2022</span>
+                    <span class="mb-2 fs-14">{{$project->end_date}}</span>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-6">
                         <a href="#" class="btn btn-primary" target="_blank">Contrato</a>
-                    </div>
-                    <div class="col-6">
-                        <a href="#" class="btn btn-success" target="_blank">Factura</a>
                     </div>
                 </div>
             </div>
@@ -75,37 +72,37 @@
                             <thead>
                                 <tr>
                                     <th class="border-bottom-0 text-center" width='65%'>Actividad</th>
-									<th class="border-bottom-0 text-center" width='25%'>Asignada a</th>
-									<th class="border-bottom-0 text-center" width='100px'>Fecha fin</th>
+									<th class="border-bottom-0 text-center" width='15%'>Asignada a</th>
+									<th class="border-bottom-0 text-center" width='35%'>Fecha fin</th>
 									<th class="border-bottom-0 text-center" width='12%'>Horas</th>
 									<th class="border-bottom-0 text-center">Monto</th>
                                 </tr>
                             </thead>
                             <tbody id="lista_actividades">
+                                @foreach ($project->tasks as $task)
                                 <tr>
                                     <td>
-                                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat, ea!</span>
+                                        <span>{{$task->name}}</span>
                                     </td>
                                     <td>
                                         <div class="d-flex">
-                                            <span class="avatar avatar-md brround mr-3" style="background-image: url({{asset('images/usuario.png')}}"></span>
                                             <div class="mr-3 mt-0 mt-sm-1 d-block">
-                                                <h6 class="mb-1 fs-14">Lorem ipsum dolor sit.</h6>
-                                                <p class="text-muted mb-0 fs-12">example@email.com</p>
+                                                <h6 class="mb-1 fs-14">{{$task->users->name}}</h6>
+                                                <p class="text-muted mb-0 fs-12">{{$task->users->email}}</p>
                                             </div>
                                         </div>
-                                        
                                     </td>
                                     <td align="right">
-                                        <span>01/02/2022</span>
+                                        <span>{{$task->end_date}}</span>
                                     </td>
                                     <td align="right">
-                                        <span>10</span>
+                                        <span>{{$task->time_hour}}</span>
                                     </td>
                                     <td align="center">
-                                        <span id="monto">$0.00</span>
+                                        <span id="monto">{{$task->amount}}</span>
                                     </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
 
@@ -114,7 +111,8 @@
                                 <tr class="border-bottom">
                                     <td></td>
                                     <td align="right" width="15%"><h6 class="mb-1 fs-17 text-muted">Total:</h6></td>
-                                    <td width="15%"><input class="form-control mb-md-1 mb-5 fs-17" id="total" name="total" value="$0.00" readonly></td>
+                                     <td align="right" width="15%"><h6 class="mb-1 fs-17 text-primary">{{$project->total_cost}}</h6></td>
+                                    {{-- <td width="15%"><input class="form-control mb-md-1 mb-5 fs-17" id="total" name="total" value={{$project->total_cost}} readonly></td> --}}
                                 </tr>
                             </tbody>
                         </table>

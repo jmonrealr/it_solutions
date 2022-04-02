@@ -69,4 +69,8 @@ class User extends Authenticatable
     {
         return null !== $this->deparments()->whereIn('name', $department)->first();
     }
+
+    public function tasks(){
+        return $this->hasMany('App\Models\Task');
+    }
 }

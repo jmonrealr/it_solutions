@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use App\Models\Project;
 use App\Models\Task;
 use App\Models\Contract;
@@ -103,7 +104,14 @@ class ProyectosController extends Controller
      */
     public function show($id)
     {
-        return view('Proyectos.ver');
+        setlocale(LC_MONETARY, 'es_MX');
+
+        $project = Project::find($id);
+        $project->total_cost = $this->numberToMoney($project->total_cost);
+        foreach ($project->tasks as $task) {
+            $task = Arr::add($task, 'amount', $this->numberToMoney($task->time_hour * $project->cost_hour));
+        }
+        return view('Proyectos.ver', get_defined_vars());
     }
 
     /**
@@ -147,5 +155,9 @@ class ProyectosController extends Controller
 
 		return (float)$valueWhitoutComas;
 	}
+
+    public function numberToMoney($value){
+        return '$' . number_format($value, 2);
+    }
 
 }
