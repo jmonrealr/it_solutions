@@ -66,51 +66,6 @@
                                 </td>
                             </tr>        
                             @endforeach
-                            
-                            <tr>
-                                <td>02</td>
-                                <td>
-                                    <div class="d-flex">
-                                        <div class="mr-3 mt-0 mt-sm-1 d-block">
-                                            <h6 class="mb-1 fs-14">Lorem ipsum dolor</h6>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td width="350px">
-                                    <span>Facebook</span>
-                                </td>
-                                <td>
-                                    <span>100</span>
-                                </td>
-                                <td>
-                                    <div class="d-flex">
-                                        <a href="#" class="action-btns1" data-toggle="tooltip" data-placement="top" title="Editar"><i class="feather feather-edit-2  text-success"></i></a>
-                                        <button class="action-btns1" onclick="mensaje()" data-toggle="tooltip" data-placement="top" title="Eliminar" type="submit"><i class="feather feather-trash-2 text-danger"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>03</td>
-                                <td>
-                                    <div class="d-flex">
-                                        <div class="mr-3 mt-0 mt-sm-1 d-block">
-                                            <h6 class="mb-1 fs-14">Lorem ipsum dolor</h6>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td width="350px">
-                                    <span>Facebook</span>
-                                </td>
-                                <td>
-                                    <span>100</span>
-                                </td>
-                                <td>
-                                    <div class="d-flex">
-                                        <a href="#" class="action-btns1" data-toggle="tooltip" data-placement="top" title="Editar"><i class="feather feather-edit-2  text-success"></i></a>
-                                        <button class="action-btns1" onclick="mensaje()" data-toggle="tooltip" data-placement="top" title="Eliminar" type="submit"><i class="feather feather-trash-2 text-danger"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
                         </tbody>
 
                     </table>
