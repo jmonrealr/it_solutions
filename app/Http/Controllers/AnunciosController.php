@@ -50,7 +50,7 @@ class AnunciosController extends Controller
             'location'      =>  'required|max:255',
             'total_cost'    =>  'required|decimal',
             'views_conter'  =>  'required|numeric',
-            'user_id'       =>  'required|numeric',
+            //'user_id'       =>  'required|numeric',
         ]);
 
         $anuncio = Announcement::create([
@@ -59,7 +59,7 @@ class AnunciosController extends Controller
             'location'          =>  $request['location'],
             'total_cost'        =>  $request['total_cost'],
             'views_counter'     =>  $request['views_counter'],
-            'user_id'           =>  $request['user_id'],
+            //'user_id'           =>  $request['user_id'],
         ]);
 
         Alert::success('Éxito', 'Anuncio creado con éxito');
@@ -114,7 +114,7 @@ class AnunciosController extends Controller
             'location'      =>  'required|max:255',
             'total_cost'    =>  'required|decimal',
             'views_conter'  =>  'required|numeric',
-            'user_id'       =>  'required|numeric',
+            //'user_id'       =>  'required|numeric',
         ]);
 
         $anuncio = Announcement::findOrFail($id);
@@ -125,7 +125,7 @@ class AnunciosController extends Controller
             'location'          =>  $request['location'],
             'total_cost'        =>  $request['total_cost'],
             'views_counter'     =>  $request['views_counter'],
-            'user_id'           =>  $request['user_id'],
+            //'user_id'           =>  $request['user_id'],
         ]);
 
         Alert::success('Éxito', 'Anuncio actualizado con éxito');
