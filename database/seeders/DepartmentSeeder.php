@@ -3,8 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Department;
 
-class DeparmentSeeder extends Seeder
+class DepartmentSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,6 +14,6 @@ class DeparmentSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Department::factory()->count(20)->create();
     }
 }
