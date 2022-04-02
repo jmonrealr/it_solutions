@@ -14,7 +14,12 @@ class AnnouncementFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->word(),
+            'description' => $this->faker->sentence(),
+            'location' => $this->faker->address(),
+            'total_cost' => $this->faker->randomFloat(2, 20, 100),
+            'views_counter' => $this->faker->numberBetween(5, 100),
+            //'user_id' => ,
         ];
     }
 }
