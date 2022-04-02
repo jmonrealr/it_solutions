@@ -13,7 +13,7 @@ class ContratosController extends Controller
      */
     public function index()
     {
-        return view('Contratos.index');
+        return view('contratos.index');
     }
 
     /**
@@ -23,7 +23,7 @@ class ContratosController extends Controller
      */
     public function create()
     {
-        //
+        return view('contratos.crear');
     }
 
     /**
@@ -34,7 +34,8 @@ class ContratosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Alert::success('Éxito', 'Contrato guardado con éxito');
+        return redirect()->route('comentarios.index');
     }
 
     /**
@@ -45,7 +46,7 @@ class ContratosController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('contratos.ver');
     }
 
     /**
@@ -56,7 +57,7 @@ class ContratosController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('contratos.editar');
     }
 
     /**
@@ -68,7 +69,8 @@ class ContratosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Alert::success('Éxito', 'Contrato actualizado con éxito');
+        return redirect()->route('comentarios.index');
     }
 
     /**
@@ -79,6 +81,7 @@ class ContratosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Alert::success('Éxito', 'Contrato eliminado con éxito');
+        return redirect()->route('comentarios.index');
     }
 }
