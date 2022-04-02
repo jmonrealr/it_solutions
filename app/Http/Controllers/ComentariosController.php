@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Comment;
-use App\Models\User;
 
 class ComentariosController extends Controller
 {
@@ -17,7 +16,7 @@ class ComentariosController extends Controller
      */
     public function index()
     {
-        $comentario = Comment::get();
+        $comentario = Comment::with('user')->get();
         return view('comentarios.index',get_defined_vars());
     }
 
@@ -30,8 +29,7 @@ class ComentariosController extends Controller
      */
     public function create()
     {
-        $users = User::get();
-        return view('comentarios.crear',get_defined_vars());
+        return view('comentarios.crear');
     }
 
    /**
@@ -68,8 +66,7 @@ class ComentariosController extends Controller
      */
     public function show($id)
     {
-        $comentario = Comment::findOrFail($id);
-        $user = User::findOrFail($comentario->user_id);
+        $comentario = Comment::with('user')->findOrFail($id);
         return view('comentarios.ver',get_defined_vars());
     }
 
@@ -85,7 +82,6 @@ class ComentariosController extends Controller
     {
         $users = User::get();
         $comentario = Comment::findOrFail($id);
-        $last_user = User::findOrFail($comentario->user_id);
         return view('comentarios.editar', get_defined_vars());
     }
 
