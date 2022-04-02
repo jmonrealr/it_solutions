@@ -121,6 +121,7 @@ class DepartamentosController extends Controller
     {
         $departamento = Department::findOrFail($id);
         $departamento->delete();
+        Alert::success('Éxito', 'Departamento eliminado con éxito');
         return redirect()->route('departamentos.index');
     }
 }
