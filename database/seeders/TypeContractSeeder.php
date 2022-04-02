@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Comment;
+use App\Models\TypeContract;
 
-class CommentSeeder extends Seeder
+class TypeContractSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class CommentSeeder extends Seeder
      */
     public function run()
     {
-        Comment::factory()->count(100)->create();
+        TypeContract::factory()->count(2)->create();
     }
 }

@@ -42,8 +42,8 @@ class ContratosController extends Controller
             'subject'           =>  'required|max:255',
             'description'       =>  'required|max:255',
             'initiated_by'      =>  'required|max:255',
-            'start_date'        =>  'required|max:255',
-            'end_date'          =>  'required|max:255',
+            'start_date'        =>  'required|date',
+            'end_date'          =>  'required|date',
             'status_id'         =>  'required|numeric',
             'type_contract_id'  =>  'required|numeric',
         ]);

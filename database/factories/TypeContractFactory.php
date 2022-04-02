@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class StatusFactory extends Factory
+class TypeContractFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -14,7 +14,7 @@ class StatusFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->word('En proceso','Finalizado'),
+            'name' => $this->faker->word('basico','complejo'),
         ];
     }
 }

@@ -18,6 +18,10 @@ class DatabaseSeeder extends Seeder
             DepartmentSeeder::class,
             UserSeeder::class,
             AnnouncementSeeder::class,
+            CommentSeeder::class,
+            TypeContractSeeder::class,
+            StatusSeeder::class,
+            //ContractSeeder::class,
         ]);
     }
 }
