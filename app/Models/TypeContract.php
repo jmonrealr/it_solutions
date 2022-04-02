@@ -32,5 +32,13 @@ class TypeContract extends Model
      */
     protected $casts = [];
 
-    //TODO: Relationships
+    /**
+     * Get the Contracts that own the TypeContract
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function contracts()
+    {
+        return $this->hasMany('App\Models\Contract');
+    }
 }

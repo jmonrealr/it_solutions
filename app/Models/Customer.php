@@ -34,5 +34,14 @@ class Customer extends Model
      */
     protected $casts = [];
 
-    //TODO: Relationships
+
+    /**
+     * Get the Projects that own the Customer
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function projects()
+    {
+        return $this->hasMany('App\Models\Project');
+    }
 }

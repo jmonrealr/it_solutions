@@ -47,18 +47,18 @@ class User extends Authenticatable
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function deparments(){
+    public function departments(){
         return $this->belongsToMany('App\Models\Department');
     }
 
     /**
      * Check if current user has any department
-     * @param string $deparment
+     * @param string $department
      * @return bool
      */
-    public function hasAnyDepartment(string $deparment)
+    public function hasAnyDepartment(string $department)
     {
-        return null !== $this->deparments()->where('name', $deparment)->first();
+        return null !== $this->departments()->where('name', $department)->first();
     }
     /**
      * Check if current user has any department
@@ -67,6 +67,86 @@ class User extends Authenticatable
      */
     public function hasAnyDepartments(array $department)
     {
-        return null !== $this->deparments()->whereIn('name', $department)->first();
+        return null !== $this->departments()->whereIn('name', $department)->first();
+    }
+
+    /**
+     * Get the Announcements that owns the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function announcements()
+    {
+        return $this->hasMany('App\Models\Announcement');
+    }
+
+    /**
+     * Get the Comments that owns the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comment');
+    }
+
+    /**
+     * Get the profile that own the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function profile()
+    {
+        return $this->hasOne('App\Models\Profile');
+    }
+
+    /**
+     * Get the events that own the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function events()
+    {
+        return $this->hasMany('App\Models\Event');
+    }
+
+    /**
+     * Get the questions that own the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function questions()
+    {
+        return $this->hasMany('App\Models\Question');
+    }
+
+    /**
+     * Get the answers that own the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function answers()
+    {
+        return $this->hasMany('App\Models\Answers');
+    }
+
+    /**
+     * Get the models that own the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function models()
+    {
+        return $this->hasMany('App\Models\Models');
+    }
+
+    /**
+     * Get the projects that own the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function projects()
+    {
+        return $this->hasMany('App\Models\Project');
     }
 }

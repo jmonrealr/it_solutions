@@ -34,5 +34,23 @@ class Question extends Model
      */
     protected $casts = [];
 
-    //TODO: Relationships
+    /**
+     * Get the user that owns the Question
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
+
+    /**
+     * Get the answers that own the Question
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function answers()
+    {
+        return $this->hasMany('App\Models\Answers');
+    }
 }
