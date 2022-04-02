@@ -66,5 +66,6 @@
 		<!-- Custom js-->
 		<script src="{{ asset('js/custom.js') }}"></script>
 
+		@yield('extra-script')
 	</body>
 </html>

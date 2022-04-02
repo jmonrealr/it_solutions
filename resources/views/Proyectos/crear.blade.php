@@ -23,9 +23,8 @@
 		<div class="col-xl-12 col-md-12 col-lg-12">
 			<div class="card">
 				<div class="card-body">
-					<form action="#" method="POST">
+					<form action="{{route('proyectos.store')}}" method="POST">
 						@csrf
-
 						<h4 class="mb-5 font-weight-semibold">Detalles del proyecto</h4>
 
 						{{-- Primera fila del formulario --}}
@@ -47,8 +46,8 @@
 								<div class="form-group">
 									<label class="form-label">Fecha de inicio:</label>
 									<div class="input-group">
-										<input class="form-control fc-datepicker @error('booking_date') is-invalid @enderror" placeholder="YYYY-MM-DD" type="date" name="booking_date">
-										@error('booking_date')
+										<input class="form-control fc-datepicker @error('start_date') is-invalid @enderror" placeholder="YYYY-MM-DD" type="date" name="start_date">
+										@error('start_date')
                                         <span class="invalid-feedback" role="alert">
                                             {{ $message }}
                                         </span>
@@ -61,8 +60,8 @@
 								<div class="form-group">
 									<label class="form-label">Fecha de finalización:</label>
 									<div class="input-group">
-										<input class="form-control fc-datepicker @error('booking_date') is-invalid @enderror" placeholder="YYYY-MM-DD" type="date" name="booking_date">
-										@error('booking_date')
+										<input class="form-control fc-datepicker @error('end_date') is-invalid @enderror" placeholder="YYYY-MM-DD" type="date" name="end_date">
+										@error('end_date')
                                         <span class="invalid-feedback" role="alert">
                                             {{ $message }}
                                         </span>
@@ -74,11 +73,15 @@
 							<div class="col-md-3">
 								<div class="form-group">
 									<label class="form-label">Cliente:</label>
-									<select class="form-control custom-select select2 @error('user_id') is-invalid @enderror" data-placeholder="Selecciona un cliente" id="select_cliente" name="user_id">
+									<select class="form-control custom-select select2 @error('customer_id') is-invalid @enderror" data-placeholder="Selecciona un cliente" id="customer_id" name="customer_id">
 										<option value="-1" selected disabled>Selecciona un cliente</option>
-										<option value="1">Pancho Pantera</option>
+										@isset($customers)
+											@foreach ($customers as $customer)
+												<option value={{$customer->id}}>{{$customer->first_name}} {{$customer->last_name}}</option>
+											@endforeach
+										@endisset
 									</select>
-									@error('user_id')
+									@error('customer_id')
                                         <span class="invalid-feedback" role="alert">
                                             {{ $message }}
                                         </span>
@@ -133,16 +136,19 @@
 									<tbody id="lista_actividades">
 										<tr>
 											<td>
-												<input type="text" name="name[]" id="" placeholder="Ingresa titulo de actividad" style=" width:100%;" class="form-control	">
+												<input type="text" name="activity_name[]" id="" placeholder="Ingresa titulo de actividad" style=" width:100%;" class="form-control	">
 											</td>
 											<td>
 												<select name="user_id[]" id="" class="form-control custom-select select2 @error('user_id') is-invalid @enderror">
-													<option value="1">Empleado 1</option>
-													<option value="2">Empleado 2</option>
-													<option value="3">Empleado 3</option>
+													<option value="-1" selected disabled>Asignar a...</option>
+													@isset($employees)
+														@foreach ($employees as $employee)
+															<option value={{$employee->id}}>{{$employee->name}}</option>
+														@endforeach
+													@endisset
 												</select>
 											</td>
-											<td><input type="date" name="end_date[]" id="" class="form-control fc-datepicker"></td>
+											<td><input type="date" name="activity_end_date[]" id="" class="form-control fc-datepicker"></td>
 											<td><input type="number" class="form-control mb-md-1 mb-5 hours" value=0 min="1" align="right" name="time_hour[]" onchange="updateCostActivity(event);" onkeyup="updateCostActivity(event);"></td>
 											<td class="amounts">$0.00</td>
 											<td  onclick="removeActivity(event);">
@@ -159,7 +165,7 @@
 										<tr class="border-bottom">
 											<td></td>
 											<td align="right" width="15%"><h6 class="mb-1 fs-17 text-muted">Total:</h6></td>
-											<td width="15%"><input class="form-control mb-md-1 mb-5 fs-17" id="total" name="total" value="$0.00" readonly></td>
+											<td width="15%"><input class="form-control mb-md-1 mb-5 fs-17" id="total" name="total_cost" value="$0.00" readonly></td>
 										</tr>
 									</tbody>
 								</table>
@@ -197,9 +203,18 @@
 
 			let row = document.createElement('tr');
 
-			row.innerHTML = '<td><input type="text" name="name[]" id="" placeholder="Ingresa titulo de actividad" style=" width:100%;" class="form-control"></td>' +
-			'<td><select name="user_id[]" id="" class="form-control custom-select select2 @error('user_id') is-invalid @enderror"><option value="1">Empleado 1</option><option value="2">Empleado 2</option><option value="3">Empleado 3</option></select></td>' +
-			'<td><input type="date" name="end_date[]" id="" class="form-control fc-datepicker"></td>'+
+			row.innerHTML = '<td><input type="text" name="activity_name[]" id="" placeholder="Ingresa titulo de actividad" style=" width:100%;" class="form-control"></td>' +
+			'<td>' + 
+			'	<select name="user_id[]" id="" class="form-control custom-select select2 @error('user_id') is-invalid @enderror">' + 
+			'		<option value="-1" selected disabled>Asignar a...</option>' + 
+			'		@isset($employees)' + 
+			'			@foreach ($employees as $employee)' + 
+			'				<option value={{$employee->id}}>{{$employee->name}}</option>' + 
+			'			@endforeach' + 
+			'		@endisset' + 
+			'	</select>' + 
+			'</td>' + 
+			'<td><input type="date" name="activity_end_date[]" id="" class="form-control fc-datepicker"></td>'+
 			'<td><input type="number" class="form-control mb-md-1 mb-5 hours" value=0 min="1" align="right" name="time_hour[]" onchange="updateCostActivity(event);" onkeyup="updateCostActivity(event);"></td>' +
 			'<td class="amounts">$0.00</td>' + 
 			'<td  onclick="removeActivity(event);"><a class="action-btns1" title="Remover"><i class="fa-solid fa-xmark text-danger"></i></a></td>';

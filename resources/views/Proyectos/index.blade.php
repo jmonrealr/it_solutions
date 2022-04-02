@@ -42,14 +42,13 @@
                             @isset($projects)
                                 @foreach ($projects as $project)
                                 <tr>
-                                    <td>01</td>
+                                    <td>{{$project->id}}</td>
                                     <td><h6 class="mb-1 fs-14">{{$project->name}}</h6></td>
                                     <td>
                                         <div class="d-flex">
-                                            <span class="avatar avatar-md brround mr-3" style="background-image: url({{asset('images/usuario.png')}}"></span>
                                             <div class="mr-3 mt-0 mt-sm-1 d-block">
-                                                <h6 class="mb-1 fs-14">{{$project->users->name}}</h6>
-                                                <p class="text-muted mb-0 fs-12">{{$project->users->email}}</p>
+                                                <h6 class="mb-1 fs-14">{{$project->customers->first_name}}</h6>
+                                                <p class="text-muted mb-0 fs-12">{{$project->customers->email}}</p>
                                             </div>
                                         </div>
                                     </td>

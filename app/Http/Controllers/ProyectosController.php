@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Models\Task;
+use App\Models\Contract;
+use App\Models\User;
+use App\Models\Customer;
 
 class ProyectosController extends Controller
 {
@@ -14,7 +18,7 @@ class ProyectosController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
+        $projects = Project::all();    
         return view('Proyectos.index', get_defined_vars());
     }
 
@@ -25,7 +29,9 @@ class ProyectosController extends Controller
      */
     public function create()
     {
-        return view('Proyectos.crear');
+        $customers = Customer::all();
+        $employees = User::all();
+        return view('Proyectos.crear', get_defined_vars());
     }
 
     /**
@@ -36,7 +42,57 @@ class ProyectosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'          =>  'required|max:255',
+            'description'   =>  'max:255',
+            'start_date'    =>  'required',
+            'end_date'      =>  'required',
+            'cost_hour'     =>  'required',
+            'total_cost'    =>  'required',
+            'user_id'       =>  'required',
+            'customer_id'   =>  'required',
+        ]);
+        
+
+        // dd($request->all());
+
+        //Crear  contrato
+        // $contract = Contract::create([
+        //     'subject'           =>  $request['name'],
+        //     'description'       =>  $request['description'],
+        //     'initiated_by'      =>  $request['start_date'],
+        //     'start_date'        =>  $request['end_date'],
+        //     'end_date'          =>  $request['cost_hour'],
+        //     'status_id'         =>  $request['total_cost'],
+        //     'type_contract_id'  =>  $request['customer_id'],
+        // ]);
+
+        //Crear  proyecto
+        $project = Project::create([
+            'name'          =>  $request['name'],
+            'description'   =>  $request['description'],
+            'start_date'    =>  $request['start_date'],
+            'end_date'      =>  $request['end_date'],
+            'cost_hour'     =>  intval($request['cost_hour']),
+            'total_cost'    =>  $this->moneyToNumber($request['total_cost']),
+            'customer_id'   =>  $request['customer_id'],
+            'contract_id'   =>  1,
+        ]);
+        $project->save();
+
+        //Crear  tareas
+        for ($i=0; $i < count($request->activity_name); $i++) { 
+            $task = Task::create([
+                'name'          =>  $request['activity_name'][$i],
+                'end_date'      =>  $request['activity_end_date'][$i],
+                'time_hour'     =>  $request['time_hour'][$i],
+                'user_id'       =>  $request['user_id'][$i],
+                'project_id'    =>  $project->id,
+            ]);
+            $task->save();
+        }
+
+        return redirect()->route('proyectos.index');
     }
 
     /**
@@ -83,4 +139,13 @@ class ProyectosController extends Controller
     {
         //
     }
+
+
+    public function moneyToNumber($value) {
+		$valueWithoutSignDollar = explode("$", $value);
+		$valueWhitoutComas = str_replace(",", "", $valueWithoutSignDollar[1]);
+
+		return (float)$valueWhitoutComas;
+	}
+
 }

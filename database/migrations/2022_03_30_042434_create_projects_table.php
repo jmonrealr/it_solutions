@@ -21,9 +21,9 @@ class CreateProjectsTable extends Migration
             $table->date('end_date');
             $table->decimal('cost_hour',5, 2);
             $table->decimal('total_cost',13, 3);
-            $table->decimal('total_time', 10, 2);
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('customer_id')->constrained();
+            // $table->decimal('total_time', 10, 2);
+            // // $table->foreignId('user_id')->constrained();
+            $table->foreignId('customer_id');
             $table->foreignId('contract_id')->constrained();
             $table->timestamps();
         });

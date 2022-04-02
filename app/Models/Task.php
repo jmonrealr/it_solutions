@@ -39,4 +39,7 @@ class Task extends Model
     protected $casts = [];
 
     //TODO: Relationships
+    public function projects(){
+        return $this->belongsTo('App\Models\Project');
+    }
 }

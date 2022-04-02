@@ -19,11 +19,10 @@ class Project extends Model
         'description',
         'start_date',
         'end_date',
+        'cost_hour',
         'total_cost',
         'customer_id',
         'contract_id',
-        'total_time',
-        'user_id',
     ];
 
     /**
@@ -41,4 +40,12 @@ class Project extends Model
     protected $casts = [];
 
     //TODO: Relationships
+
+    public function customers(){
+        return $this->belongsTo('App\Models\Customer', 'customer_id');
+    }
+
+    public function tasks(){
+        return $this->hasMany('App\Models\Task');
+    }
 }
