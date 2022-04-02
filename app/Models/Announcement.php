@@ -20,7 +20,7 @@ class Announcement extends Model
         'location',
         'total_cost',
         'views_counter',
-        'user_id',
+        //'user_id',
     ];
 
     /**
