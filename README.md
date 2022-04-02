@@ -41,6 +41,18 @@
     php artisan migrate --seed
     ```
     Generates migrations and populates the DB with default data
+
+  * Utilities
+    This deletes all the tables in the database
+    ```
+    php artisan db:wipe
+    ```
+
+    This deletes all the tables in the database and recreates all the tables. The --seed option populates the DB with default data
+    ```
+    php artisan migrate:refresh --seed
+    ```
+
     
  ### Starting a local development server
     
