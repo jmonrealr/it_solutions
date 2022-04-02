@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Models;
+use App\Models\TypeModel;
 
-class ModelSeeder extends Seeder
+class TypeModelSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class ModelSeeder extends Seeder
      */
     public function run()
     {
-        Models::factory()->count(10)->create();
+        TypeModel::factory()->count(3)->create();
     }
 }

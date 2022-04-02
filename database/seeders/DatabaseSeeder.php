@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
             CommentSeeder::class,
             TypeContractSeeder::class,
             StatusSeeder::class,
+            TypeModelSeeder::class,
+            ModelSeeder::class,
             //ContractSeeder::class,
         ]);
     }
