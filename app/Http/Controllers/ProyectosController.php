@@ -145,16 +145,21 @@ class ProyectosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $project = Project::find($id);
+        $project->delete();
+        return redirect()->route('proyectos.index');
     }
 
 
+    
     public function moneyToNumber($value) {
 		$valueWithoutSignDollar = explode("$", $value);
 		$valueWhitoutComas = str_replace(",", "", $valueWithoutSignDollar[1]);
 
 		return (float)$valueWhitoutComas;
 	}
+
+
 
     public function numberToMoney($value){
         return '$' . number_format($value, 2);
