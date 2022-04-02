@@ -30,8 +30,7 @@ class AnunciosController extends Controller
      */
     public function create()
     {
-        $users = User::get();
-        return view('anuncios.crear',get_defined_vars());
+        return view('anuncios.crear');
     }
 
     /**
@@ -50,7 +49,7 @@ class AnunciosController extends Controller
             'location'      =>  'required|max:255',
             'total_cost'    =>  'required|decimal',
             'views_conter'  =>  'required|numeric',
-            //'user_id'       =>  'required|numeric',
+            'user_id'       =>  'required|numeric',//Para este de preferencia agregar un select con ajax que agarre los usuarios existentes
         ]);
 
         $anuncio = Announcement::create([
@@ -59,7 +58,7 @@ class AnunciosController extends Controller
             'location'          =>  $request['location'],
             'total_cost'        =>  $request['total_cost'],
             'views_counter'     =>  $request['views_counter'],
-            //'user_id'           =>  $request['user_id'],
+            'user_id'           =>  $request['user_id'],
         ]);
 
         Alert::success('Éxito', 'Anuncio creado con éxito');
@@ -76,8 +75,7 @@ class AnunciosController extends Controller
      */
     public function show($id)
     {
-        $anuncio = Announcement::findOrFail($id);
-        //$user = User::findOrFail($anuncio->user_id);
+        $anuncio = Announcement::findOrFail($id)->with('user');
         return view('anuncios.ver',get_defined_vars());
     }
 
@@ -91,9 +89,7 @@ class AnunciosController extends Controller
      */
     public function edit($id)
     {
-        //$users = User::get();
-        $anuncio = Announcement::findOrFail($id);
-        //$last_user = User::findOrFail($anuncio->user_id);
+        $anuncio = Announcement::findOrFail($id)->with('user');
         return view('anuncios.editar', get_defined_vars());
     }
 
@@ -114,7 +110,7 @@ class AnunciosController extends Controller
             'location'      =>  'required|max:255',
             'total_cost'    =>  'required|decimal',
             'views_conter'  =>  'required|numeric',
-            //'user_id'       =>  'required|numeric',
+            'user_id'       =>  'required|numeric',
         ]);
 
         $anuncio = Announcement::findOrFail($id);
@@ -125,7 +121,7 @@ class AnunciosController extends Controller
             'location'          =>  $request['location'],
             'total_cost'        =>  $request['total_cost'],
             'views_counter'     =>  $request['views_counter'],
-            //'user_id'           =>  $request['user_id'],
+            'user_id'           =>  $request['user_id'],
         ]);
 
         Alert::success('Éxito', 'Anuncio actualizado con éxito');
