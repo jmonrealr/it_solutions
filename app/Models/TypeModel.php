@@ -32,5 +32,13 @@ class TypeModel extends Model
      */
     protected $casts = [];
 
-    //TODO: Relationships
+    /**
+     * Get the models that own the TypeModel
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function models()
+    {
+        return $this->hasMany('App\Models\Models');
+    }
 }

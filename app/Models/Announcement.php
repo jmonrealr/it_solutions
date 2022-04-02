@@ -20,7 +20,7 @@ class Announcement extends Model
         'location',
         'total_cost',
         'views_counter',
-        //'user_id',
+        'user_id',
     ];
 
     /**
@@ -37,6 +37,14 @@ class Announcement extends Model
      */
     protected $casts = [];
 
-    //TODO: Relationships
+    /**
+     * Get the User that owns the Announcement
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 
 }

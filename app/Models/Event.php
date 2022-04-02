@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Models extends Model
+class Event extends Model
 {
     use HasFactory;
 
@@ -16,7 +16,10 @@ class Models extends Model
      */
     protected $fillable = [
         'name',
-        'type_models_id',
+        'description',
+        'location',
+        'start_date',
+        'user_id',
     ];
 
     /**
@@ -34,22 +37,12 @@ class Models extends Model
     protected $casts = [];
 
     /**
-     * Get the User that owns the Model
+     * Get the User that owns the Event
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()
     {
         return $this->belongsTo('App\Models\User');
-    }
-
-    /**
-     * Get the type_model that own the Model
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function type_model()
-    {
-        return $this->belongsTo('App\Models\TypeModel');
     }
 }

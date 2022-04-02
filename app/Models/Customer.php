@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Models extends Model
+class Customer extends Model
 {
     use HasFactory;
 
@@ -15,8 +15,9 @@ class Models extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'type_models_id',
+        'first_name',
+        'last_name',
+        'email',
     ];
 
     /**
@@ -33,23 +34,14 @@ class Models extends Model
      */
     protected $casts = [];
 
-    /**
-     * Get the User that owns the Model
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function user()
-    {
-        return $this->belongsTo('App\Models\User');
-    }
 
     /**
-     * Get the type_model that own the Model
+     * Get the Projects that own the Customer
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function type_model()
+    public function projects()
     {
-        return $this->belongsTo('App\Models\TypeModel');
+        return $this->hasMany('App\Models\Project');
     }
 }

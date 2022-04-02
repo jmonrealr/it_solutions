@@ -32,5 +32,13 @@ class Status extends Model
      */
     protected $casts = [];
 
-    //TODO: Relationships
+    /**
+     * Get the Contracts that own the Status
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function contracts()
+    {
+        return $this->hasMany('App\Models\Contract');
+    }
 }

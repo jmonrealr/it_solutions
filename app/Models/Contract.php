@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Models extends Model
+class Contract extends Model
 {
     use HasFactory;
 
@@ -15,8 +15,13 @@ class Models extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'type_models_id',
+        'subject',
+        'description',
+        'initiated_by',
+        'start_date',
+        'end_date',
+        'status_id',
+        'type_contract_id',
     ];
 
     /**
@@ -34,22 +39,32 @@ class Models extends Model
     protected $casts = [];
 
     /**
-     * Get the User that owns the Model
+     * Get the Status that owns the Contract
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user()
+    public function status()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo('App\Models\Status');
     }
 
     /**
-     * Get the type_model that own the Model
+     * Get the TypeContract that owns the Contract
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function type_model()
+    public function type_contract()
     {
-        return $this->belongsTo('App\Models\TypeModel');
+        return $this->belongsTo('App\Models\TypeContract');
+    }
+
+    /**
+     * Get the projects that own the Contract
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function projects()
+    {
+        return $this->hasMany('App\Models\Project');
     }
 }
