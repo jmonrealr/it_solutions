@@ -17,7 +17,7 @@ class AnunciosController extends Controller
      */
     public function index()
     {
-        $anuncios = Announcement::get();
+        $anuncios = Announcement::with('user')->get();
         return view('anuncios.index',get_defined_vars());
     }
 

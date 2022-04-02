@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Contract;
+use App\Models\TypeContract;
+use App\Models\Status;
 
 class ContratosController extends Controller
 {
@@ -13,6 +16,7 @@ class ContratosController extends Controller
      */
     public function index()
     {
+        Contract::get();
         return view('contratos.index');
     }
 
