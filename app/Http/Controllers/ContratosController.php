@@ -35,7 +35,7 @@ class ContratosController extends Controller
     public function store(Request $request)
     {
         Alert::success('Éxito', 'Contrato guardado con éxito');
-        return redirect()->route('comentarios.index');
+        return redirect()->route('contratos.index');
     }
 
     /**
@@ -70,7 +70,7 @@ class ContratosController extends Controller
     public function update(Request $request, $id)
     {
         Alert::success('Éxito', 'Contrato actualizado con éxito');
-        return redirect()->route('comentarios.index');
+        return redirect()->route('contratos.index');
     }
 
     /**
@@ -82,6 +82,6 @@ class ContratosController extends Controller
     public function destroy($id)
     {
         Alert::success('Éxito', 'Contrato eliminado con éxito');
-        return redirect()->route('comentarios.index');
+        return redirect()->route('contratos.index');
     }
 }
