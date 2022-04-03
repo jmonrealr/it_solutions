@@ -43,8 +43,7 @@ class Task extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function project()
-    {
+    public function projects(){
         return $this->belongsTo('App\Models\Project');
     }
 
@@ -53,8 +52,7 @@ class Task extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user()
-    {
-        return $this->belongsTo('App\Models\User');
+    public function users(){
+        return $this->belongsTo('App\Models\User', 'user_id');
     }
 }

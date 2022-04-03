@@ -19,7 +19,7 @@ class Customer extends Model
         'last_name',
         'email',
     ];
-
+  
     /**
      * The attributes that should be hidden for serialization.
      *
