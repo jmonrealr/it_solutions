@@ -17,6 +17,7 @@ class Models extends Model
     protected $fillable = [
         'name',
         'type_models_id',
+        'user_id',
     ];
 
     /**

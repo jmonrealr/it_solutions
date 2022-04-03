@@ -15,7 +15,7 @@ class ModelsFactory extends Factory
     {
         return [
             'name' => $this->faker->word(),
-            'type_models_id' => $this->faker->numberBetween(1,4),
+            'type_models_id' => $this->faker->numberBetween(1,3),
             'user_id' => $this->faker->numberBetween(1,10),
         ];
     }
