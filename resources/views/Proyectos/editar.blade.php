@@ -126,11 +126,11 @@
 								<table class="table  text-wrap border-bottom table-borderless" id="mytable">
 									<thead>
 										<tr>
-											<th class="border-bottom-0 text-center" width='13%'>ID</th>
+											<th class="border-bottom-0 text-center" width='11%'>ID</th>
 											<th class="border-bottom-0 text-center" width='65%'>Actividad</th>
 											<th class="border-bottom-0 text-center" width='25%'>Asignada a</th>
-											<th class="border-bottom-0 text-center" width='100px'>Fecha fin</th>
-											<th class="border-bottom-0 text-center" width='12%'>Horas</th>
+											<th class="border-bottom-0 text-center" width='6%'>Fecha fin</th>
+											<th class="border-bottom-0 text-center" width='58%'>Horas</th>
 											<th class="border-bottom-0 text-center">Monto</th>
 											<th class="border-bottom-0 text-center"> </th>
 										</tr>
@@ -210,7 +210,9 @@
 
 			let row = document.createElement('tr');
 
-			row.innerHTML = '<td><input type="text" name="activity_name[]" id="" placeholder="Ingresa titulo de actividad" style=" width:100%;" class="form-control"></td>' +
+			row.innerHTML = 
+			'<td><input type="number" name="activity_id[]" id="" class="form-control" value=-1 readonly style="visibility:hidden;"></td>'+
+			'<td><input type="text" name="activity_name[]" id="" placeholder="Ingresa titulo de actividad" style=" width:100%;" class="form-control"></td>' +
 			'<td>' + 
 			'	<select name="user_id[]" id="" class="form-control custom-select select2 @error('user_id') is-invalid @enderror">' + 
 			'		<option value="-1" selected disabled>Asignar a...</option>' + 
