@@ -9,7 +9,6 @@ class Customer extends Model
 {
     use HasFactory;
 
-
     /**
      * The attributes that are mass assignable.
      *
@@ -20,8 +19,29 @@ class Customer extends Model
         'last_name',
         'email',
     ];
+  
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [];
 
-    public function projects(){
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [];
+
+
+    /**
+     * Get the Projects that own the Customer
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function projects()
+    {
         return $this->hasMany('App\Models\Project');
     }
 }

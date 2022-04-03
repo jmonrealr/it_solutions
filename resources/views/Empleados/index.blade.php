@@ -10,7 +10,7 @@
     <div class="page-rightheader ml-md-auto">
         <div class="align-items-end flex-wrap my-auto right-content breadcrumb-right">
             <div class="btn-list">
-                <a href="clientes/crear" class="btn btn-primary mr-3">
+                <a href="empleados/create" class="btn btn-primary mr-3">
                     <i class="feather  feather-plus sidemenu_icon"></i>Agregar Empleado</a>
             </div>
         </div>
@@ -66,8 +66,8 @@
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                        <tbody>
+
+
                             <tr>
                                 <td>02</td>
                                 <td>
@@ -93,8 +93,8 @@
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                        <tbody>
+
+
                             <tr>
                                 <td>03</td>
                                 <td>
@@ -121,11 +121,7 @@
                                 </td>
                             </tr>
                         </tbody>
-                        <tbody>
-                            <tr>
 
-                            </tr>
-                        </tbody>
                     </table>
                 </div>
             </div>

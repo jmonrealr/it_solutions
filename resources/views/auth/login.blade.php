@@ -11,7 +11,7 @@
     }
 
     #logo_izq{
-        width: 35%
+        width: 20%
     }
 </style>
 @endsection
@@ -23,7 +23,7 @@
                 <div class="col-8  pt-5" Style="background: #EFEFBB;
                     background: -webkit-linear-gradient(to right, #D4D3DD, #EFEFBB);
                     background: linear-gradient(to right, #D4D3DD, #EFEFBB);">
-                    <img src="{{asset('images/logo.svg')}}" alt="logo" class="mx-auto d-block" id="logo_izq">
+                    <img src="{{asset('images/login.svg')}}" alt="logo" class="mx-auto d-block" id="logo_izq" style="width: 65%;">
                 </div>
 
 

@@ -11,7 +11,7 @@
     <div class="page-rightheader ml-md-auto">
         <div class="align-items-end flex-wrap my-auto right-content breadcrumb-right">
             <div class="btn-list">
-                <a href="clientes/crear" class="btn btn-primary mr-3">
+                <a href="{{route('anuncios.create')}}" class="btn btn-primary mr-3">
                     <i class="feather  feather-plus sidemenu_icon"></i>Agregar Anuncio</a>
             </div>
         </div>
@@ -41,79 +41,31 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($anuncios as $anuncio)
                             <tr>
-                                <td>01</td>
+                                <td>{{$anuncio->id}}</td>
                                 <td>
                                     <div class="d-flex">
                                         <div class="mr-3 mt-0 mt-sm-1 d-block">
-                                            <h6 class="mb-1 fs-14">Lorem ipsum dolor</h6>
+                                            <h6 class="mb-1 fs-14">{{$anuncio->name}}</h6>
                                         </div>
                                     </div>
                                 </td>
                                 <td width="350px">
-                                    <span>Facebook</span>
+                                    <span>{{$anuncio->description}}</span>
                                 </td>
                                 <td>
-                                    <span>100</span>
+                                    <span>{{$anuncio->views_counter}}</span>
                                 </td>
                                 <td>
                                     <div class="d-flex">
-                                        <a href="empleados/ver" class="action-btns1" data-toggle="tooltip" data-placement="top" title="Ver"><i class="feather feather-eye text-primary"></i></a>
-                                        <a href="#" class="action-btns1" data-toggle="tooltip" data-placement="top" title="Editar"><i class="feather feather-edit-2  text-success"></i></a>
+                                        <a href="{{route('anuncios.edit',$anuncio->id)}}" class="action-btns1" data-toggle="tooltip" data-placement="top" title="Editar"><i class="feather feather-edit-2  text-success"></i></a>
                                         <button class="action-btns1" onclick="mensaje()" data-toggle="tooltip" data-placement="top" title="Eliminar" type="submit"><i class="feather feather-trash-2 text-danger"></i></button>
+                                        <a href="{{route('anuncios.show',$anuncio->id)}}" class="action-btns1" data-toggle="tooltip" data-placement="top" title="Ver"><i class="feather feather-edit-2  text-success"></i></a>
                                     </div>
                                 </td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <td>02</td>
-                                <td>
-                                    <div class="d-flex">
-                                        <div class="mr-3 mt-0 mt-sm-1 d-block">
-                                            <h6 class="mb-1 fs-14">Lorem ipsum dolor</h6>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td width="350px">
-                                    <span>Facebook</span>
-                                </td>
-                                <td>
-                                    <span>100</span>
-                                </td>
-                                <td>
-                                    <div class="d-flex">
-                                        <a href="empleados/ver" class="action-btns1" data-toggle="tooltip" data-placement="top" title="Ver"><i class="feather feather-eye text-primary"></i></a>
-                                        <a href="#" class="action-btns1" data-toggle="tooltip" data-placement="top" title="Editar"><i class="feather feather-edit-2  text-success"></i></a>
-                                        <button class="action-btns1" onclick="mensaje()" data-toggle="tooltip" data-placement="top" title="Eliminar" type="submit"><i class="feather feather-trash-2 text-danger"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                        <tbody>
-                            <tr>
-                                <td>03</td>
-                                <td>
-                                    <div class="d-flex">
-                                        <div class="mr-3 mt-0 mt-sm-1 d-block">
-                                            <h6 class="mb-1 fs-14">Lorem ipsum dolor</h6>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td width="350px">
-                                    <span>Facebook</span>
-                                </td>
-                                <td>
-                                    <span>100</span>
-                                </td>
-                                <td>
-                                    <div class="d-flex">
-                                        <a href="empleados/ver" class="action-btns1" data-toggle="tooltip" data-placement="top" title="Ver"><i class="feather feather-eye text-primary"></i></a>
-                                        <a href="#" class="action-btns1" data-toggle="tooltip" data-placement="top" title="Editar"><i class="feather feather-edit-2  text-success"></i></a>
-                                        <button class="action-btns1" onclick="mensaje()" data-toggle="tooltip" data-placement="top" title="Eliminar" type="submit"><i class="feather feather-trash-2 text-danger"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
+                            </tr>        
+                            @endforeach
                         </tbody>
 
                     </table>
@@ -138,18 +90,18 @@
         })
 
         swalWithBootstrapButtons.fire({
-          title: '¿Eliminar empleado?',
-          text: "Si eliminas a este empleado se eliminará permanentemente del sistema.",
+          title: '¿Eliminar anuncio?',
+          text: "Si eliminas a este anuncio se eliminará permanentemente del sistema.",
           icon: 'warning',
           showCancelButton: true,
-          confirmButtonText: 'Si, eliminar empleado!.',
-          cancelButtonText: 'No, mantener empleado!.',
+          confirmButtonText: 'Si, eliminar anuncio!.',
+          cancelButtonText: 'No, mantener anuncio!.',
           reverseButtons: true
         }).then((result) => {
           if (result.isConfirmed) {
             swalWithBootstrapButtons.fire(
               'Eliminado!',
-              'El empleado se ha eliminado correctamente.',
+              'El anuncio se ha eliminado correctamente.',
               'success'
             )
           } else if (

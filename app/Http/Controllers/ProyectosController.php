@@ -96,6 +96,7 @@ class ProyectosController extends Controller
 
         $this->generateContract($project);
 
+        Alert::success('Éxito', 'Proyecto guardado con éxito');
         return redirect()->route('proyectos.index');
     }
 
@@ -213,6 +214,7 @@ class ProyectosController extends Controller
 
         $this->generateContract($project);
 
+        Alert::success('Éxito', 'Proyecto actualizado con éxito');
         return redirect()->route('proyectos.index');
     }
 
@@ -234,6 +236,7 @@ class ProyectosController extends Controller
         }
 
         $project->delete();
+        Alert::success('Éxito', 'Proyecto eliminado con éxito');
         return redirect()->route('proyectos.index');
     }
 

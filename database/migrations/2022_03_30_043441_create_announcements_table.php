@@ -20,6 +20,7 @@ class CreateAnnouncementsTable extends Migration
             $table->string('location');
             $table->decimal('total_cost', 12, 2)->default(0.00);
             $table->integer('views_counter')->default(0);
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }

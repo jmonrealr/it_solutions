@@ -13,7 +13,7 @@ class EmpleadosController extends Controller
      */
     public function index()
     {
-        return view('Empleados.index');
+        return view('empleados.index');
     }
 
     /**
@@ -23,7 +23,7 @@ class EmpleadosController extends Controller
      */
     public function create()
     {
-        return view('Empleados.crear');
+        return view('empleados.crear');
     }
 
     /**
@@ -34,7 +34,8 @@ class EmpleadosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Alert::success('Éxito', 'Empleado guardado con éxito');
+        return redirect()->route('empleados.index');
     }
 
     /**
@@ -45,7 +46,7 @@ class EmpleadosController extends Controller
      */
     public function show($id)
     {
-        return view('Empleados.ver');
+        return view('empleados.ver');
     }
 
     /**
@@ -56,7 +57,7 @@ class EmpleadosController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('empleados.editar');
     }
 
     /**
@@ -68,7 +69,8 @@ class EmpleadosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Alert::success('Éxito', 'Empleado actualizado con éxito');
+        return redirect()->route('empleados.index');
     }
 
     /**
@@ -79,6 +81,7 @@ class EmpleadosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Alert::success('Éxito', 'Empleado eliminado con éxito');
+        return redirect()->route('empleados.index');
     }
 }

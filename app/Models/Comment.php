@@ -33,5 +33,13 @@ class Comment extends Model
      */
     protected $casts = [];
 
-    //TODO: Relationships
+    /**
+     * Get the User that owns the Comment
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }

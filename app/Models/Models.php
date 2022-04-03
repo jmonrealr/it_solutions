@@ -16,6 +16,7 @@ class Models extends Model
      */
     protected $fillable = [
         'name',
+        'type_models_id',
     ];
 
     /**
@@ -32,5 +33,23 @@ class Models extends Model
      */
     protected $casts = [];
 
-    //TODO: Relationships
+    /**
+     * Get the User that owns the Model
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
+
+    /**
+     * Get the type_model that own the Model
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function type_model()
+    {
+        return $this->belongsTo('App\Models\TypeModel');
+    }
 }

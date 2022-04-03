@@ -39,13 +39,52 @@ class Project extends Model
      */
     protected $casts = [];
 
-    //TODO: Relationships
-
+    /**
+     * Get the Customer that own the Project
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function customers(){
         return $this->belongsTo('App\Models\Customer', 'customer_id');
     }
 
-    public function tasks(){
+    /**
+     * Get the risks that owns the Project
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function risks()
+    {
+        return $this->belongsToMany('App\Models\Risk');
+    }
+
+    /**
+     * Get the tasks that owns the Project
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function tasks()
+    {
         return $this->hasMany('App\Models\Task');
+    }
+
+    /**
+     * Get the contract that own the Project
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function contract()
+    {
+        return $this->belongsTo('App\Models\Contract');
+    }
+
+    /**
+     * Get the user that own the Project
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
     }
 }

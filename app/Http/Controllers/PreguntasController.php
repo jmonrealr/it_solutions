@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Questions;
 
 class PreguntasController extends Controller
 {
@@ -13,7 +14,8 @@ class PreguntasController extends Controller
      */
     public function index()
     {
-        return view('Preguntas.index');
+        $preguntas = Questions::get();
+        return view('preguntas.index',get_defined_vars());
     }
 
     /**
@@ -23,7 +25,8 @@ class PreguntasController extends Controller
      */
     public function create()
     {
-        return view('Preguntas.crear');
+        $preguntas = Questions::get();
+        return view('preguntas.crear',get_defined_vars());
     }
 
     /**
@@ -34,7 +37,20 @@ class PreguntasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'          =>  'required|max:255',
+            'description'   =>  'required|max:255',
+            //'user_id'       =>  'required|numeric',
+        ]);
+
+        $pregunta = Question::create([
+            'name'              =>  $request['name'],
+            'description'       =>  $request['description'],
+            //'user_id'           =>  $request['user_id'],
+        ]);
+
+        Alert::success('Éxito', 'Pregunta creado con éxito');
+        return redirect()->route('preguntas.index');
     }
 
     /**
@@ -45,7 +61,9 @@ class PreguntasController extends Controller
      */
     public function show($id)
     {
-        //
+        $pregunta = Question::findOrFail($id);
+        //$user = User::findOrFail($anuncio->user_id);
+        return view('preguntas.ver',get_defined_vars());
     }
 
     /**
@@ -56,7 +74,9 @@ class PreguntasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pregunta = Question::findOrFail($id);
+        //$user = User::findOrFail($anuncio->user_id);
+        return view('preguntas.editar',get_defined_vars());
     }
 
     /**
@@ -68,7 +88,22 @@ class PreguntasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name'          =>  'required|max:255',
+            'description'   =>  'required|max:255',
+            //'user_id'       =>  'required|numeric',
+        ]);
+
+        $pregunta = Question::findOrFail($id);
+
+        $pregunta->update([
+            'name'              =>  $request['name'],
+            'description'       =>  $request['description'],
+            //'user_id'           =>  $request['user_id'],
+        ]);
+
+        Alert::success('Éxito', 'Pregunta actualizada con éxito');
+        return redirect()->route('preguntas.index');
     }
 
     /**
@@ -79,6 +114,9 @@ class PreguntasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pregunta = Question::findOrFail($id);
+        $pregunta->delete();
+        Alert::success('Éxito', 'Pregunta eliminada con éxito');
+        return redirect()->route('preguntas.index');
     }
 }

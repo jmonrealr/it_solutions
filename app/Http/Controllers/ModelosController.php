@@ -13,7 +13,7 @@ class ModelosController extends Controller
      */
     public function index()
     {
-        return view('Modelos.index');
+        return view('modelos.index');
     }
 
     /**
@@ -23,7 +23,7 @@ class ModelosController extends Controller
      */
     public function create()
     {
-        return view('Eventos.crear');
+        return view('modelos.crear');
     }
 
     /**
@@ -34,7 +34,8 @@ class ModelosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Alert::success('Éxito', 'Modelo guardado con éxito');
+        return redirect()->route('modelos.index');
     }
 
     /**
@@ -45,7 +46,7 @@ class ModelosController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('modelos.ver');
     }
 
     /**
@@ -56,7 +57,7 @@ class ModelosController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('modelos.editar');
     }
 
     /**
@@ -68,7 +69,8 @@ class ModelosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Alert::success('Éxito', 'Modelo actualizado con éxito');
+        return redirect()->route('modelos.index');
     }
 
     /**
@@ -79,6 +81,7 @@ class ModelosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Alert::success('Éxito', 'Modelo eliminado con éxito');
+        return redirect()->route('modelos.index');
     }
 }

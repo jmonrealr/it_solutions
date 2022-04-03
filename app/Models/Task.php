@@ -38,11 +38,20 @@ class Task extends Model
      */
     protected $casts = [];
 
-    //TODO: Relationships
+    /**
+     * Get the project that own the Task
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function projects(){
         return $this->belongsTo('App\Models\Project');
     }
 
+    /**
+     * Get the user that own the Task
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function users(){
         return $this->belongsTo('App\Models\User', 'user_id');
     }
