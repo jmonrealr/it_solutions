@@ -9,6 +9,7 @@ use App\Models\Task;
 use App\Models\Contract;
 use App\Models\User;
 use App\Models\Customer;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class ProyectosController extends Controller
 {
@@ -58,15 +59,15 @@ class ProyectosController extends Controller
         // dd($request->all());
 
         //Crear  contrato
-        // $contract = Contract::create([
-        //     'subject'           =>  $request['name'],
-        //     'description'       =>  $request['description'],
-        //     'initiated_by'      =>  $request['start_date'],
-        //     'start_date'        =>  $request['end_date'],
-        //     'end_date'          =>  $request['cost_hour'],
-        //     'status_id'         =>  $request['total_cost'],
-        //     'type_contract_id'  =>  $request['customer_id'],
-        // ]);
+        $contract = Contract::create([
+            'subject'           =>  'Desarrollo de software',
+            'description'       =>  $request['description'],
+            'initiated_by'      =>  'Juan Carlos Monreal Romero',
+            'start_date'        =>  $request['start_date'],
+            'end_date'          =>  $request['end_date'],
+            'status_id'         =>  1,
+            'type_contract_id'  =>  1,
+        ]);
 
         //Crear  proyecto
         $project = Project::create([
@@ -79,7 +80,7 @@ class ProyectosController extends Controller
             'customer_id'   =>  $request['customer_id'],
             'contract_id'   =>  1,
         ]);
-        $project->save();
+        // $project->save();
 
         //Crear  tareas
         for ($i=0; $i < count($request->activity_name); $i++) { 
@@ -90,8 +91,10 @@ class ProyectosController extends Controller
                 'user_id'       =>  $request['user_id'][$i],
                 'project_id'    =>  $project->id,
             ]);
-            $task->save();
+            // $task->save();
         }
+
+        $this->generateContract($project);
 
         return redirect()->route('proyectos.index');
     }
@@ -108,11 +111,13 @@ class ProyectosController extends Controller
 
         $project = Project::find($id);
         $project->total_cost = $this->numberToMoney($project->total_cost);
+
         foreach ($project->tasks as $task) {
             $task = Arr::add($task, 'amount', $this->numberToMoney($task->time_hour * $project->cost_hour));
         }
         return view('Proyectos.ver', get_defined_vars());
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -122,8 +127,15 @@ class ProyectosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $project = Project::find($id);
+        $project->total_cost = $this->numberToMoney($project->total_cost);
+
+        foreach ($project->tasks as $task) {
+            $task = Arr::add($task, 'amount', $this->numberToMoney($task->time_hour * $project->cost_hour));
+        }
+        return view('Proyectos.editar', get_defined_vars());
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -134,8 +146,46 @@ class ProyectosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name'          =>  'required|max:255',
+            'description'   =>  'max:255',
+            'start_date'    =>  'required',
+            'end_date'      =>  'required',
+            'cost_hour'     =>  'required',
+            'total_cost'    =>  'required',
+            'user_id'       =>  'required',
+            'customer_id'   =>  'required',
+        ]);
+
+        $project = Project::find($id);
+        $tasks = $project->tasks;
+
+        //Actualizar  proyecto
+        $project->update([
+            'name'          =>  $request['name'],
+            'description'   =>  $request['description'],
+            'start_date'    =>  $request['start_date'],
+            'end_date'      =>  $request['end_date'],
+            'cost_hour'     =>  intval($request['cost_hour']),
+            'total_cost'    =>  $this->moneyToNumber($request['total_cost']),
+            'customer_id'   =>  $request['customer_id'],
+            'contract_id'   =>  $project->contract_id,
+        ]);
+
+        //Actualizar  tareas
+        foreach ($tasks as $currentTask) {
+            $task = Task::find($currentTask->id);
+            $task->update([
+                'name'          =>  $currentTask->name,
+                'end_date'      =>  $currentTask->end_date,
+                'time_hour'     =>  $currentTask->time_hour,
+                'user_id'       =>  $currentTask->user_id,
+            ]);
+        }
+
+        return redirect()->route('proyectos.index');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -146,12 +196,25 @@ class ProyectosController extends Controller
     public function destroy($id)
     {
         $project = Project::find($id);
+
+        // Delete contract from storage
+        $contract_path = public_path().'/contracts/'.'CONTRACT-'.strval($project->id).strval($project->customers->id).'.pdf';
+        if (file_exists($contract_path)) {
+            unlink($contract_path);
+        }
+
         $project->delete();
         return redirect()->route('proyectos.index');
     }
 
 
-    
+
+    /**
+     * Convert string to double
+     *
+     * @param  string  $value
+     * @return double
+     */
     public function moneyToNumber($value) {
 		$valueWithoutSignDollar = explode("$", $value);
 		$valueWhitoutComas = str_replace(",", "", $valueWithoutSignDollar[1]);
@@ -160,9 +223,35 @@ class ProyectosController extends Controller
 	}
 
 
-
+    /**
+     * Convert double to string
+     *
+     * @param  double  $value
+     * @return string
+     */
     public function numberToMoney($value){
         return '$' . number_format($value, 2);
+    }
+
+
+    /** 
+     * Genera contrato del proyecto
+     * 
+     * @param App\Models\Project $project
+     * @return int 0
+    */
+    private function generateContract($project){
+
+        $data = [
+            'project' => $project,
+        ];
+
+        $filename = 'CONTRACT-'.strval($project->id).strval($project->customers->id);
+
+        $pdf = PDF::loadView('Proyectos.plantillaContrato', $data);
+        $pdf->save(public_path().'/contracts/'.$filename.'.pdf');
+
+        return 0;
     }
 
 }

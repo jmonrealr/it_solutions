@@ -48,7 +48,7 @@
                 <br>
                 <div class="row">
                     <div class="col-6">
-                        <a href="#" class="btn btn-primary" target="_blank">Contrato</a>
+                        <a href="{{asset('/contracts' . '/CONTRACT-' . strval($project->id).strval($project->customers->id) . '.pdf')}}" class="btn btn-primary" target="_blank">Contrato</a>
                     </div>
                 </div>
             </div>
