@@ -49,6 +49,7 @@
                     <x-navbar />
                     <!--/app header-->
 						<!--Row-->
+						@include('sweetalert::alert')
 						@yield('content')
 
                     </div>

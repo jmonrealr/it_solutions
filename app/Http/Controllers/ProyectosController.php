@@ -9,6 +9,7 @@ use App\Models\Task;
 use App\Models\Contract;
 use App\Models\User;
 use App\Models\Customer;
+use RealRashid\SweetAlert\Facades\Alert;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class ProyectosController extends Controller
