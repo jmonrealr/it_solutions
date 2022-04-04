@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Questions;
+use App\Models\Question;
 
 class PreguntasController extends Controller
 {
@@ -14,7 +14,7 @@ class PreguntasController extends Controller
      */
     public function index()
     {
-        $preguntas = Questions::get();
+        $preguntas = Question::get();
         return view('preguntas.index',get_defined_vars());
     }
 
@@ -25,7 +25,7 @@ class PreguntasController extends Controller
      */
     public function create()
     {
-        $preguntas = Questions::get();
+        $preguntas = Question::get();
         return view('preguntas.crear',get_defined_vars());
     }
 

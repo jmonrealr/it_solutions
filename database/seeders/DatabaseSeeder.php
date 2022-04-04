@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
             QuestionSeeder::class,
             RiskSeeder::class,
             TaskSeeder::class,
+            EventSeeder::class,
         ]);
     }
 }
