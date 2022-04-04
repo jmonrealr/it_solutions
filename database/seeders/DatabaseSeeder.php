@@ -23,7 +23,13 @@ class DatabaseSeeder extends Seeder
             StatusSeeder::class,
             TypeModelSeeder::class,
             ModelSeeder::class,
-            //ContractSeeder::class,
+            StatusSeeder::class,
+            ContractSeeder::class,
+            CustomerSeeder::class,
+            ProjectSeeder::class,
+            QuestionSeeder::class,
+            RiskSeeder::class,
+            TaskSeeder::class,
         ]);
     }
 }

@@ -14,7 +14,9 @@ class RiskFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->word(),
+            'description' => $this->faker->sentence(),
+            'solution' => $this->faker->sentence(),
         ];
     }
 }

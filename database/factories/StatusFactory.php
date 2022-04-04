@@ -14,7 +14,7 @@ class StatusFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->word('En proceso','Finalizado'),
+            'name' => $this->faker->word(),
         ];
     }
 }

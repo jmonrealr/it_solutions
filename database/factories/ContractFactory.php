@@ -19,8 +19,8 @@ class ContractFactory extends Factory
             'initiated_by' => $this->faker->name(),
             'start_date' => $this->faker->dateTimeBetween('-2 week', '+1 week'),
             'end_date' => $this->faker->dateTimeBetween('+1 week', '+2 week'),
-            'status_id' => $this->faker->numberBetween(1,10),
-            'type_contract_id' => $this->faker->numberBetween(1,4),
+            'status_id' => $this->faker->numberBetween(1,2),
+            'type_contract_id' => $this->faker->numberBetween(1,2),
         ];
     }
 }
