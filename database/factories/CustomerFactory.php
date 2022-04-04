@@ -17,6 +17,7 @@ class CustomerFactory extends Factory
             'first_name' => $this->faker->name(),
             'last_name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
+            'phone_number' => $this->faker->regexify('834[0-9]{7}'),
         ];
     }
 }
