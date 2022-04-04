@@ -49,22 +49,60 @@
                 <!-- VENTANA EMERGENTE -->
                 <div class="modal fade" id="ventana1" >
                     <div class="modal-dialog">
-                        <div class="modal-content">
+                        <div class="modal-content" Style="border-radius: 20px;">
                             <!-- HEADER DE LA VENTANA-->
                             <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                <h4 class="modal-title">Encabezado</h4>
+                            <h2 class="modal-title" style="font-size: 20px; font-weight: bold;">Agregar un comentario</h2>
+                                <button type="button" class="close" data-dismiss="modal" >&times;</button>
                             </div>
 
                             <!-- CONTENIDO DE LA VENTANA-->
                             <div class="modal-body">
-                                <p>Hola</p>
+                            <div class="row">
+                                <form action="">
+                                    <div class="card-body">
+                                    <h5 class="mb-5 font-weight-semibold">En esta sección podrás agregar un comentario exponiendo alguna duda o queja que se tenga contra algún trabajador. Sea libre de hacerlo.</h5>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="form-label">Área de trabajo</label>
+                                                    <input class="form-control" type="text" placeholder="Ingresa tu departamento" name="departamento" maxlength="22">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="form-label">Nombre completo</label>
+                                                    <input class="form-control" type="text" placeholder="Ingresa tu nombre completo" name="nombre" maxlength="16">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="form-label">Correo electronico</label>
+                                                    <input class="form-control" type="text" placeholder="Ingresa tu correo electronico" name="email" maxlength="16">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="form-label">Comentario</label>
+                                                    <textarea class="form-control" type="text" placeholder="Ingresa tu comentario" name="comentario" maxlength="16"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                             </div>
 
                             <!-- FOOTER DE LA VENTANA-->
                             <div class="modal-footer">
-                            <button type="submit" class="btn btn-outline-dark" data-dismiss="modal">
-                                <i class="feather feather-corner-down-left sidemenu_icon"></i>Cerrar</button>
+                            <!--<button type="submit" class="btn btn-outline-dark" data-dismiss="modal">
+                                <i class="feather feather-corner-down-left sidemenu_icon"></i>Cerrar</button>-->
                                 <button type="submit" class="btn btn-primary">
 					                <i class="feather  feather-save sidemenu_icon"></i>Guardar</button>
                             </div>
@@ -75,7 +113,6 @@
         </div>
     </div>
 </div>
-
 
 
 <!-- FIN CABECERA -->
@@ -128,6 +165,5 @@
 </div>
 <!-- FIN CONTENIDO -->
 @endsection
-
 
 
