@@ -9,7 +9,7 @@
         <title>{{ config('app.name', 'It Solutions') }}</title>
 
         <!-- Bootstrap css -->
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+		<link href="{{ asset('plugins/bootstrap/bootstrap.min.css') }}" rel="stylesheet" />
 		<!-- Style css -->
 		<link href="{{ asset('css/style.css') }}" rel="stylesheet" />
 		<!--Sidemenu css -->
@@ -26,7 +26,7 @@
         <script src="https://kit.fontawesome.com/a36cdd0297.js" crossorigin="anonymous"></script>
 
 		<!-- DataTables -->
-		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css"/>
+		<link href="{{ asset('plugins/datatables/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
 
     </head>
 
@@ -58,10 +58,10 @@
 		</div>
 
 		<!-- JQuery-->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script src="{{ asset('plugins/jquery.min.js') }}"></script>
 		<!-- Bootstrap5 js-->
-		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+		<script src="{{ asset('plugins/bootstrap/popper.min.js') }}"></script>
+		<script src="{{ asset('plugins/bootstrap/bootstrap.min.js') }}"></script>
 		<!--Ocultar/Mostrar panel de navegación-->
 		<script src="{{ asset('plugins/sidemenu/sidemenu.js') }}"></script>
 		<!-- P-scroll js: Desplazamiento en panel de navegación-->
@@ -71,13 +71,13 @@
 		<script src="{{ asset('js/custom.js') }}"></script>
 		
 		<!-- DataTable -->
-		<script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
-		<script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
+		<script type="text/javascript" src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('plugins/datatables/dataTables.bootstrap5.min.js') }}"></script>
 		<script type="text/javascript">
     		$(document).ready( function () {
     		     $(".dt").DataTable({
     		        "language": {
-    		            "url": "//cdn.datatables.net/plug-ins/1.11.4/i18n/es-mx.json"
+    		            "url": "{{asset('plugins/datatables/es-mx.json')}}"
     		        }
     		    });
     		});
