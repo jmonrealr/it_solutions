@@ -16,7 +16,10 @@ class CreateProfileTable extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
             $table->string('first_name');
-            $table->string('last_name');
+            $table->string('paternal_last_name');
+            $table->string('maternal_last_name')->nullable();
+            $table->number('age')->nullable();
+            //$table->text('url_image')->nullable();
             $table->string('phone_number', 15)->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
