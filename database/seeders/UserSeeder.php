@@ -43,10 +43,30 @@ class UserSeeder extends Seeder
          */
         Profile::factory()->count(4)->create(
             new Sequence(
-                ['first_name' => 'Josue Eliseo','paternal_last_name' => 'Perales Meléndez Y Alcocer','user_id' => '1'],
-                ['first_name' => 'Axel Issai','paternal_last_name' => 'Aleman Delgado','user_id' => '2'],
-                ['first_name' => 'Juan Carlos','paternal_last_name' => 'Monreal Romero','user_id' => '3'],
-                ['first_name' => 'Jordy','paternal_last_name' => 'Lagunas Higuera','user_id' => '4'],
+                [
+                    'first_name' => 'Josue Eliseo',
+                    'paternal_last_name' => 'Perales Meléndez Y Alcocer',
+                    'user_id' => '1',
+                    'age' => '20',
+                ],
+                [
+                    'first_name' => 'Axel Issai',
+                    'paternal_last_name' => 'Aleman Delgado',
+                    'user_id' => '2',
+                    'age' => '20',
+                ],
+                [
+                    'first_name' => 'Juan Carlos',
+                    'paternal_last_name' => 'Monreal Romero',
+                    'user_id' => '3',
+                    'age' => '20',
+                ],
+                [
+                    'first_name' => 'Jordy',
+                    'paternal_last_name' => 'Lagunas Higuera',
+                    'user_id' => '4',
+                    'age' => '20',
+                ],
             )
         );
         User::factory()->count(20)->create();
