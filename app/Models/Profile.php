@@ -46,4 +46,9 @@ class Profile extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
+
+    public function getName()
+    {
+        return $this->first_name.' '.$this->paternal_last_name.' '.$this->maternal_last_name;
+    }
 }
