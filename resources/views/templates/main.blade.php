@@ -75,7 +75,7 @@
 		<script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
 		<script type="text/javascript">
     		$(document).ready( function () {
-    		     $("table").DataTable({
+    		     $(".dt").DataTable({
     		        "language": {
     		            "url": "//cdn.datatables.net/plug-ins/1.11.4/i18n/es-mx.json"
     		        }
