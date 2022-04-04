@@ -3,7 +3,7 @@
 	<div class="container-fluid">
 		<div class="d-flex">
 			<a class="header-brand" href="index ">
-				<img src="{{ asset('images/logo.svg') }}" class="header-brand-img dark-logo" alt="Banquetes Cristy">
+				<img src="{{ asset('images/logo.png') }}" class="header-brand-img dark-logo" alt="it solutions">
 			</a>
 			<div class="app-sidebar__toggle" data-toggle="sidebar">
 				<a class="open-toggle" href="#">
