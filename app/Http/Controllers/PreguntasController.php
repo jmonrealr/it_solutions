@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Question;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PreguntasController extends Controller
 {

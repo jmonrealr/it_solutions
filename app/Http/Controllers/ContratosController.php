@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Contract;
 use App\Models\TypeContract;
 use App\Models\Status;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ContratosController extends Controller
 {
