@@ -25,7 +25,7 @@ class EmpleadosController extends Controller
      */
     public function create()
     {
-        return view('empleados.crear');
+        return view('Empleados.crear');
     }
 
     /**
@@ -48,7 +48,7 @@ class EmpleadosController extends Controller
      */
     public function show($id)
     {
-        return view('empleados.ver');
+        return view('Empleados.ver');
     }
 
     /**
@@ -59,7 +59,7 @@ class EmpleadosController extends Controller
      */
     public function edit($id)
     {
-        return view('empleados.editar');
+        return view('Empleados.editar');
     }
 
     /**

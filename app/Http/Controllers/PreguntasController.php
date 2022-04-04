@@ -15,7 +15,7 @@ class PreguntasController extends Controller
     public function index()
     {
         $preguntas = Question::get();
-        return view('preguntas.index',get_defined_vars());
+        return view('Preguntas.index',get_defined_vars());
     }
 
     /**
@@ -26,7 +26,7 @@ class PreguntasController extends Controller
     public function create()
     {
         $preguntas = Question::get();
-        return view('preguntas.crear',get_defined_vars());
+        return view('Preguntas.crear',get_defined_vars());
     }
 
     /**
@@ -63,7 +63,7 @@ class PreguntasController extends Controller
     {
         $pregunta = Question::findOrFail($id);
         //$user = User::findOrFail($anuncio->user_id);
-        return view('preguntas.ver',get_defined_vars());
+        return view('Preguntas.ver',get_defined_vars());
     }
 
     /**
@@ -76,7 +76,7 @@ class PreguntasController extends Controller
     {
         $pregunta = Question::findOrFail($id);
         //$user = User::findOrFail($anuncio->user_id);
-        return view('preguntas.editar',get_defined_vars());
+        return view('Preguntas.editar',get_defined_vars());
     }
 
     /**

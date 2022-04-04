@@ -28,7 +28,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table  table-vcenter text-wrap table-bordered border-bottom" id="project-list">
+                    <table class="table  table-vcenter text-wrap table-bordered border-bottom dt" id="project-list">
                         <thead>
                             <tr>
                                 <th class="border-bottom-0">ID</th>

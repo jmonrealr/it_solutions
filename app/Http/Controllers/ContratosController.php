@@ -17,7 +17,7 @@ class ContratosController extends Controller
     public function index()
     {
         $contratos = Contract::get();
-        return view('contratos.index',get_defined_vars());
+        return view('Contratos.index',get_defined_vars());
     }
 
     /**
@@ -27,7 +27,7 @@ class ContratosController extends Controller
      */
     public function create()
     {
-        return view('contratos.crear');
+        return view('Contratos.crear');
     }
 
     /**
@@ -71,7 +71,7 @@ class ContratosController extends Controller
     public function show($id)
     {
         $contrato = Contract::findOrFail($id)->with(['status','type_contract']);
-        return view('contratos.ver',get_defined_vars());
+        return view('Contratos.ver',get_defined_vars());
     }
 
     /**
@@ -83,7 +83,7 @@ class ContratosController extends Controller
     public function edit($id)
     {
         $contrato = Contract::findOrFail($id)->get();
-        return view('contratos.editar',get_defined_vars());
+        return view('Contratos.editar',get_defined_vars());
     }
 
     /**

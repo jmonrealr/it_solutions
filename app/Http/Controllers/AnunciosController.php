@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Announcement;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AnunciosController extends Controller
 {
@@ -17,7 +18,7 @@ class AnunciosController extends Controller
     public function index()
     {
         $anuncios = Announcement::with('user')->get();
-        return view('anuncios.index',get_defined_vars());
+        return view('Anuncios.index',get_defined_vars());
     }
 
     /**
@@ -29,7 +30,7 @@ class AnunciosController extends Controller
      */
     public function create()
     {
-        return view('anuncios.crear');
+        return view('Anuncios.crear');
     }
 
     /**
@@ -74,7 +75,7 @@ class AnunciosController extends Controller
     public function show($id)
     {
         $anuncio = Announcement::findOrFail($id)->with('user');
-        return view('anuncios.ver',get_defined_vars());
+        return view('Anuncios.ver',get_defined_vars());
     }
 
     /**
@@ -88,7 +89,7 @@ class AnunciosController extends Controller
     public function edit($id)
     {
         $anuncio = Announcement::findOrFail($id)->with('user');
-        return view('anuncios.editar', get_defined_vars());
+        return view('Anuncios.editar', get_defined_vars());
     }
 
     /**

@@ -13,7 +13,7 @@ class ModelosController extends Controller
      */
     public function index()
     {
-        return view('modelos.index');
+        return view('Modelos.index');
     }
 
     /**
@@ -23,7 +23,7 @@ class ModelosController extends Controller
      */
     public function create()
     {
-        return view('modelos.crear');
+        return view('Modelos.crear');
     }
 
     /**
@@ -46,7 +46,7 @@ class ModelosController extends Controller
      */
     public function show($id)
     {
-        return view('modelos.ver');
+        return view('Modelos.ver');
     }
 
     /**
@@ -57,7 +57,7 @@ class ModelosController extends Controller
      */
     public function edit($id)
     {
-        return view('modelos.editar');
+        return view('Modelos.editar');
     }
 
     /**

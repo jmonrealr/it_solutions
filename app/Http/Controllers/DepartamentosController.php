@@ -18,7 +18,7 @@ class DepartamentosController extends Controller
     public function index()
     {
         $departamentos = Department::get();
-        return view('departamentos.index',get_defined_vars());
+        return view('Departamentos.index',get_defined_vars());
     }
 
     /**
@@ -30,7 +30,7 @@ class DepartamentosController extends Controller
      */
     public function create()
     {
-        return view('departamentos.crear');
+        return view('Departamentos.crear');
     }
 
     /**
@@ -67,7 +67,7 @@ class DepartamentosController extends Controller
     {
         $departamento = Department::findOrFail($id);
         $users = User::where('id','=',$departamento->user_id)->get();
-        return view('departamentos.ver',get_defined_vars());
+        return view('Departamentos.ver',get_defined_vars());
     }
 
     /**
@@ -81,7 +81,7 @@ class DepartamentosController extends Controller
     public function edit($id)
     {
         $departamento = Department::findOrFail($id);
-        return view('departamentos.editar', get_defined_vars());
+        return view('Departamentos.editar', get_defined_vars());
     }
 
     /**
