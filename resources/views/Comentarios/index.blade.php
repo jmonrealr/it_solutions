@@ -30,6 +30,8 @@
         margin-top: 10px;
     }
 
+    /* ul.pagination li:first-child, ul.pagination li:last-child{display: none;} */
+    nav .justify-between a, nav p{display: none;}
 </style>
 
 
@@ -59,14 +61,15 @@
                             <!-- CONTENIDO DE LA VENTANA-->
                             <div class="modal-body">
                             <div class="row">
-                                <form action="">
+                                <form action="{{route('comentarios.store')}}" method="POST">
+                                    @csrf
                                     <div class="card-body">
                                     <h5 class="mb-5 font-weight-semibold">En esta sección podrás agregar un comentario exponiendo alguna duda o queja que se tenga contra algún trabajador. Sea libre de hacerlo.</h5>
-                                        <div class="row">
+                                        {{-- <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="form-label">Área de trabajo</label>
-                                                    <input class="form-control" type="text" placeholder="Ingresa tu departamento" name="departamento" maxlength="22">
+                                                    <input class="form-control" type="text" placeholder="Ingresa tu departamento" name="departamento" maxlength="22" readonly>
                                                 </div>
                                             </div>
                                         </div>
@@ -74,7 +77,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="form-label">Nombre completo</label>
-                                                    <input class="form-control" type="text" placeholder="Ingresa tu nombre completo" name="nombre" maxlength="16">
+                                                     <input class="form-control" type="text" placeholder="Ingresa tu nombre completo" name="nombre" maxlength="16" value="{{$usuario->name}}"readonly> 
                                                 </div>
                                             </div>
                                         </div>
@@ -82,29 +85,25 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="form-label">Correo electronico</label>
-                                                    <input class="form-control" type="text" placeholder="Ingresa tu correo electronico" name="email" maxlength="16">
+                                                    <input class="form-control" type="text" placeholder="Ingresa tu correo electronico" name="email" maxlength="16" value="{{$usuario->email}}" readonly>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="form-label">Comentario</label>
-                                                    <textarea class="form-control" type="text" placeholder="Ingresa tu comentario" name="comentario" maxlength="16"></textarea>
+                                                    <textarea class="form-control" type="text" placeholder="Ingresa tu comentario" name="body" maxlength="250" cols="50" rows="6"></textarea>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">
+					                        Guardar</button>
+                                    </div>
                                 </form>
                             </div>
-                            </div>
-
-                            <!-- FOOTER DE LA VENTANA-->
-                            <div class="modal-footer">
-                            <!--<button type="submit" class="btn btn-outline-dark" data-dismiss="modal">
-                                <i class="feather feather-corner-down-left sidemenu_icon"></i>Cerrar</button>-->
-                                <button type="submit" class="btn btn-primary">
-					                <i class="feather  feather-save sidemenu_icon"></i>Guardar</button>
                             </div>
                         </div>
                     </div>
@@ -124,17 +123,18 @@
 <div class="container">
     <div class="row comentarios justify-content-center" style="width:1000px; height:400px; overflow: scroll;">
         <div class="col-8">
+            @foreach ($comentarios as $comentario)
             <div class="media">
                 <img class="avatar" src="images/usuario.png" width="64" height="64" alt="" />
                 <div class="media-body">
-                   <p class="nombre">Leilany <span>Área de RRHH</span></p>
+                   <p class="nombre">{{$comentario->user->name}} <span>Departamento</span></p>
                    <p class="comentario">
-                       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis eligendi illo ex repudiandae quaerat laborum quisquam obcaecati! Reprehenderit optio voluptatum similique voluptatem? Quibusdam, accusantium vel! Aspernatur mollitia odit magnam nisi.
+                    {{$comentario->body}}
                    </p>
                    <div class="text-right">
-                        <span>7:51pm, Hoy</span>
+                        <span>{{$comentario->hora}}, {{$comentario->dia}}</span>
                     </div>
-                   <div class="media">
+                   {{-- <div class="media">
                     <img class="avatar" src="images/usuario.png" width="64" height="64" alt="" />
                         <div class="media-body">
                             <p class="nombre">Leilany <span>Área de Riesgos</span></p>
@@ -145,21 +145,13 @@
                                 <span>7:51pm, Hoy</span>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
-            <div class="media">
-                <img class="avatar" src="images/usuario.png" width="64" height="64" alt="" />
-                <div class="media-body">
-                    <p class="nombre">Leilany <span>Área de Anuncios</span></p>
-                    <p class="comentario">
-                       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis eligendi illo ex repudiandae quaerat laborum quisquam obcaecati! Reprehenderit optio voluptatum similique voluptatem? Quibusdam, accusantium vel! Aspernatur mollitia odit magnam nisi.
-                    </p>
-                    <div class="text-right">
-                        <span>7:51pm, Hoy</span>
-                    </div>
-                </div>
-            </div>
+            @endforeach
+        </div>
+        <div class="pagination justify-content-end mt-8">
+            {!! $comentarios->links() !!}
         </div>
     </div>
 </div>

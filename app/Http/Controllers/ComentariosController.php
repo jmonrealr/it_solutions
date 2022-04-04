@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use App\Models\Comment;
+use App\Models\Department;
 use App\Models\User;
+use Carbon\Carbon;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class ComentariosController extends Controller
@@ -18,7 +21,16 @@ class ComentariosController extends Controller
      */
     public function index()
     {
-        $comentario = Comment::with('user')->get();
+        $comentarios = Comment::with('user')->paginate(5);
+
+        foreach ($comentarios as $comentario) {
+            $hora = Carbon::createFromFormat('Y-m-d H:i:s', $comentario->created_at)->format('H:m A');
+            $dia = Carbon::createFromFormat('Y-m-d H:i:s', $comentario->created_at)->format('d M');
+
+            $comentario = Arr::add($comentario, 'hora', $hora);
+            $comentario = Arr::add($comentario, 'dia', $dia);
+        }
+        
         return view('Comentarios.index',get_defined_vars());
     }
 
@@ -46,15 +58,17 @@ class ComentariosController extends Controller
     {
         $request->validate([
             'body'          =>  'required|max:255',
-            'user_id'       =>  'required|numeric',
         ]);
 
         $comentario = Comment::create([
             'body'              =>  $request['body'],
-            'user_id'           =>  $request['user_id'],
+            // 'user_id'           =>  auth()->user()->id,
+            'user_id'           =>  1,
         ]);
 
-        Alert::success('Éxito', 'Comentario creado con éxito');
+        
+
+        Alert::success('Éxito', 'Comentario agregado con éxito');
         return redirect()->route('comentarios.index');
     }
 
