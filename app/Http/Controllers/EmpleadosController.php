@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Models\User;
 
 class EmpleadosController extends Controller
 {
@@ -14,7 +15,8 @@ class EmpleadosController extends Controller
      */
     public function index()
     {
-        return view('Empleados.index');
+        $users = User::with('profile')->get();
+        return view('empleados.index',get_defined_vars());
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Comment;
+use App\Models\User;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class ComentariosController extends Controller
@@ -123,7 +124,7 @@ class ComentariosController extends Controller
      */
     public function destroy($id)
     {
-        $cometnario = Comment::findOrFail($id);
+        $comentario = Comment::findOrFail($id);
         $comentario->delete();
         Alert::success('Éxito', 'Comentario eliminada con éxito');
         return redirect()->route('comentarios.index');
