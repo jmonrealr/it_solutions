@@ -15,7 +15,7 @@ class ProfileFactory extends Factory
     {
         return [
             'first_name' => $this->faker->name(),
-            'last_name' => $this->faker->name(),
+            'paternal_last_name' => $this->faker->name(),
             'phone_number' => $this->faker->regexify('834[0-9]{7}'),
             //'user_id' => $,
         ];
