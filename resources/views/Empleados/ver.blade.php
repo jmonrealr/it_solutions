@@ -5,7 +5,7 @@
 <!-- CABECERA -->
 <div class="page-header d-xl-flex d-block">
     <div class="page-leftheader">
-        <h4 class="page-title">Ver empleado #01</h4>
+        <h4 class="page-title">Ver empleado #{{$user->id}}</h4>
         <ul class="breadcrumb">
             <li class="mb-1 fs-16"><a href="#">Empleados</a></li>
             <li class="text-muted mb-1 fs-16 ml-2 mr-2"> / </li>
@@ -30,7 +30,7 @@
 								<div class="ml-sm-4 mt-5">
 									<div class="form-group">
                                         <font style="vertical-align: inherit; font-weight:bold">Nombre del empleado</font>
-										<label class="form-label">Juan De Dios Nava Gallardo</label>
+										<label class="form-label">{{$user->profile->getName()}}</label>
 									</div>
 								</div>
 							</div>
@@ -42,13 +42,13 @@
                     <div class="col-md-4">
 						<div class="form-group">
                             <font style="vertical-align: inherit; font-weight:bold">ID</font><br>
-						    <span class="mb-2 fs-14">1930536</span>
+						    <span class="mb-2 fs-14">{{$user->id}}</span>
 						</div>
 					</div>
 					<div class="col-md-3">
 						<div class="form-group">
                             <font style="vertical-align: inherit; font-weight:bold">Edad</font><br>
-						    <span class="mb-2 fs-14">20</span>
+						    <span class="mb-2 fs-14">{{$user->profile->age}}</span>
 					    </div>
 					</div>
                     <div class="col-md-3">
