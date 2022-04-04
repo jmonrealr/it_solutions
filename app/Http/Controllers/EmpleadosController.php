@@ -49,7 +49,8 @@ class EmpleadosController extends Controller
      */
     public function show($id)
     {
-        return view('Empleados.ver');
+        $user = User::with('profile')->find($id);
+        return view('Empleados.ver',get_defined_vars());
     }
 
     /**
