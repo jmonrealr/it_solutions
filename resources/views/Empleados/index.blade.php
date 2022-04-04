@@ -41,14 +41,15 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($users as $user)
                             <tr>
-                                <td>01</td>
+                                <td>{{$user->id}}</td>
                                 <td>
                                     <div class="d-flex">
                                         <span class="avatar avatar-md brround mr-3" style="background-image: url({{asset('images/usuario.png')}}"></span>
                                         <div class="mr-3 mt-0 mt-sm-1 d-block">
-                                            <h6 class="mb-1 fs-14">Juan de Dios Nava Gallardo</h6>
-                                            <p class="text-muted mb-0 fs-12">1930536@upv.edu.mx</p>
+                                            <h6 class="mb-1 fs-14">{{$user->profile->first_name}}</h6>
+                                            <p class="text-muted mb-0 fs-12">{{$user->email}}</p>
                                         </div>
                                     </div>
                                 </td>
@@ -66,60 +67,9 @@
                                     </div>
                                 </td>
                             </tr>
-
-
-                            <tr>
-                                <td>02</td>
-                                <td>
-                                    <div class="d-flex">
-                                        <span class="avatar avatar-md brround mr-3" style="background-image: url({{asset('images/usuario.png')}}"></span>
-                                        <div class="mr-3 mt-0 mt-sm-1 d-block">
-                                            <h6 class="mb-1 fs-14">Juan de Dios Nava Gallardo</h6>
-                                            <p class="text-muted mb-0 fs-12">1930536@upv.edu.mx</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td width="350px">
-                                    <span>Departamento de direccion general</span>
-                                </td>
-                                <td>
-                                    <span>CEO</span>
-                                </td>
-                                <td>
-                                    <div class="d-flex">
-                                        <a href="clientes/ver" class="action-btns1" data-toggle="tooltip" data-placement="top" title="Ver"><i class="feather feather-eye text-primary"></i></a>
-                                        <a href="#" class="action-btns1" data-toggle="tooltip" data-placement="top" title="Editar"><i class="feather feather-edit-2  text-success"></i></a>
-                                        <button class="action-btns1" onclick="mensaje()" data-toggle="tooltip" data-placement="top" title="Eliminar" type="submit"><i class="feather feather-trash-2 text-danger"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
-
-
-                            <tr>
-                                <td>03</td>
-                                <td>
-                                    <div class="d-flex">
-                                        <span class="avatar avatar-md brround mr-3" style="background-image: url({{asset('images/usuario.png')}}"></span>
-                                        <div class="mr-3 mt-0 mt-sm-1 d-block">
-                                            <h6 class="mb-1 fs-14">Juan de Dios Nava Gallardo</h6>
-                                            <p class="text-muted mb-0 fs-12">1930536@upv.edu.mx</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td width="350px">
-                                    <span>Departamento de direccion general</span>
-                                </td>
-                                <td>
-                                    <span>CEO</span>
-                                </td>
-                                <td>
-                                    <div class="d-flex">
-                                        <a href="clientes/ver" class="action-btns1" data-toggle="tooltip" data-placement="top" title="Ver"><i class="feather feather-eye text-primary"></i></a>
-                                        <a href="#" class="action-btns1" data-toggle="tooltip" data-placement="top" title="Editar"><i class="feather feather-edit-2  text-success"></i></a>
-                                        <button class="action-btns1" onclick="mensaje()" data-toggle="tooltip" data-placement="top" title="Eliminar" type="submit"><i class="feather feather-trash-2 text-danger"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
+                            @endforeach
+                            
+                            
                         </tbody>
 
                     </table>
