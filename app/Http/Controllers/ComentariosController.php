@@ -17,7 +17,7 @@ class ComentariosController extends Controller
     public function index()
     {
         $comentario = Comment::with('user')->get();
-        return view('comentarios.index',get_defined_vars());
+        return view('Comentarios.index',get_defined_vars());
     }
 
     /**
@@ -29,7 +29,7 @@ class ComentariosController extends Controller
      */
     public function create()
     {
-        return view('comentarios.crear');
+        return view('Comentarios.crear');
     }
 
    /**
@@ -67,7 +67,7 @@ class ComentariosController extends Controller
     public function show($id)
     {
         $comentario = Comment::with('user')->findOrFail($id);
-        return view('comentarios.ver',get_defined_vars());
+        return view('Comentarios.ver',get_defined_vars());
     }
 
     /**
@@ -82,7 +82,7 @@ class ComentariosController extends Controller
     {
         $users = User::get();
         $comentario = Comment::findOrFail($id);
-        return view('comentarios.editar', get_defined_vars());
+        return view('Comentarios.editar', get_defined_vars());
     }
 
     /**

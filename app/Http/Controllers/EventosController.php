@@ -13,7 +13,7 @@ class EventosController extends Controller
      */
     public function index()
     {
-        return view('eventos.index');
+        return view('Eventos.index');
     }
 
     /**
@@ -23,7 +23,7 @@ class EventosController extends Controller
      */
     public function create()
     {
-        return view('eventos.crear');
+        return view('Eventos.crear');
     }
 
     /**
@@ -46,7 +46,7 @@ class EventosController extends Controller
      */
     public function show($id)
     {
-        return view('eventos.ver');
+        return view('Eventos.ver');
     }
 
     /**
@@ -57,7 +57,7 @@ class EventosController extends Controller
      */
     public function edit($id)
     {
-        return view('eventos.editar');
+        return view('Eventos.editar');
     }
 
     /**

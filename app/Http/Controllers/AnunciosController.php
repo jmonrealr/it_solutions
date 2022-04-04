@@ -61,7 +61,7 @@ class AnunciosController extends Controller
         ]);
 
         Alert::success('Éxito', 'Anuncio creado con éxito');
-        return redirect()->route('Anuncios.index');
+        return redirect()->route('anuncios.index');
     }
 
     /**
@@ -123,7 +123,7 @@ class AnunciosController extends Controller
         ]);
 
         Alert::success('Éxito', 'Anuncio actualizado con éxito');
-        return redirect()->route('Anuncios.index');
+        return redirect()->route('anuncios.index');
     }
 
     /**
@@ -139,6 +139,6 @@ class AnunciosController extends Controller
         $anuncio = Announcement::findOrFail($id);
         $anuncio->delete();
         Alert::success('Éxito', 'Anuncio eliminada con éxito');
-        return redirect()->route('Anuncios.index');
+        return redirect()->route('anuncios.index');
     }
 }
