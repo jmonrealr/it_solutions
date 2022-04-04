@@ -43,7 +43,9 @@
     <div class="page-rightheader ml-md-auto">
         <div class="align-items-end flex-wrap my-auto right-content breadcrumb-right">
             <div class="btn-list">
-                <a href="#ventana1" class="btn btn-primary mr-3" data-toggle="modal">Agregar comentario</a>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ventana1">
+                    Agregar comentario
+                </button>
                 <!-- VENTANA EMERGENTE -->
                 <div class="modal fade" id="ventana1" >
                     <div class="modal-dialog">
