@@ -37,6 +37,10 @@ class UserSeeder extends Seeder
                 ['name' => 'JordyL','email' => '1930136@gmail.com','password' => Hash::make('jordy')],
             )
         );
+        /**
+         * Estos de aca som los perfiles asociados a los usuarios, donde esta la información
+         * La combinación parcial de estas 2 tablas serían los empleados
+         */
         Profile::factory()->count(4)->create(
             new Sequence(
                 ['first_name' => 'Josue Eliseo','last_name' => 'Perales Meléndez Y Alcocer','user_id' => '1'],
