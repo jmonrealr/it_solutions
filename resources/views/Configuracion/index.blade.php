@@ -71,22 +71,31 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-1">
                             <div class="form-group">
                                 <label class="form-label">Edad</label>
-                                <input class="form-control" type="text" placeholder="Ingresa su edad" name="edad" maxlength="16">
+                                <input class="form-control" type="number"  name="edad" maxlength="16">
                             </div>
                         </div>
                         <div class="col-md-5">
                             <div class="form-group">
                                 <label class="form-label">Departamento</label>
-                                <input class="form-control" type="text" placeholder="Ingresa su departamento" name="departamento" maxlength="16">
+                                <select name="departamento" class="form-control custom-select select2" data-placeholder="Selecciona departamento">
+                                    <option label="Selecciona departamento"></option>
+                                    <option>Dirección General</option>
+                                    <option>Finanzas</option>
+                                    <option>Mercadotecnia</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="form-label">Cargo</label>
-                                <input class="form-control" type="text" placeholder="Ingresa su cargo" name="cargo" maxlength="16">
+                                <select name="cargo" class="form-control custom-select select2" data-placeholder="Selecciona cargo">
+                                    <option label="Selecciona cargo"></option>
+                                    <option>Jefe</option>
+                                    <option>Ingeniero</option>
+                                </select>
                             </div>
                         </div>
 
@@ -106,7 +115,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="form-label">Tipo de contrato</label>
-                                <select name="genero" class="form-control custom-select select2" data-placeholder="Selecciona contrato">
+                                <select name="contrato" class="form-control custom-select select2" data-placeholder="Selecciona contrato">
                                     <option label="Selecciona contrato"></option>
                                     <option value="1">Temporal</option>
                                     <option value="2">Capacitación inicial</option>
