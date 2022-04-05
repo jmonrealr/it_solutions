@@ -24,7 +24,7 @@ class ConfiguracionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Alert::success('Éxito', 'Empleado actualizado con éxito');
+        Alert::success('Éxito', 'Perfil actualizado con éxito');
         return redirect()->route('Configuraciones.index');
     }
 }
