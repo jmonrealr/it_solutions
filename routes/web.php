@@ -28,7 +28,7 @@ use App\Http\Controllers\RiesgosController;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('home');
 
 Route::get('/users',[UserController::class,'index']);
 
@@ -47,4 +47,4 @@ Route::resource('riesgos', RiesgosController::class);
 
 Route::get('/configuracion', function () {
     return view('Configuracion.index');
-});
+})->name('configuracion.index');

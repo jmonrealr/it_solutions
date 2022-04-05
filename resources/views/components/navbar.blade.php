@@ -25,13 +25,9 @@
 							<a href="#" class="text-center user pb-0 font-weight-bold">Nombre usuario</a>
 							<p class="text-center user-semi-title">Departamento</p>
 						</div>
-						<a class="dropdown-item d-flex" href="/configuracion">
+						<a class="dropdown-item d-flex" href="{{route('configuracion.index')}}">
 							<i class="fa-solid fa-user mr-3 fs-16 my-auto"></i>
 							<div class="mt-1">Perfil</div>
-						</a>
-						<a class="dropdown-item d-flex" href="/configuracion">
-							<i class="fa-solid fa-gear mr-3 fs-16 my-auto"></i>
-							<div class="mt-1">Configuración</div>
 						</a>
 						<a class="dropdown-item d-flex" href="#">
 							<i class="fa-solid fa-pen mr-3 fs-16 my-auto"></i>
