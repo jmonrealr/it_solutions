@@ -53,7 +53,7 @@ class RiesgosController extends Controller
      */
     public function show($id)
     {
-        $riesgo = Risk::find($id);
+        $riesgo = Risk::findOrFail($id);
         return view('riesgos.ver',get_defined_vars());
     }
 
@@ -65,7 +65,7 @@ class RiesgosController extends Controller
      */
     public function edit($id)
     {
-        $riesgo = Risk::find($id);
+        $riesgo = Risk::findOrFail($id);
         return view('riesgos.editar',get_defined_vars());
     }
 
@@ -79,7 +79,7 @@ class RiesgosController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate(['name' => 'required','description' => 'required','solution' => 'required',]);
-        $riesgo = Risk::find($id);
+        $riesgo = Risk::findOrFail($id);
         $riesgo->update($request->all());        
         // Alert::success('Éxito', 'Riesgo actualizado con éxito');
         return redirect()->route('riesgos.index');
@@ -93,7 +93,7 @@ class RiesgosController extends Controller
      */
     public function destroy($id)
     {
-        $riesgo = Risk::find($id);
+        $riesgo = Risk::findOrFail($id);
         $riesgo->delete();
         // Alert::success('Éxito', 'Riesgo eliminado con éxito');
         return redirect()->route('riesgos.index');
