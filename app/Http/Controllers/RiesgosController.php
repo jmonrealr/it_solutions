@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use RealRashid\SweetAlert\Facades\Alert;
+use App\Models\Risk;
+// use RealRashid\SweetAlert\Facade\Alert;
 
 class RiesgosController extends Controller
 {
@@ -14,7 +15,10 @@ class RiesgosController extends Controller
      */
     public function index()
     {
-        return view('Riesgos.index');
+        $riesgos = Risk::all();
+
+
+        return view('riesgos.index',get_defined_vars());
     }
 
     /**
@@ -24,7 +28,7 @@ class RiesgosController extends Controller
      */
     public function create()
     {
-        return view('Riesgos.crear');
+        return view('riesgos.crear');
     }
 
     /**
@@ -35,7 +39,9 @@ class RiesgosController extends Controller
      */
     public function store(Request $request)
     {
-        Alert::success('Éxito', 'Riesgo guardado con éxito');
+        $request->validate(['name' => 'required','description' => 'required','solution' => 'required',]);
+        Risk::create($request->all());
+        // Alert::success('Éxito', 'Riesgo guardado con éxito');
         return redirect()->route('riesgos.index');
     }
 
@@ -47,7 +53,8 @@ class RiesgosController extends Controller
      */
     public function show($id)
     {
-        return view('Riesgos.ver');
+        $riesgo = Risk::find($id);
+        return view('riesgos.ver',get_defined_vars());
     }
 
     /**
@@ -58,7 +65,8 @@ class RiesgosController extends Controller
      */
     public function edit($id)
     {
-        return view('Riesgos.editar');
+        $riesgo = Risk::find($id);
+        return view('riesgos.editar',get_defined_vars());
     }
 
     /**
@@ -70,7 +78,10 @@ class RiesgosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Alert::success('Éxito', 'Riesgo actualizado con éxito');
+        $request->validate(['name' => 'required','description' => 'required','solution' => 'required',]);
+        $riesgo = Risk::find($id);
+        $riesgo->update($request->all());        
+        // Alert::success('Éxito', 'Riesgo actualizado con éxito');
         return redirect()->route('riesgos.index');
     }
 
@@ -82,7 +93,9 @@ class RiesgosController extends Controller
      */
     public function destroy($id)
     {
-        Alert::success('Éxito', 'Riesgo eliminado con éxito');
+        $riesgo = Risk::find($id);
+        $riesgo->delete();
+        // Alert::success('Éxito', 'Riesgo eliminado con éxito');
         return redirect()->route('riesgos.index');
     }
 }
