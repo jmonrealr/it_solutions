@@ -5,7 +5,7 @@
 <!-- CABECERA -->
 <div class="page-header d-xl-flex d-block">
     <div class="page-leftheader">
-        <h4 class="page-title">TITULO DE LA VISTA AQUI</h4>
+        <h4 class="page-title">Contratos</h4>
     </div>
     {{-- DESCOMENTAR DIV PARA MOSTRAR BOTON DE AGREGAR --}}
     {{-- <div class="page-rightheader ml-md-auto">
@@ -24,11 +24,51 @@
 <!-- CONTENIDO -->
 <div class="row">
     <div class="col-xl-12 col-md-12 col-lg-12">
-        
-        {{-- 
-            AQUI VA EL CONTENIDO DE LA VISTA 
-        --}}
-    
+    <div class="card">
+            <div class="card-header  border-0">
+                {{--<h4 class="card-title">Lista de empleados</h4>--}}
+            </div>
+            <div class="card-body">
+                <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <button class="btn-primary">Prueb</button>
+                    </div>
+                    <div class="col">
+                        <button class="btn-primary">Prueb</button>
+                    </div>
+                    <div class="col">
+                        <button class="btn-primary">Prueb</button>
+                    </div>
+                    <div class="col">
+                        <button class="btn-primary">Prueb</button>
+                    </div>
+                    <div class="col">
+                        <button class="btn-primary">Prueb</button>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                <div class="col">
+                        <button class="btn-primary">Prueb</button>
+                    </div>
+                    <div class="col">
+                        <button class="btn-primary">Prueb</button>
+                    </div>
+                    <div class="col">
+                        <button class="btn-primary">Prueb</button>
+                    </div>
+                    <div class="col">
+                        <button class="btn-primary">Prueb</button>
+                    </div>
+                    <div class="col">
+                        <button class="btn-primary">Prueb</button>
+                    </div>
+                </div>
+                </div>
+                
+            </div>
+        </div>
     </div>
 </div>
 <!-- FIN CONTENIDO -->
