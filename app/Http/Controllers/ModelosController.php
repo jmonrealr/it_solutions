@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Models\Models;
 
 class ModelosController extends Controller
 {
@@ -14,7 +15,8 @@ class ModelosController extends Controller
      */
     public function index()
     {
-        return view('Modelos.index');
+        $models = Models::with('type_model')->get();
+        return view('Modelos.index',get_defined_vars());
     }
 
     /**
