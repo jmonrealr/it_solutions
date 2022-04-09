@@ -51,6 +51,6 @@ class Models extends Model
      */
     public function type_model()
     {
-        return $this->belongsTo('App\Models\TypeModel');
+        return $this->belongsTo('App\Models\TypeModel','type_models_id');
     }
 }
