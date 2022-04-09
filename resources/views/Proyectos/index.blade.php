@@ -11,7 +11,7 @@
     <div class="page-rightheader ml-md-auto">
         <div class="align-items-end flex-wrap my-auto right-content breadcrumb-right">
             <div class="btn-list">
-                <a href="proyectos/create" class="btn btn-primary mr-3">
+                <a href="{{route('proyectos.create')}}" class="btn btn-primary mr-3">
                     Agregar proyecto</a>
             </div>
         </div>
