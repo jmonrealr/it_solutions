@@ -39,6 +39,7 @@ class RespuestasController extends Controller
             'description'   =>  'required|max:255',
         ]);
 
+        
         $respuesta = Answer::create([
             'description'       =>  $request['description'],
             'question_id'           =>  $questionId,
