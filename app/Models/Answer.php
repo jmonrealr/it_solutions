@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Question extends Model
+class Answer extends Model
 {
     use HasFactory;
 
@@ -15,8 +15,8 @@ class Question extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
         'description',
+        'question_id',
         'user_id',
     ];
 
@@ -35,7 +35,7 @@ class Question extends Model
     protected $casts = [];
 
     /**
-     * Get the user that owns the Question
+     * Get the User that owns the Answer
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -45,12 +45,12 @@ class Question extends Model
     }
 
     /**
-     * Get the answers that own the Question
+     * Get the Question that owns the Answer
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function answers()
+    public function question()
     {
-        return $this->hasMany('App\Models\Answer');
+        return $this->belongsTo('App\Models\Question');
     }
 }

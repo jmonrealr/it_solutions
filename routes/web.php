@@ -12,6 +12,7 @@ use App\Http\Controllers\EmpleadosController;
 use App\Http\Controllers\EventosController;
 use App\Http\Controllers\ModelosController;
 use App\Http\Controllers\PreguntasController;
+use App\Http\Controllers\RespuestasController;
 use App\Http\Controllers\ProyectosController;
 use App\Http\Controllers\RiesgosController;
 
@@ -42,8 +43,11 @@ Route::resource('eventos', EventosController::class);
 Route::resource('empleados', EmpleadosController::class);
 Route::resource('modelos', ModelosController::class);
 Route::resource('preguntas', PreguntasController::class);
+// Route::resource('respuestas', RespuestasController::class);
 Route::resource('proyectos', ProyectosController::class);
 Route::resource('riesgos', RiesgosController::class);
+
+Route::post('respuestas/{id}', [RespuestasController::class, 'store'])->name('respuestas.store');
 
 Route::get('/configuracion', function () {
     return view('Configuracion.index');

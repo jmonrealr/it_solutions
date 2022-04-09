@@ -15,7 +15,8 @@ class PreguntasController extends Controller
      */
     public function index()
     {
-        $preguntas = Question::get();
+        $preguntas = Question::with('answers')->get();
+        // $preguntas = Question::paginate(5);
         return view('Preguntas.index',get_defined_vars());
     }
 
@@ -47,7 +48,7 @@ class PreguntasController extends Controller
         $pregunta = Question::create([
             'name'              =>  $request['name'],
             'description'       =>  $request['description'],
-            //'user_id'           =>  $request['user_id'],
+            'user_id'           =>  auth()->user()->id,
         ]);
 
         Alert::success('Éxito', 'Pregunta creado con éxito');
