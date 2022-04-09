@@ -127,9 +127,9 @@
                                 <p class="comentario">
                                     {{$respuesta->description}}
                                 </p>
-                                <div class="text-right">
+                                {{-- <div class="text-right">
                                     <span>7:51pm, Hoy</span>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     @endforeach                    
@@ -149,9 +149,9 @@
             </div>
             @endforeach
         </div>
-        {{-- <div class="pagination justify-content-end mt-8">
+        <div class="pagination justify-content-end mt-8">
             {!! $preguntas->links() !!}
-        </div> --}}
+        </div>
     </div>
 </div>
 <!-- FIN CONTENIDO -->
