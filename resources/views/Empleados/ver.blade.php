@@ -7,7 +7,7 @@
     <div class="page-leftheader">
         <h4 class="page-title">Ver empleado #{{$user->id}}</h4>
         <ul class="breadcrumb">
-            <li class="mb-1 fs-16"><a href="#">Empleados</a></li>
+            <li class="mb-1 fs-16"><a href="{{ url()->previous() }}">Empleados</a></li>
             <li class="text-muted mb-1 fs-16 ml-2 mr-2"> / </li>
             <li class="text-muted mb-1 fs-16">Ver empleado</li>
         </ul>
@@ -25,7 +25,7 @@
 					<div class="col-5">
 						<div class="box-widget widget-user">
 							<div class="widget-user-image d-sm-flex" style="margin: 20px;">
-								<span class="avatar" style="background-image: url({{asset('images/usuario.png')}})">
+								<span class="avatar" style="background-image: url({{asset($user->profile->url_image)}})">
 									</span>
 								<div class="ml-sm-4 mt-5">
 									<div class="form-group">
@@ -60,7 +60,7 @@
                     <div class="col-md-4">
 						<div class="form-group">
                             <font style="vertical-align: inherit; font-weight:bold">Departamento</font><br>
-						    <span class="mb-2 fs-14">Departamento de dirección general</span>
+						    <span class="mb-2 fs-14">{{$user->departments->first()->name}}</span>
 						</div>
 					</div>
                     <div class="col-md-5">

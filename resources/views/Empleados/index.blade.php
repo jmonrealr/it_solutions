@@ -46,7 +46,7 @@
                                 <td>{{$user->id}}</td>
                                 <td>
                                     <div class="d-flex">
-                                        <span class="avatar avatar-md brround mr-3" style="background-image: url({{asset('images/usuario.png')}}"></span>
+                                        <span class="avatar avatar-md brround mr-3" style="background-image: url({{asset($user->profile->url_image)}}"></span>
                                         <div class="mr-3 mt-0 mt-sm-1 d-block">
                                             <h6 class="mb-1 fs-14">{{$user->profile->first_name}}</h6>
                                             <p class="text-muted mb-0 fs-12">{{$user->email}}</p>
@@ -54,7 +54,7 @@
                                     </div>
                                 </td>
                                 <td width="350px">
-                                    <span>Departamento de direccion general</span>
+                                    <span>{{$user->departments->first()->name}}</span>
                                 </td>
                                 <td>
                                     <span>CEO</span>

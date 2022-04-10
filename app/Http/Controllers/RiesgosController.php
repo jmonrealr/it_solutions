@@ -18,7 +18,7 @@ class RiesgosController extends Controller
         $riesgos = Risk::all();
 
 
-        return view('riesgos.index',get_defined_vars());
+        return view('Riesgos.index',get_defined_vars());
     }
 
     /**
@@ -28,7 +28,7 @@ class RiesgosController extends Controller
      */
     public function create()
     {
-        return view('riesgos.crear');
+        return view('Riesgos.crear');
     }
 
     /**
@@ -54,7 +54,7 @@ class RiesgosController extends Controller
     public function show($id)
     {
         $riesgo = Risk::findOrFail($id);
-        return view('riesgos.ver',get_defined_vars());
+        return view('Riesgos.ver',get_defined_vars());
     }
 
     /**
@@ -66,7 +66,7 @@ class RiesgosController extends Controller
     public function edit($id)
     {
         $riesgo = Risk::findOrFail($id);
-        return view('riesgos.editar',get_defined_vars());
+        return view('Riesgos.editar',get_defined_vars());
     }
 
     /**
