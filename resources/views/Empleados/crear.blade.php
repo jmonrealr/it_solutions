@@ -7,7 +7,7 @@
     <div class="page-leftheader">
         <h4 class="page-title">Agregar empleado</h4>
         <ul class="breadcrumb">
-            <li class="mb-1 fs-16"><a href="#">Empleados</a></li>
+            <li class="mb-1 fs-16"><a href="{{ url()->previous() }}">Empleados</a></li>
             <li class="text-muted mb-1 fs-16 ml-2 mr-2"> / </li>
             <li class="text-muted mb-1 fs-16">Agregar empleado</li>
         </ul>

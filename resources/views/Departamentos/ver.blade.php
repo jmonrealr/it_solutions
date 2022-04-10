@@ -6,6 +6,11 @@
 <div class="page-header d-xl-flex d-block">
     <div class="page-leftheader">
         <h4 class="page-title">Departamento de {{$departamento->name}}</h4>
+        <ul class="breadcrumb">
+            <li class="mb-1 fs-16"><a href="{{ url()->previous() }}">Departamentos</a></li>
+            <li class="text-muted mb-1 fs-16 ml-2 mr-2"> / </li>
+            <li class="text-muted mb-1 fs-16">Ver departamento</li>
+        </ul>
     </div>
     {{-- <div class="page-rightheader ml-md-auto">
         <div class="align-items-end flex-wrap my-auto right-content breadcrumb-right">
