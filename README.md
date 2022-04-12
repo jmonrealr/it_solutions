@@ -15,12 +15,11 @@
     
 
 ### Install dependencies:
-  ```
+
   composer install
-  ```
-  ```
+
   npm install
-  ```
+
 
 ### Generate configuration file
    In the root of the folder rename the file `.env.example` to `.env` or use 
@@ -62,6 +61,7 @@
     php artisan server
 
   If you are using a virtual host routing to an ip 127.0.0.1, you may use this:
+    
     ```
     php artisan server --host 127.0.0.1 --port 80
     ```
