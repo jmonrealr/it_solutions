@@ -17,6 +17,7 @@
 ### Install dependencies:
     
     composer install
+
     npm install
     
 
@@ -43,6 +44,7 @@
     Generates migrations and populates the DB with default data
 
   * Utilities
+
     This deletes all the tables from the database
     ```
     php artisan db:wipe
@@ -57,4 +59,10 @@
  ### Starting a local development server
     
     php artisan server
+
+  If you are using a virtual host routing to an ip 127.0.0.1, you may use this:
+    php artisan server --host 127.0.0.1 --port 80
+
+  This way, if your virtualhost is called www.itsolutions.com, it will show the web system in the explorer using that name.
+
     
