@@ -33,16 +33,22 @@
 
 
 				<div class="row">
-					<div class="col-md-1">
+					<div class="col-md-3">
 						<div class="form-group">
-							<label class="form-label">ID</label>
-							<input class="form-control" type="text"  maxlength="22">
+							<label class="form-label">Nombre</label>
+							<input class="form-control" type="text"  maxlength="22" name="name">
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="form-group">
+							<label class="form-label">Localización</label>
+							<input class="form-control" type="text"  maxlength="100" name="location">
 						</div>
 					</div>
 					<div class="col-md-2">
 						<div class="form-group">
 							<label class="form-label">Numero de vistas</label>
-							<input class="form-control" type="text"  maxlength="30">
+							<input class="form-control" type="number"  maxlength="30" name="views_counter">
 						</div>
 					</div>
 				</div>
@@ -50,8 +56,8 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
-							<label class="form-label">Contenido</label>
-							<textarea class="form-control" type="text" rows="6" placeholder="Ingresa el contenido de tu anuncio" name="actividad"></textarea>
+							<label class="form-label">Descripción</label>
+							<textarea class="form-control" type="text" rows="6" placeholder="Ingresa el contenido de tu anuncio" name="description"></textarea>
 						</div>
 					</div>
 				</div>
@@ -59,11 +65,13 @@
                 <div class="row">
 					<div class="col-md-4">
 						<div class="form-group">
-							<label class="form-label">Plataforma de emisión</label>
-							<input class="form-control" type="text" placeholder="facebook" name="plataforma" maxlength="22">
+							<label class="form-label">Costo total</label>
+							<input class="form-control" type="number" step="0.01" placeholder="50.00" name="total_cost" >
 						</div>
 					</div>
 				</div>
+
+				<input type="hidden" name="user_id" value="1">
 			</div>
 
 			<div class="card-footer text-right">
@@ -71,7 +79,7 @@
 					<i class="feather feather-corner-down-left sidemenu_icon"></i>
 					Regresar
 				</a>
-				<button type="submit" class="btn btn-primary">
+				<button type="submit" class="btn btn-primary" id="enviar">
 					<i class="feather  feather-save sidemenu_icon"></i>
 					Guardar</button>
 			</div>

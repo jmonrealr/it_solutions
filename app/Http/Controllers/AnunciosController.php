@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Announcement;
-use RealRashid\SweetAlert\Facades\Alert;
+//use RealRashid\SweetAlert\Facades\Alert;
 
 class AnunciosController extends Controller
 {
@@ -47,7 +47,7 @@ class AnunciosController extends Controller
             'name'          =>  'required|max:255',
             'description'   =>  'required|max:255',
             'location'      =>  'required|max:255',
-            'total_cost'    =>  'required|decimal',
+            'total_cost'    =>  'required|numeric',
             'views_conter'  =>  'required|numeric',
         ]);
 
@@ -60,7 +60,7 @@ class AnunciosController extends Controller
             'user_id'           =>  $request['user_id'],
         ]);
 
-        Alert::success('Éxito', 'Anuncio creado con éxito');
+        //Alert::success('Éxito', 'Anuncio creado con éxito');
         return redirect()->route('anuncios.index');
     }
 
@@ -122,7 +122,7 @@ class AnunciosController extends Controller
             'user_id'           =>  $request['user_id'],
         ]);
 
-        Alert::success('Éxito', 'Anuncio actualizado con éxito');
+        //Alert::success('Éxito', 'Anuncio actualizado con éxito');
         return redirect()->route('anuncios.index');
     }
 
@@ -138,7 +138,7 @@ class AnunciosController extends Controller
     {
         $anuncio = Announcement::findOrFail($id);
         $anuncio->delete();
-        Alert::success('Éxito', 'Anuncio eliminada con éxito');
+        //Alert::success('Éxito', 'Anuncio eliminada con éxito');
         return redirect()->route('anuncios.index');
     }
 }
