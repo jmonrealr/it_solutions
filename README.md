@@ -16,9 +16,9 @@
 
 ### Install dependencies:
 
-  composer install
+    composer install
+    npm install
 
-  npm install
 
 
 ### Generate configuration file
