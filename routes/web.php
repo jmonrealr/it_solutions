@@ -14,6 +14,7 @@ use App\Http\Controllers\ModelosController;
 use App\Http\Controllers\PreguntasController;
 use App\Http\Controllers\ProyectosController;
 use App\Http\Controllers\RiesgosController;
+use App\Http\Controllers\PerfilConfigController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +46,4 @@ Route::resource('preguntas', PreguntasController::class);
 Route::resource('proyectos', ProyectosController::class);
 Route::resource('riesgos', RiesgosController::class);
 
-Route::get('/configuracion', function () {
-    return view('Configuracion.index');
-})->name('configuracion.index');
+Route::resource('configuracion', PerfilConfigController::class);

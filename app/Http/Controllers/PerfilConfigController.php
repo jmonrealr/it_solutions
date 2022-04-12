@@ -10,6 +10,14 @@ class PerfilConfigController extends Controller
 {
     
     /**
+     * 
+     */
+    public function index($id){
+        User::find($id)->get();
+        return view('Configuraciones.index',get_defined_vars());
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

@@ -79,7 +79,6 @@
 <!-- FIN CONTENIDO -->
 @endsection
 
-
 @section('extra-script')
 <script type="text/javascript">
     function mensaje(){
