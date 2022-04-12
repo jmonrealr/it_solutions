@@ -15,12 +15,12 @@
     
 
 ### Install dependencies:
-    ```
-    composer install
-    ```
-    ```
-    npm install
-    ```
+  ```
+  composer install
+  ```
+  ```
+  npm install
+  ```
 
 ### Generate configuration file
    In the root of the folder rename the file `.env.example` to `.env` or use 
