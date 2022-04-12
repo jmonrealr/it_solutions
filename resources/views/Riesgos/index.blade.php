@@ -12,7 +12,9 @@
         <div class="align-items-end flex-wrap my-auto right-content breadcrumb-right">
             <div class="btn-list">
                 <a href="{{route('riesgos.create')}}" class="btn btn-primary mr-3">
-                    +Agregar riesgo</a>
+                    <i class="fa-solid fa-plus"></i>
+                    Agregar riesgo
+                </a>
             </div>
     </div>
 </div>
@@ -22,14 +24,14 @@
 
 <!-- CONTENIDO -->
 <div class="row">
-    <div class="col-xl-12 col-md-12 col-lg-12">   
+    <div class="col-xl-12 col-md-12 col-lg-12">
         <div class="card">
-            <div class="card-header  border-0">
+            <div class="card-header  border-0"> 
                 <h4 class="card-title">Lista de riesgos</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table  table-vcenter text-wrap table-bordered border-bottom" id="tabla">
+                    <table class="table table-vcenter text-wrap table-bordered border-bottom dt" id="tabla">
                         <thead>
                             <tr>
                                 <th class="border-bottom-0">ID</th>
