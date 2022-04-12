@@ -48,8 +48,8 @@ class DepartamentosController extends Controller
             'name'          =>  'required|max:255',
         ]);
 
-        $comentario = Department::create([
-            'name'              =>  $request['body'],
+        $departamento = Department::create([
+            'name'              =>  $request['name'],
         ]);
 
         Alert::success('Éxito', 'Departamento creado con éxito');
@@ -66,8 +66,8 @@ class DepartamentosController extends Controller
      */
     public function show($id)
     {
-        $departamento = Department::findOrFail($id);
-        $users = User::where('id','=',$departamento->user_id)->get();
+        $departamento = Department::with('users')->findOrFail($id);
+        
         return view('Departamentos.ver',get_defined_vars());
     }
 
