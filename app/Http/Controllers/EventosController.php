@@ -82,7 +82,7 @@ class EventosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $eventos = Event::find($id);
+        $eventos = Event::findOrFail($id);
         $eventos->update([
             'name'         => $request['name'],
             'description'   => $request['description'],
