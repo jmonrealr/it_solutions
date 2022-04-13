@@ -25,18 +25,16 @@
 <div class="row">
 	<div class="col-xl-12 col-md-12 col-lg-12">
 		<div class="card">
-			<form action="{{route('anuncios.store')}}" method="POST" enctype="multipart/form-data">
+			<form action="{{route('anuncios.store')}}" method="POST">
 			@csrf
 			<div class="card-body">
 
 				<h4 class="mb-5 font-weight-semibold">Crea un anuncio</h4>
-
-
 				<div class="row">
 					<div class="col-md-3">
 						<div class="form-group">
 							<label class="form-label">Nombre</label>
-							<input class="form-control" type="text"  maxlength="22" name="name">
+							<input class="form-control" type="text" maxlength="22" name="name">
 						</div>
 					</div>
 					<div class="col-md-3">

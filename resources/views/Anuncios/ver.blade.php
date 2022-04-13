@@ -28,18 +28,23 @@
 
 				<h4 class="mb-5 font-weight-semibold">Anuncio del empleado</h4>
 
-
 				<div class="row">
-					<div class="col-md-1">
+					<div class="col-md-3">
 						<div class="form-group">
-							<label class="form-label">ID</label>
-							<div class="text-muted">1930536</div>
+							<label class="form-label">Nombre</label>
+							<div class="text-muted">{{$anuncio->name}}</div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="form-group">
+							<label class="form-label">Localización</label>
+							<div class="text-muted">{{$anuncio->location}}</div>
 						</div>
 					</div>
 					<div class="col-md-2">
 						<div class="form-group">
 							<label class="form-label">Numero de vistas</label>
-							<div class="text-muted">23</div>
+							<div class="text-muted">{{$anuncio->views_counter}}</div>
 						</div>
 					</div>
 				</div>
@@ -48,7 +53,7 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							<label class="form-label">Contenido</label>
-							<div class="text-muted">En esta semana se suspenden labores debido al decreto del gobernador</div>
+							<div class="text-muted">{{$anuncio->description}}</div>
 						</div>
 					</div>
 				</div>
@@ -56,8 +61,8 @@
                 <div class="row">
 					<div class="col-md-4">
 						<div class="form-group">
-							<label class="form-label">Plataforma de emisión</label>
-							<div class="text-muted">Facebook</div>
+							<label class="form-label">Costo total</label>
+							<div class="text-muted">{{$anuncio->total_cost}}</div>
 						</div>
 					</div>
 				</div>

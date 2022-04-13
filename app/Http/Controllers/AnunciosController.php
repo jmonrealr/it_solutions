@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Announcement;
-//use RealRashid\SweetAlert\Facades\Alert;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AnunciosController extends Controller
 {
@@ -43,13 +43,16 @@ class AnunciosController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request->all());
         $request->validate([
-            'name'          =>  'required|max:255',
-            'description'   =>  'required|max:255',
-            'location'      =>  'required|max:255',
-            'total_cost'    =>  'required|numeric',
-            'views_conter'  =>  'required|numeric',
+            'name'          =>  'required',
+            'description'   =>  'required',
+            'location'      =>  'required',
+            'total_cost'    =>  'required',
+            'views_counter'  =>  'required',
         ]);
+
+        //
 
         $anuncio = Announcement::create([
             'name'              =>  $request['name'],
@@ -60,7 +63,7 @@ class AnunciosController extends Controller
             'user_id'           =>  $request['user_id'],
         ]);
 
-        //Alert::success('Éxito', 'Anuncio creado con éxito');
+        Alert::success('Éxito', 'Anuncio creado con éxito');
         return redirect()->route('anuncios.index');
     }
 
@@ -74,7 +77,7 @@ class AnunciosController extends Controller
      */
     public function show($id)
     {
-        $anuncio = Announcement::findOrFail($id)->with('user');
+        $anuncio = Announcement::findOrFail($id)->with('user')->first();
         return view('Anuncios.ver',get_defined_vars());
     }
 
@@ -88,7 +91,8 @@ class AnunciosController extends Controller
      */
     public function edit($id)
     {
-        $anuncio = Announcement::findOrFail($id)->with('user');
+        $anuncio = Announcement::findOrFail($id)->with('user')->first();
+        //dd($anuncio);
         return view('Anuncios.editar', get_defined_vars());
     }
 
