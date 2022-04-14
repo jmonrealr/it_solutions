@@ -46,6 +46,7 @@
         <div class="align-items-end flex-wrap my-auto right-content breadcrumb-right">
             <div class="btn-list">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ventana1">
+                    <i class="fa-solid fa-plus"></i>
                     Agregar comentario
                 </button>
                 <!-- VENTANA EMERGENTE -->
@@ -55,7 +56,7 @@
                             <!-- HEADER DE LA VENTANA-->
                             <div class="modal-header">
                             <h2 class="modal-title" style="font-size: 20px; font-weight: bold;">Agregar un comentario</h2>
-                                <button type="button" class="close" data-dismiss="modal" >&times;</button>
+                                <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
 
                             <!-- CONTENIDO DE LA VENTANA-->
@@ -92,15 +93,21 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label class="form-label">Comentario</label>
-                                                    <textarea class="form-control" type="text" placeholder="Ingresa tu comentario" name="body" maxlength="250" cols="50" rows="6"></textarea>
+                                                    <label for="body" class="form-label">Comentario</label>
+                                                    <textarea class="form-control @error('body') is-invalid @enderror" type="text" placeholder="Ingresa tu comentario"
+                                                              name="body" maxlength="250" cols="50" rows="6" id="body">{{ old('body') }}</textarea>
+                                                    @error('body')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-primary">
-					                        Guardar</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Close') }}</button>
+                                        <button type="submit" class="btn btn-primary">Guardar</button>
                                     </div>
                                 </form>
                             </div>
