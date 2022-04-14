@@ -7,7 +7,7 @@
     <div class="page-leftheader">
         <h4 class="page-title">Editar anuncio</h4>
         <ul class="breadcrumb">
-            <li class="mb-1 fs-16"><a href="{{ url()->previous() }}">Anuncios</a></li>
+            <li class="mb-1 fs-16"><a href="{{ route('anuncios.index') }}">Anuncios</a></li>
             <li class="text-muted mb-1 fs-16 ml-2 mr-2"> / </li>
             <li class="text-muted mb-1 fs-16">Editar anuncios</li>
         </ul>
@@ -23,8 +23,8 @@
 <div class="row">
 	<div class="col-xl-12 col-md-12 col-lg-12">
 		<div class="card">
-			<form action="{{route('anuncios.update', $id)}}" enctype="multipart/form-data">
-				@method('PUT')
+			<form method="POST" action="{{route('anuncios.update', $anuncio->id)}}" enctype="multipart/form-data">
+				@method('PATCH')
 				@csrf
 			<div class="card-body">
 
@@ -33,7 +33,7 @@
 					<div class="col-md-3">
 						<div class="form-group">
 							<label class="form-label">Nombre</label>
-							<input class="form-control" type="text" maxlength="22" 
+							<input class="form-control" type="text" maxlength="22"
 							name="name" value="{{$anuncio->name}}">
 						</div>
 					</div>
@@ -47,7 +47,7 @@
 					<div class="col-md-2">
 						<div class="form-group">
 							<label class="form-label">Numero de vistas</label>
-							<input class="form-control" type="number"  maxlength="30" 
+							<input class="form-control" type="number"  maxlength="30"
 							name="views_counter" value="{{$anuncio->views_counter}}">
 						</div>
 					</div>
@@ -57,9 +57,9 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							<label class="form-label">Descripción</label>
-							<textarea class="form-control" type="text" 
-							rows="6" placeholder="Ingresa el contenido de tu anuncio" 
-							name="description" value="{{$anuncio->description}}"></textarea>
+							<textarea class="form-control" type="text"
+							rows="6" placeholder="Ingresa el contenido de tu anuncio"
+							name="description">{{$anuncio->description}}</textarea>
 						</div>
 					</div>
 				</div>
@@ -68,7 +68,7 @@
 					<div class="col-md-4">
 						<div class="form-group">
 							<label class="form-label">Costo total</label>
-							<input class="form-control" type="number" step="0.01" 
+							<input class="form-control" type="number" step="0.01"
 							placeholder="50.00" name="total_cost" value="{{$anuncio->total_cost}}">
 						</div>
 					</div>
