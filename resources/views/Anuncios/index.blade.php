@@ -53,7 +53,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td width="350px">
+                                <td>
                                     <span>{{$anuncio->description}}</span>
                                 </td>
                                 <td>
