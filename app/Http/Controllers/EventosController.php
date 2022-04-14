@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Event;
-// use RealRashid\SweetAlert\Facades\Alert;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class EventosController extends Controller
 {
@@ -16,9 +17,7 @@ class EventosController extends Controller
     public function index()
     {
         $eventos = Event::all();
-
-
-        return view('Eventos.index',get_defined_vars());
+        return view('Eventos.index', get_defined_vars());
     }
 
     /**
@@ -39,14 +38,21 @@ class EventosController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+           'name' => 'required|max:255',
+           'description' => 'nullable|max:255',
+           'location' => 'required|max:255',
+           'start_date' => 'required|date',
+        ]);
+
         Event::create([
             'name'         => $request['name'],
             'description'   => $request['description'],
             'location'   => $request['location'],
-            'user_id'       => 1, 
-            'start_date'     => $request['start_date'], 
+            'user_id'       => 1,
+            'start_date'     => $request['start_date'],
         ]);
-        // Alert::success('Éxito', 'Evento guardado con éxito');
+        Alert::success('Éxito', 'Evento guardado con éxito');
         return redirect()->route('eventos.index');
     }
 
@@ -69,7 +75,7 @@ class EventosController extends Controller
      */
     public function edit($id)
     {
-        $eventos = Event::findOrFail($id);
+        $evento = Event::findOrFail($id);
         return view('Eventos.editar',get_defined_vars());
     }
 
@@ -87,8 +93,8 @@ class EventosController extends Controller
             'name'         => $request['name'],
             'description'   => $request['description'],
             'location'   => $request['location'],
-            'user_id'       => 1, 
-            'start_date'     => $request['start_date'], 
+            'user_id'       => 1,
+            'start_date'     => $request['start_date'],
         ]);
         // Alert::success('Éxito', 'Evento actualizado con éxito');
         return redirect()->route('eventos.index');

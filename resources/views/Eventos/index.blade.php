@@ -11,10 +11,12 @@
         <div class="align-items-end flex-wrap my-auto right-content breadcrumb-right">
             <div class="btn-list">
                 <a href="{{route('eventos.create')}}" class="btn btn-primary mr-3">
-                    Agregar evento</a>
+                    <i class="fa-solid fa-plus"></i>
+                    Agregar evento
+                </a>
             </div>
         </div>
-    </div>    
+    </div>
 </div>
 <!-- FIN CABECERA -->
 
@@ -40,7 +42,7 @@
                         </thead>
                         <tbody>
                             @foreach ($eventos as $evento)
-                            <tr>    
+                            <tr>
                                 <td>{{$evento->id}}</td>
                                 <td>
                                     <div class="d-flex">
@@ -74,7 +76,7 @@
                                         </form>
                                     </div>
                                 </td>
-                            </tr>        
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>
