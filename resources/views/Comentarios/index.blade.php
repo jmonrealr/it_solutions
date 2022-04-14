@@ -77,7 +77,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="form-label">Nombre completo</label>
-                                                     <input class="form-control" type="text" placeholder="Ingresa tu nombre completo" name="nombre" maxlength="16" value="{{$usuario->name}}"readonly> 
+                                                     <input class="form-control" type="text" placeholder="Ingresa tu nombre completo" name="nombre" maxlength="16" value="{{$usuario->name}}"readonly>
                                                 </div>
                                             </div>
                                         </div>
