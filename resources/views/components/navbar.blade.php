@@ -47,6 +47,9 @@
 							   <i class="fa-solid fa-power-off mr-3 fs-16 my-auto"></i>
 							   <div class="mt-1">Cerrar sesión</div>
                 		</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none">
+                            @csrf
+                        </form>
 					</div>
 				</div>
 			</div>
