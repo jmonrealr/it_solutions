@@ -16,11 +16,14 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $profile = Profile::where('user_id', '=', auth()->id())->first();
+        $profile = Profile::with('user.tasks')->where('user_id', '=', auth()->id())->first();
 //        dd($profile);
-        $departments = Department::all();
+
+        $department = auth()->user()->departments()->get();
+//        dd($department);
         return view('configuracion.index', [
-            'profile' => $profile
+            'profile' => $profile,
+            'department' => $department[0]
         ]);
     }
     /**
@@ -45,11 +48,12 @@ class ProfileController extends Controller
     {
         //TODO: update profile information and validation
         $request->validate([
-            'first_name' => 'nullable|string|max:255',
-            'last_name' => 'string|nullable|max:255',
-            'phone_number' => 'nullable|max:10|min:10',
+            'first_name' => 'required|string|max:255',
+            'paternal_last_name' => 'required|string|max:255',
+            'maternal_last_name' => 'nullable|string|max:255',
+            'phone_number' => 'nullable|max:15|min:10',
             'url_image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-            'gender' => 'string|nullable|max:255',
+            'age' => 'nullable|numeric|gt:17',
         ]);
         $profile = Profile::where('user_id', '=', auth()->id())->first();
 
