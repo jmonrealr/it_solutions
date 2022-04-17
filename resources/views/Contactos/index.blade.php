@@ -72,7 +72,6 @@
                                     <h6 class="mb-1 fs-14">Karla Soto</h6>
                                 </div>
                             </div>
-                        </div>
                         <div class="col-8">
                             <div class="row fs-4 primary-font">Ing.Karla Soto</div>
                             <div class="row text-muted">Encargada del area RRHH</div>
