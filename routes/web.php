@@ -48,7 +48,15 @@ Route::resource('preguntas', PreguntasController::class);
 Route::resource('proyectos', ProyectosController::class);
 Route::resource('riesgos', RiesgosController::class);
 
-Route::resource('configuracion', PerfilConfigController::class);
+//Route::resource('configuracion', PerfilConfigController::class);
 Route::post('respuestas/{id}', [RespuestasController::class, 'store'])->name('respuestas.store');
 
 
+//Authenticated Routes
+Route::middleware(['auth'])->group( function () {
+    Route::get('/profile/edit', 'App\Http\Controllers\ProfileController@edit')->name('profile.edit');
+    Route::get('/profile/change-password', 'App\Http\Controllers\ProfileController@change_password')->name('profile.change-password');
+    Route::get('/profile', 'App\Http\Controllers\ProfileController@index')->name('profile.index');
+    Route::patch('/profile', 'App\Http\Controllers\ProfileController@update')->name('profile.update');
+
+});
