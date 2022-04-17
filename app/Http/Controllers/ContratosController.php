@@ -63,7 +63,13 @@ class ContratosController extends Controller
     public function show($id)
     {
         $contrato = Contract::findOrFail($id);
-        return view('Contratos.ver',get_defined_vars());
+        $statuses = Status::all();
+        $type_contracts = TypeContract::all();
+        return view('Contratos.ver', [
+            'contrato' => $contrato,
+            'statuses' => $statuses,
+            'type_contracts' => $type_contracts
+        ]);
     }
 
     /**

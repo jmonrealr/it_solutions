@@ -7,7 +7,7 @@
 <div class="page-leftheader">
         <h4 class="page-title">Ver contrato #{{$contrato->id}}</h4>
         <ul class="breadcrumb">
-            <li class="mb-1 fs-16"><a href="{{ url()->previous() }}">contratos</a></li>
+            <li class="mb-1 fs-16"><a href="{{ route('contratos.index') }}">Contratos</a></li>
             <li class="text-muted mb-1 fs-16 ml-2 mr-2"> / </li>
             <li class="text-muted mb-1 fs-16">Ver contrato</li>
         </ul>
@@ -23,9 +23,6 @@
     <div class="col-xl-12 col-md-12 col-lg-12">
         <div class="card">
 				<div class="card-body">
-				<form action="{{route('contratos.show',$contrato->id)}}" method = "POST">
-           	    	@method('PUT')
-                	@csrf 
 					<div class="row">
 						<div class="col-md-4">
 							<div class="form-group">
@@ -63,21 +60,20 @@
 						<div class="col-md-4">
 							<div class="form-group">
 								<font style="vertical-align: inherit; font-weight:bold">Estado</font><br>
-								<span class="mb-2 fs-14">{{$contrato->status_id}}</span>
+								<span class="badge rounded-pill bg-info text-dark">{{$contrato->status->name}}</span>
 							</div>
 						</div>
 						<div class="col-md-4">
 							<div class="form-group">
 								<font style="vertical-align: inherit; font-weight:bold">Tipo de contrato</font><br>
-								<span class="mb-2 fs-14">{{$contrato->type_contract_id}}</span>
+								<span class="badge rounded-pill bg-success">{{$contrato->type_contract->name}}</span>
 							</div>
 						</div>
 					</div>
-				</form>	
 				</div>
 
                 <div class="card-footer text-right">
-					<a role="button" class="btn btn-outline-dark" href="{{ url()->previous() }}">
+					<a role="button" class="btn btn-outline-dark" href="{{ route('contratos.index') }}">
 					<i class="feather feather-corner-down-left sidemenu_icon"></i>Regresar</a>
 			    </div>
 	        </div>
