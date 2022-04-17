@@ -99,7 +99,8 @@
 					<div class="col-md-4">
 						<div class="form-group">
 							<label for="status_id" class="form-label">Estado</label>
-							<select class="form-control custom-select status @error('status_id') is-invalid @enderror" name="status_id" id="status_id">
+							<select class="form-control custom-select status @error('status_id') is-invalid @enderror"
+                                    name="status_id" id="status_id">
                                 @isset($statuses)
                                     <option></option>
                                     @foreach($statuses as $status)

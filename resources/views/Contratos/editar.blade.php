@@ -100,7 +100,8 @@
 					<div class="col-md-4">
 						<div class="form-group">
 							<label for="status_id" class="form-label">Estado</label>
-							<select class="form-control custom-select status @error('status_id') is-invalid @enderror" name="status_id" id="status_id">
+							<select class="form-control custom-select status @error('status_id') is-invalid @enderror"
+                                    name="status_id" id="status_id">
                                 @isset($statuses)
                                     @foreach($statuses as $status)
                                         <option value="{{$status->id}}"
@@ -121,7 +122,8 @@
                     <div class="col-md-4">
                         <div class="form-group">
 							<label for="type_contract_id" class="form-label">Tipo de contrato</label>
-							<select name="type_contract_id" class="form-control custom-select type_contract" id="type_contract_id">
+							<select name="type_contract_id" class="form-control custom-select type_contract @error('type_contract_id') is-invalid @enderror"
+                                    id="type_contract_id">
                                 @isset($type_contracts)
                                     @foreach($type_contracts as $type_contract)
                                         <option value="{{$type_contract->id}}"
