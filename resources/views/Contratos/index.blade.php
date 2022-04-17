@@ -46,7 +46,29 @@
                             </tr>
                         </thead>
                         <tbody>
-                            
+                            @foreach ($contratos as $contratos)
+                            <tr>
+                                <td>{{$contratos->id}}</td>
+                                <td>{{$contratos->subject}}</td>
+                                <td>{{$contratos->description}}</td>
+                                <td>{{$contratos->initiated_by}}</td>
+                                <td>{{$contratos->start_date}}</td>
+                                <td>{{$contratos->end_date}}</td>
+                                <td>{{$contratos->status_id}}</td>
+                                <td>{{$contratos->type_contract_id}}</td>
+                                <td>
+                                    <div class="d-flex">
+                                        <a href="{{route('contratos.show',$contratos->id)}}" class="action-btns1" data-toggle="tooltip" data-placement="top" title="Ver"><i class="fa-solid fa-eye text-primary"></i></a>
+                                        <a href="{{route('contratos.edit',$contratos->id)}}" class="action-btns1" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa-solid fa-pen text-success"></i></a>
+                                        <form action="{{route('contratos.destroy', $contratos->id)}}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="action-btns1" data-toggle="tooltip" data-placement="top" title="Eliminar" type="submit"><i class="fa-regular fa-trash-can text-danger"></i></button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                            @endforeach
                         </tbody>
 
                     </table>

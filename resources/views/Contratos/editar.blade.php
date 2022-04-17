@@ -5,11 +5,11 @@
 <!-- CABECERA -->
 <div class="page-header d-xl-flex d-block">
     <div class="page-leftheader">
-        <h4 class="page-title">TITULO DE LA VISTA AQUI</h4>
+        <h4 class="page-title">Editar contrato</h4>
         <ul class="breadcrumb">
-            <li class="mb-1 fs-16"><a href="{{ url()->previous() }}">Nombre modulo</a></li>
+            <li class="mb-1 fs-16"><a href="{{ url()->previous() }}">Contratos</a></li>
             <li class="text-muted mb-1 fs-16 ml-2 mr-2"> / </li>
-            <li class="text-muted mb-1 fs-16">Agregar cosa</li>
+            <li class="text-muted mb-1 fs-16">Editar contrato</li>
         </ul>
     </div>
 </div>
