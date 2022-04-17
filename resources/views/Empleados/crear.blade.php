@@ -31,7 +31,7 @@
 							<div class="widget-user-image d-sm-flex">
 								<img src="{{asset('images/usuario.png')}}" class="avatar-xxl rounded-circle mb-1" alt="Foto producto" name="image" id="image">
 								{{-- <span class="avatar" style="background-image: url({{asset('images/usuario.png')}})"> --}}
-								</span>
+{{--								</span>--}}
 								<div class="ml-sm-3 mt-4">
 									<div class="form-group">
 										<label class="form-label">Foto de perfil</label>

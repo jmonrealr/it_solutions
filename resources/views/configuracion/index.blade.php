@@ -121,6 +121,25 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="phone_number" class="form-label">Número telefonico</label>
+                                    <input id="phone_number" class="form-control @error('phone_number') is-invalid @enderror"
+                                           type="text" placeholder="8344444444" name="phone_number"
+                                           value="{{ old('phone_number') }}@isset($profile){{$profile->phone_number}}@endisset">
+                                    @error('phone_number')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <h4 class="mb-5 font-weight-semibold mt-7">Información empresarial</h4>
+
+                        <div class="row">
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label for="department" class="form-label">Departamento</label>
@@ -135,7 +154,6 @@
                             </div>
 
                         </div>
-
                         <h4 class="mb-5 mt-7 font-weight-bold">Actividades y Contrato</h4>
 
 
