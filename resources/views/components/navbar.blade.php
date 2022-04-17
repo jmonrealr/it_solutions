@@ -25,11 +25,16 @@
 							<a href="#" class="text-center user pb-0 font-weight-bold">Nombre usuario</a>
 							<p class="text-center user-semi-title">Departamento</p>
 						</div>
-						<a class="dropdown-item d-flex" href="{{route('configuracion.index')}}">
+						<a class="dropdown-item d-flex" href="{{route('profile.index')}}">
 							<i class="fa-solid fa-user mr-3 fs-16 my-auto"></i>
 							<div class="mt-1">Perfil</div>
 						</a>
-						<a class="dropdown-item d-flex" href="#">
+                        <a class="dropdown-item d-flex" href="{{route('profile.edit')}}">
+							<i class="fa-solid fa-user-gear mr-3 fs-16 my-auto"></i>
+							<div class="mt-1">Informacion Usuario</div>
+						</a>
+
+						<a class="dropdown-item d-flex" href="{{ route('profile.change-password') }}">
 							<i class="fa-solid fa-pen mr-3 fs-16 my-auto"></i>
 							<div class="mt-1">Cambiar contraseña</div>
 						</a>

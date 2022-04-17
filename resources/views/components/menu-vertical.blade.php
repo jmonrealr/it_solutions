@@ -65,7 +65,7 @@
 					<span class="side-menu__label">Eventos</span>
 				</a>
 			</li>
-			
+
 			<li class="slide">
 				<a class="side-menu__item {{ Request::is('empleados') ? 'active' : '' }}" data-toggle="slide" href="{{route('empleados.index')}}" id="empleados">
 					<i class="fa-solid fa-user mr-2"></i>
@@ -102,7 +102,7 @@
 			</li>
 
 			<li class="slide">
-				<a class="side-menu__item {{ Request::is('configuracion') ? 'active' : '' }}" data-toggle="slide" href="{{route('configuracion.index',1)}}" id="configuraciones">
+				<a class="side-menu__item {{ Request::is('configuracion') ? 'active' : '' }}" data-toggle="slide" href="{{route('profile.index')}}" id="configuraciones">
 					<i class="fa-solid fa-user-gear mr-2"></i>
 					<span class="side-menu__label">Configuraciones</span>
 				</a>
