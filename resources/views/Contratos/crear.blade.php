@@ -89,8 +89,9 @@
 							<label class="form-label">Tipo de contrato</label>
 							<select name="type_contract_id" class="form-control custom-select select2" data-placeholder="Selecciona contrato">
 								<option label="Selecciona contrato"></option>
-								<option value="1">rerum</option>
-								<option value="2">deserunt</option>
+								<option value="1">Temporal</option>
+								<option value="2">A Largo plazo</option>
+								<option value="3">Periodo de prueba</option>
 							</select>
 						</div>
                      </div>

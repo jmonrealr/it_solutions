@@ -23,53 +23,57 @@
     <div class="col-xl-12 col-md-12 col-lg-12">
         <div class="card">
 				<div class="card-body">
-                <div class="row">
-                    <div class="col-md-4">
-						<div class="form-group">
-                            <font style="vertical-align: inherit; font-weight:bold">ID</font><br>
-						    <span class="mb-2 fs-14"></span>
+				<form action="{{route('contratos.show',$contrato->id)}}" method = "POST">
+           	    	@method('PUT')
+                	@csrf 
+					<div class="row">
+						<div class="col-md-4">
+							<div class="form-group">
+								<font style="vertical-align: inherit; font-weight:bold">ID</font><br>
+								<span class="mb-2 fs-14">{{$contrato->id}}</span>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-group">
+								<font style="vertical-align: inherit; font-weight:bold">Asunto</font><br>
+								<span class="mb-2 fs-14">{{$contrato->subject}}</span>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-group">
+								<font style="vertical-align: inherit; font-weight:bold">Descripcion</font><br>
+								<span class="mb-2 fs-14">{{$contrato->description}}</span>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<font style="vertical-align: inherit; font-weight:bold">Iniciado por</font><br>
+								<span class="mb-2 fs-14">{{$contrato->initiated_by}}</span>
+							</div>
+						</div>
+						<div class="col-md-5">
+							<div class="form-group">
+								<font style="vertical-align: inherit; font-weight:bold">Fechas</font>
+								<ul>
+									<li class="mb-2 fs-14">Fecha de inicio: {{$contrato->start_date}}</li>
+									<li class="mb-2 fs-14">Fecha de finalizacion: {{$contrato->end_date}}</li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<font style="vertical-align: inherit; font-weight:bold">Estado</font><br>
+								<span class="mb-2 fs-14">{{$contrato->status_id}}</span>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<font style="vertical-align: inherit; font-weight:bold">Tipo de contrato</font><br>
+								<span class="mb-2 fs-14">{{$contrato->type_contract_id}}</span>
+							</div>
 						</div>
 					</div>
-					<div class="col-md-3">
-						<div class="form-group">
-                            <font style="vertical-align: inherit; font-weight:bold">Asunto</font><br>
-						    <span class="mb-2 fs-14"></span>
-					    </div>
-					</div>
-                    <div class="col-md-3">
-						<div class="form-group">
-                            <font style="vertical-align: inherit; font-weight:bold">Descripcion</font><br>
-						    <span class="mb-2 fs-14"></span>
-					    </div>
-					</div>
-                    <div class="col-md-4">
-						<div class="form-group">
-                            <font style="vertical-align: inherit; font-weight:bold">Iniciado por</font><br>
-						    <span class="mb-2 fs-14"></span>
-						</div>
-					</div>
-                    <div class="col-md-5">
-						<div class="form-group">
-                            <font style="vertical-align: inherit; font-weight:bold">Fechas</font>
-                            <ul>
-                                <li class="mb-2 fs-14">Fecha de inicio:</li>
-                                <li class="mb-2 fs-14">Fecha de finalizacion:</li>
-                            </ul>
-						</div>
-					</div>
-                    <div class="col-md-4">
-						<div class="form-group">
-                            <font style="vertical-align: inherit; font-weight:bold">Estado</font><br>
-						    <span class="mb-2 fs-14"></span>
-						</div>
-					</div>
-                    <div class="col-md-4">
-						<div class="form-group">
-                            <font style="vertical-align: inherit; font-weight:bold">Tipo de contrato</font><br>
-						    <span class="mb-2 fs-14"></span>
-						</div>
-					</div>
-                </div>
+				</form>	
 				</div>
 
                 <div class="card-footer text-right">

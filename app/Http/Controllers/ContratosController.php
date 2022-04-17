@@ -17,7 +17,7 @@ class ContratosController extends Controller
      */
     public function index()
     {
-        $contratos = Contract::get();
+        $contratos = Contract::all();
         return view('Contratos.index',get_defined_vars());
     }
 
@@ -49,16 +49,7 @@ class ContratosController extends Controller
             'type_contract_id'  =>  'required|numeric',
         ]);
 
-        $contrato = Contract::create([
-            'subject'           =>  $request['subject'],
-            'description'       =>  $request['description'],
-            'intiated_by'       =>  $request['locatintiated_byion'],
-            'start_date'        =>  $request['start_date'],
-            'end_date'          =>  $request['end_date'],
-            'status_id'         =>  $request['status_id'],
-            'type_contract_id'  =>  $request['type_contract_id'],
-        ]);
-
+        $contrato = Contract::create($request->all());
         Alert::success('Éxito', 'Contrato guardado con éxito');
         return redirect()->route('contratos.index');
     }
@@ -71,7 +62,7 @@ class ContratosController extends Controller
      */
     public function show($id)
     {
-        $contrato = Contract::findOrFail($id)->with(['status','type_contract']);
+        $contrato = Contract::findOrFail($id);
         return view('Contratos.ver',get_defined_vars());
     }
 
@@ -83,7 +74,8 @@ class ContratosController extends Controller
      */
     public function edit($id)
     {
-        $contrato = Contract::findOrFail($id)->get();
+        
+        $contrato = Contract::findOrFail($id);
         return view('Contratos.editar',get_defined_vars());
     }
 
@@ -96,29 +88,22 @@ class ContratosController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd($request->all());
         $request->validate([
             'subject'           =>  'required|max:255',
             'description'       =>  'required|max:255',
             'initiated_by'      =>  'required|max:255',
-            'start_date'        =>  'required|max:255',
-            'end_date'          =>  'required|max:255',
+            'start_date'        =>  'required|date',
+            'end_date'          =>  'required|date',
             'status_id'         =>  'required|numeric',
             'type_contract_id'  =>  'required|numeric',
         ]);
         
-        $contrato = Contract::findOrFail($id)->get();
-        
-        $contrato->update([
-            'subject'           =>  $request['subject'],
-            'description'       =>  $request['description'],
-            'intiated_by'       =>  $request['locatintiated_byion'],
-            'start_date'        =>  $request['start_date'],
-            'end_date'          =>  $request['end_date'],
-            'status_id'         =>  $request['status_id'],
-            'type_contract_id'  =>  $request['type_contract_id'],
-        ]);
+        $contrato = Contract::findOrFail($id);
+        $contrato->update($request->all());  
         Alert::success('Éxito', 'Contrato actualizado con éxito');
         return redirect()->route('contratos.index');
+        
     }
 
     /**
@@ -129,7 +114,7 @@ class ContratosController extends Controller
      */
     public function destroy($id)
     {
-        $contrato = Contract::findOrFail($id)->get();
+        $contrato = Contract::findOrFail($id);
         $contrato->delete();
         Alert::success('Éxito', 'Contrato eliminado con éxito');
         return redirect()->route('contratos.index');

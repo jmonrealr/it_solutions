@@ -38,7 +38,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label class="form-label">Nombre del riesgo</label>
-                                <input class="form-control" type="text" placeholder="Sin información" name="nombre" maxlength="22" value="{{$riesgo->name}}" disabled>
+                                <input class="form-control" type="text" placeholder="Sin información" name="name" maxlength="22" value="{{$riesgo->name}}" disabled>
                             </div>
                         </div>
                     </div>
