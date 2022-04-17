@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Event;
 use RealRashid\SweetAlert\Facades\Alert;
+
 
 class EventosController extends Controller
 {
@@ -14,7 +16,8 @@ class EventosController extends Controller
      */
     public function index()
     {
-        return view('Eventos.index');
+        $eventos = Event::all();
+        return view('Eventos.index', get_defined_vars());
     }
 
     /**
@@ -35,6 +38,20 @@ class EventosController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+           'name' => 'required|max:255',
+           'description' => 'nullable|max:255',
+           'location' => 'required|max:255',
+           'start_date' => 'required|date',
+        ]);
+
+        Event::create([
+            'name'         => $request['name'],
+            'description'   => $request['description'],
+            'location'   => $request['location'],
+            'user_id'       => 1,
+            'start_date'     => $request['start_date'],
+        ]);
         Alert::success('Éxito', 'Evento guardado con éxito');
         return redirect()->route('eventos.index');
     }
@@ -58,7 +75,8 @@ class EventosController extends Controller
      */
     public function edit($id)
     {
-        return view('Eventos.editar');
+        $evento = Event::findOrFail($id);
+        return view('Eventos.editar',get_defined_vars());
     }
 
     /**
@@ -70,7 +88,15 @@ class EventosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Alert::success('Éxito', 'Evento actualizado con éxito');
+        $eventos = Event::findOrFail($id);
+        $eventos->update([
+            'name'         => $request['name'],
+            'description'   => $request['description'],
+            'location'   => $request['location'],
+            'user_id'       => 1,
+            'start_date'     => $request['start_date'],
+        ]);
+        // Alert::success('Éxito', 'Evento actualizado con éxito');
         return redirect()->route('eventos.index');
     }
 
@@ -82,7 +108,9 @@ class EventosController extends Controller
      */
     public function destroy($id)
     {
-        Alert::success('Éxito', 'Evento eliminado con éxito');
+        $eventos = Event::findOrFail($id);
+        $eventos->delete();
+        // Alert::success('Éxito', 'Evento eliminado con éxito');
         return redirect()->route('eventos.index');
     }
 }

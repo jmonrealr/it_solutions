@@ -12,7 +12,9 @@
         <div class="align-items-end flex-wrap my-auto right-content breadcrumb-right">
             <div class="btn-list">
                 <a href="{{route('anuncios.create')}}" class="btn btn-primary mr-3">
-                    <i class="feather  feather-plus sidemenu_icon"></i>Agregar Anuncio</a>
+                    <i class="fa-solid fa-plus"></i>
+                    Agregar Anuncio
+                </a>
             </div>
         </div>
     </div>
@@ -30,7 +32,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table  table-vcenter text-wrap table-bordered border-bottom td">
+                    <table class="table table-vcenter text-wrap table-bordered border-bottom dt" id="tabla">
                         <thead>
                             <tr>
                                 <th class="border-bottom-0">ID</th>
@@ -51,7 +53,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td width="350px">
+                                <td>
                                     <span>{{$anuncio->description}}</span>
                                 </td>
                                 <td>
@@ -68,7 +70,7 @@
                                         </form>
                                     </div>
                                 </td>
-                            </tr>        
+                            </tr>
                             @endforeach
                         </tbody>
 

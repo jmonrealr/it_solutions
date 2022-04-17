@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             CustomerSeeder::class,
             ProjectSeeder::class,
             QuestionSeeder::class,
+            AnswerSeeder::class,
             RiskSeeder::class,
             TaskSeeder::class,
             EventSeeder::class,

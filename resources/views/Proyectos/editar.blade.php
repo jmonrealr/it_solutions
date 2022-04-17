@@ -7,7 +7,7 @@
     <div class="page-leftheader">
         <h4 class="page-title">Editar proyecto #{{$project->id}}</h4>
         <ul class="breadcrumb">
-            <li class="mb-1 fs-16"><a href="/proyectos">Proyectos</a></li>
+            <li class="mb-1 fs-16"><a href="{{ url()->previous() }}">Proyectos</a></li>
             <li class="text-muted mb-1 fs-16 ml-2 mr-2"> / </li>
             <li class="text-muted mb-1 fs-16">Editar proyecto</li>
         </ul>

@@ -12,7 +12,9 @@
         <div class="align-items-end flex-wrap my-auto right-content breadcrumb-right">
             <div class="btn-list">
                 <a href="{{route('riesgos.create')}}" class="btn btn-primary mr-3">
-                    +Agregar riesgo</a>
+                    <i class="fa-solid fa-plus"></i>
+                    Agregar riesgo
+                </a>
             </div>
     </div>
 </div>
@@ -22,14 +24,14 @@
 
 <!-- CONTENIDO -->
 <div class="row">
-    <div class="col-xl-12 col-md-12 col-lg-12">   
+    <div class="col-xl-12 col-md-12 col-lg-12">
         <div class="card">
-            <div class="card-header  border-0">
+            <div class="card-header  border-0"> 
                 <h4 class="card-title">Lista de riesgos</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table  table-vcenter text-wrap table-bordered border-bottom" id="tabla">
+                    <table class="table table-vcenter text-wrap table-bordered border-bottom dt" id="tabla">
                         <thead>
                             <tr>
                                 <th class="border-bottom-0">ID</th>
@@ -54,12 +56,12 @@
                                 </td>
                                 <td>
                                 <div class="d-flex">
-                                        <a href="{{route('riesgos.show',$riesgo->id)}}" class="action-btns1" data-toggle="tooltip" data-placement="top" title="Ver"><i class="fa-thin fa-eye"></i></a>
-                                        <a href="{{route('riesgos.edit',$riesgo->id)}}" class="action-btns1" data-toggle="tooltip" data-placement="top" title="Editar"><i class="feather feather-edit-2  text-success"></i></a>
+                                        <a href="{{route('riesgos.show',$riesgo->id)}}" class="action-btns1" data-toggle="tooltip" data-placement="top" title="Ver"><i class="fa-solid fa-eye text-primary"></i></a>
+                                        <a href="{{route('riesgos.edit',$riesgo->id)}}" class="action-btns1" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa-solid fa-pen text-success"></i></a>
                                         <form action="{{route('riesgos.destroy',$riesgo->id)}} "method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="action-btns1" onclick="mensaje()" data-toggle="tooltip" data-placement="top" title="Eliminar" type="submit"><i class="bi bi-trash"></i></button>
+                                            <button class="action-btns1" onclick="mensaje()" data-toggle="tooltip" data-placement="top" title="Eliminar" type="submit"><i class="fa-regular fa-trash-can text-danger"></i></button>
                                         </form>
                                     </div>
                                 </td>

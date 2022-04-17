@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Department;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Profile;
@@ -94,6 +95,15 @@ class UserSeeder extends Seeder
                 ['user_id' => '24'],
             )
         );
+
+
+        $departments = Department::all();
+
+        User::all()->each(function ($user) use ($departments){
+            $user->departments()->attach(
+                $departments->random(1)->pluck('id')
+            );
+        });
 
     }
 }

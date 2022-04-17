@@ -51,6 +51,6 @@ class Question extends Model
      */
     public function answers()
     {
-        return $this->hasMany('App\Models\Answers');
+        return $this->hasMany('App\Models\Answer');
     }
 }

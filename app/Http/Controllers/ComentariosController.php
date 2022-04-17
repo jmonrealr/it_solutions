@@ -14,7 +14,7 @@ class ComentariosController extends Controller
 {
     /**
      * Index para los comentarios
-     * 
+     *
      * Despliega una lista de los comentarios
      *
      * @return \Illuminate\Http\Response
@@ -30,13 +30,13 @@ class ComentariosController extends Controller
             $comentario = Arr::add($comentario, 'hora', $hora);
             $comentario = Arr::add($comentario, 'dia', $dia);
         }
-        
+
         return view('Comentarios.index',get_defined_vars());
     }
 
     /**
      * Crear comentario
-     * 
+     *
      * Despliega la vista para crear el comentario
      *
      * @return \Illuminate\Http\Response
@@ -48,7 +48,7 @@ class ComentariosController extends Controller
 
    /**
      * Guardar comentario
-     * 
+     *
      * Guarda el comentario en la base de datos
      *
      * @param  \Illuminate\Http\Request  $request
@@ -59,14 +59,14 @@ class ComentariosController extends Controller
         $request->validate([
             'body'          =>  'required|max:255',
         ]);
-
+        //TODO: fix user_id to auth()->id
         $comentario = Comment::create([
             'body'              =>  $request['body'],
             // 'user_id'           =>  auth()->user()->id,
             'user_id'           =>  1,
         ]);
 
-        
+
 
         Alert::success('Éxito', 'Comentario agregado con éxito');
         return redirect()->route('comentarios.index');
@@ -74,7 +74,7 @@ class ComentariosController extends Controller
 
     /**
      * Mostrar comentario
-     * 
+     *
      * Muestra el comentario especificado
      *
      * @param  int  $id
@@ -88,7 +88,7 @@ class ComentariosController extends Controller
 
     /**
      * Editar comentario
-     * 
+     *
      * Muetra el formulario de edicion del comentario
      *
      * @param  int  $id
@@ -103,7 +103,7 @@ class ComentariosController extends Controller
 
     /**
      * Actualizacion del comentario
-     * 
+     *
      * Actualiza el comentario especificado
      *
      * @param  \Illuminate\Http\Request  $request
@@ -123,14 +123,14 @@ class ComentariosController extends Controller
             'body'              =>  $request['body'],
             'user_id'           =>  $request['user_id'],
         ]);
-
+        //TODO: fix user_id to auth()->id
         Alert::success('Éxito', 'Comentario actualizado con éxito');
         return redirect()->route('comentarios.index');
     }
 
     /**
      * Eliminar comentario
-     * 
+     *
      * Elimina el comentario especificado
      *
      * @param  int  $id

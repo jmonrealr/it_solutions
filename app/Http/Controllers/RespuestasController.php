@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Answer;
 use Illuminate\Http\Request;
-use App\Models\Risk;
-// use RealRashid\SweetAlert\Facade\Alert;
 
-class RiesgosController extends Controller
+class RespuestasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +14,7 @@ class RiesgosController extends Controller
      */
     public function index()
     {
-        $riesgos = Risk::all();
-
-
-        return view('Riesgos.index',get_defined_vars());
+        //
     }
 
     /**
@@ -28,7 +24,7 @@ class RiesgosController extends Controller
      */
     public function create()
     {
-        return view('Riesgos.crear');
+        //
     }
 
     /**
@@ -37,12 +33,21 @@ class RiesgosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $questionId)
     {
-        $request->validate(['name' => 'required','description' => 'required','solution' => 'required',]);
-        Risk::create($request->all());
-        // Alert::success('Éxito', 'Riesgo guardado con éxito');
-        return redirect()->route('riesgos.index');
+        $request->validate([
+            'description'   =>  'required|max:255',
+        ]);
+
+        
+        $respuesta = Answer::create([
+            'description'       =>  $request['description'],
+            'question_id'           =>  $questionId,
+            // 'user_id'           =>  auth()->user()->id,
+            'user_id'           =>  1,
+        ]);
+
+        return redirect()->route('preguntas.index');
     }
 
     /**
@@ -53,8 +58,7 @@ class RiesgosController extends Controller
      */
     public function show($id)
     {
-        $riesgo = Risk::findOrFail($id);
-        return view('Riesgos.ver',get_defined_vars());
+        //
     }
 
     /**
@@ -65,8 +69,7 @@ class RiesgosController extends Controller
      */
     public function edit($id)
     {
-        $riesgo = Risk::findOrFail($id);
-        return view('Riesgos.editar',get_defined_vars());
+        //
     }
 
     /**
@@ -78,11 +81,7 @@ class RiesgosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate(['name' => 'required','description' => 'required','solution' => 'required',]);
-        $riesgo = Risk::findOrFail($id);
-        $riesgo->update($request->all());        
-        // Alert::success('Éxito', 'Riesgo actualizado con éxito');
-        return redirect()->route('riesgos.index');
+        //
     }
 
     /**
@@ -93,9 +92,6 @@ class RiesgosController extends Controller
      */
     public function destroy($id)
     {
-        $riesgo = Risk::findOrFail($id);
-        $riesgo->delete();
-        // Alert::success('Éxito', 'Riesgo eliminado con éxito');
-        return redirect()->route('riesgos.index');
+        //
     }
 }

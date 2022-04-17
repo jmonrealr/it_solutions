@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ContactosController extends Controller
@@ -13,7 +14,8 @@ class ContactosController extends Controller
      */
     public function index()
     {
-        return view('Contactos.index');
+        $contactos = User::all();
+        return view('Contactos.index', get_defined_vars());
     }
 
     /**
