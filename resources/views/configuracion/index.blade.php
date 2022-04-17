@@ -45,9 +45,7 @@
                                                 <div class="input-group file-browser">
                                                     <input type="text" class="form-control border-right-0 browse-file"
                                                            placeholder="Cargar otra imagen" readonly
-                                                           value="@isset($profile->url_image)
-                                                           {{substr(explode('/', $profile->url_image)[1],10)}}
-                                                           @endisset">
+                                                           value="@isset($profile->url_image){{substr(explode('/', $profile->url_image)[1],10)}}@endisset">
                                                     <label class="input-group-append mb-0">
                                                         <span class="btn ripple btn-primary">
                                                             Examinar <input type="file" class="file-browserinput"
@@ -126,7 +124,7 @@
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label for="department" class="form-label">Departamento</label>
-                                    <input id="department" class="form-control" disabled value="departamento">
+                                    <input id="department" class="form-control" disabled value="{{ $department->name }}">
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -145,9 +143,11 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="form-label">Actividades a desempeñar</label>
-                                    <textarea class="form-control" type="text" rows="6"
-                                              placeholder="Ingresa las actividades a desempeñar"
-                                              name="actividad"></textarea>
+                                    <div>
+                                        @foreach($profile->user->tasks as $task)
+                                            <span class="badge rounded-pill bg-primary">{{ $task->name }}</span>
+                                        @endforeach
+                                    </div>
                                 </div>
                             </div>
 
