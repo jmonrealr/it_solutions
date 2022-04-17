@@ -28,28 +28,9 @@ use App\Http\Controllers\PerfilConfigController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->name('home');
-
-Route::get('/users',[UserController::class,'index']);
-
-Route::resource('anuncios', AnunciosController::class);
-Route::resource('bd', BasesDatosController::class);
-Route::resource('comentarios', ComentariosController::class);
-Route::resource('contactos', ContactosController::class);
-Route::resource('contratos', ContratosController::class);
-Route::resource('departamentos', DepartamentosController::class);
-Route::resource('eventos', EventosController::class);
-Route::resource('empleados', EmpleadosController::class);
-Route::resource('modelos', ModelosController::class);
-Route::resource('preguntas', PreguntasController::class);
-// Route::resource('respuestas', RespuestasController::class);
-Route::resource('proyectos', ProyectosController::class);
-Route::resource('riesgos', RiesgosController::class);
 
 //Route::resource('configuracion', PerfilConfigController::class);
-Route::post('respuestas/{id}', [RespuestasController::class, 'store'])->name('respuestas.store');
+
 
 
 //Authenticated Routes
@@ -58,5 +39,26 @@ Route::middleware(['auth'])->group( function () {
     Route::get('/profile/change-password', 'App\Http\Controllers\ProfileController@change_password')->name('profile.change-password');
     Route::get('/profile', 'App\Http\Controllers\ProfileController@index')->name('profile.index');
     Route::patch('/profile', 'App\Http\Controllers\ProfileController@update')->name('profile.update');
+    Route::post('respuestas/{id}', [RespuestasController::class, 'store'])->name('respuestas.store');
+
+    Route::get('/', function () {
+        return view('index');
+    })->name('home');
+
+//    Route::get('/users',[UserController::class,'index']);
+
+    Route::resource('anuncios', AnunciosController::class);
+    Route::resource('bd', BasesDatosController::class);
+    Route::resource('comentarios', ComentariosController::class);
+    Route::resource('contactos', ContactosController::class);
+    Route::resource('contratos', ContratosController::class);
+    Route::resource('departamentos', DepartamentosController::class);
+    Route::resource('eventos', EventosController::class);
+    Route::resource('empleados', EmpleadosController::class);
+    Route::resource('modelos', ModelosController::class);
+    Route::resource('preguntas', PreguntasController::class);
+    // Route::resource('respuestas', RespuestasController::class);
+    Route::resource('proyectos', ProyectosController::class);
+    Route::resource('riesgos', RiesgosController::class);
 
 });
