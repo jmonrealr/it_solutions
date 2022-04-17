@@ -1,5 +1,9 @@
 @extends('templates.main')
 
+@section('extra-css')
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+@endsection
+
 @section('content')
 
 <!-- CABECERA -->
@@ -14,9 +18,6 @@
     </div>
 </div>
 <!-- FIN CABECERA -->
-
-
-
 
 <!-- CONTENIDO -->
 <div class="row">
@@ -47,8 +48,7 @@
 							<label for="description" class="form-label">Descripcion</label>
 							<textarea id="description" class="form-control @error('description') is-invalid @enderror"
                                       type="text" rows="6" placeholder="Ingrese una breve descripcion del contrato"
-                                      name="description">{{$contrato->description}}
-                            </textarea>
+                                      name="description">{{$contrato->description}}</textarea>
                             @error('description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -100,7 +100,7 @@
 					<div class="col-md-4">
 						<div class="form-group">
 							<label for="status_id" class="form-label">Estado</label>
-							<select class="form-control custom-select select2" name="status_id" id="status_id">
+							<select class="form-control custom-select status @error('status_id') is-invalid @enderror" name="status_id" id="status_id">
                                 @isset($statuses)
                                     @foreach($statuses as $status)
                                         <option value="{{$status->id}}"
@@ -121,7 +121,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
 							<label for="type_contract_id" class="form-label">Tipo de contrato</label>
-							<select name="type_contract_id" class="form-control custom-select select2" id="type_contract_id">
+							<select name="type_contract_id" class="form-control custom-select type_contract" id="type_contract_id">
                                 @isset($type_contracts)
                                     @foreach($type_contracts as $type_contract)
                                         <option value="{{$type_contract->id}}"
@@ -142,7 +142,7 @@
 
 			</div>
 			<div class="card-footer text-right">
-				<a role="button" class="btn btn-outline-dark" href="{{ url()->previous() }}">
+				<a role="button" class="btn btn-outline-dark" href="{{ route('contratos.index') }}">
 					<i class="feather feather-corner-down-left sidemenu_icon"></i>
 					Regresar
 				</a>
@@ -156,4 +156,13 @@
 	</div>
 </div>
 <!-- FIN CONTENIDO -->
+@endsection
+@section('extra-script')
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.type_contract').select2();
+            $('.status').select2();
+        });
+    </script>
 @endsection

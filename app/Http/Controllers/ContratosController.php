@@ -28,7 +28,12 @@ class ContratosController extends Controller
      */
     public function create()
     {
-        return view('Contratos.crear');
+        $statuses = Status::all();
+        $type_contracts = TypeContract::all();
+        return view('Contratos.crear', [
+            'statuses' => $statuses,
+            'type_contracts' => $type_contracts
+        ]);
     }
 
     /**
