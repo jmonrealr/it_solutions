@@ -74,9 +74,14 @@ class ContratosController extends Controller
      */
     public function edit($id)
     {
-
         $contrato = Contract::findOrFail($id);
-        return view('Contratos.editar',get_defined_vars());
+        $statuses = Status::all();
+        $type_contracts = TypeContract::all();
+        return view('Contratos.editar', [
+            'contrato' => $contrato,
+            'statuses' => $statuses,
+            'type_contracts' => $type_contracts
+        ]);
     }
 
     /**
