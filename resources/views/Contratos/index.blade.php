@@ -48,25 +48,25 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($contratos as $contratos)
+                            @foreach ($contratos as $contrato)
                             <tr>
-                                <td>{{$contratos->id}}</td>
-                                <td>{{$contratos->subject}}</td>
-                                <td>{{$contratos->description}}</td>
-                                <td>{{$contratos->initiated_by}}</td>
-                                <td>{{$contratos->start_date}}</td>
-                                <td>{{$contratos->end_date}}</td>
+                                <td>{{$contrato->id}}</td>
+                                <td>{{$contrato->subject}}</td>
+                                <td>{{$contrato->description}}</td>
+                                <td>{{$contrato->initiated_by}}</td>
+                                <td>{{$contrato->start_date}}</td>
+                                <td>{{$contrato->end_date}}</td>
                                 <td>
-                                    <span class="badge rounded-pill bg-info text-dark">{{$contratos->status->name}}</span>
+                                    <span class="badge rounded-pill bg-info text-dark">{{$contrato->status->name}}</span>
                                 </td>
                                 <td>
-                                    <span class="badge rounded-pill bg-success">{{$contratos->type_contract->name}}</span>
+                                    <span class="badge rounded-pill bg-success">{{$contrato->type_contract->name}}</span>
                                 </td>
                                 <td>
                                     <div class="d-flex">
-                                        <a href="{{route('contratos.show',$contratos->id)}}" class="action-btns1" data-toggle="tooltip" data-placement="top" title="Ver"><i class="fa-solid fa-eye text-primary"></i></a>
-                                        <a href="{{route('contratos.edit',$contratos->id)}}" class="action-btns1" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa-solid fa-pen text-success"></i></a>
-                                        <form action="{{route('contratos.destroy', $contratos->id)}}" method="post">
+                                        <a href="{{route('contratos.show',$contrato->id)}}" class="action-btns1" data-toggle="tooltip" data-placement="top" title="Ver"><i class="fa-solid fa-eye text-primary"></i></a>
+                                        <a href="{{route('contratos.edit',$contrato->id)}}" class="action-btns1" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa-solid fa-pen text-success"></i></a>
+                                        <form action="{{route('contratos.destroy', $contrato->id)}}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <button class="action-btns1" data-toggle="tooltip" data-placement="top" title="Eliminar" type="submit"><i class="fa-regular fa-trash-can text-danger"></i></button>
