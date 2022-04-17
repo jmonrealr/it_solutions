@@ -102,7 +102,7 @@
 			</li>
 
 			<li class="slide">
-				<a class="side-menu__item {{ Request::is('configuracion') ? 'active' : '' }}" data-toggle="slide" href="{{route('profile.index')}}" id="configuraciones">
+				<a class="side-menu__item {{ Request::is('profile') ? 'active' : '' }}" data-toggle="slide" href="{{route('profile.index')}}" id="configuraciones">
 					<i class="fa-solid fa-user-gear mr-2"></i>
 					<span class="side-menu__label">Configuraciones</span>
 				</a>
