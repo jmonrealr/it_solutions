@@ -16,23 +16,13 @@
 <!-- FIN CABECERA -->
 
 
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-
 <div class="row">
 	<div class="col-xl-12 col-md-12 col-lg-12">
 		<div class="card">
 			<form action="{{route('empleados.store')}}" method="POST" enctype="multipart/form-data">
 			@csrf
 			<div class="card-body">
-				
+
 				<h4 class="mb-5 font-weight-semibold">Información básica</h4>
 
 				<div class="row">
@@ -106,7 +96,7 @@
 							<select name="department_id" class="form-control custom-select select2" data-placeholder="Selecciona departamento">
 								<option label="Selecciona departamento"></option>
 								@foreach ($departamentos as $departamento)
-									<option value="{{$departamento->id}}">{{$departamento->name}}</option>	
+									<option value="{{$departamento->id}}">{{$departamento->name}}</option>
 								@endforeach
 							</select>
 						</div>
@@ -138,7 +128,7 @@
 					</div>
 				</div>
 
-				
+
 				<h4 class="mt-7 mb-5 font-weight-semibold">Cuenta de ingreso</h4>
 				<div class="row">
 					<div class="col-md-4">

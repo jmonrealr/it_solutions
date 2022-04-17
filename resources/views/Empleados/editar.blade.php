@@ -16,16 +16,6 @@
 <!-- FIN CABECERA -->
 
 
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-
 <div class="row">
 	<div class="col-xl-12 col-md-12 col-lg-12">
 		<div class="card">
@@ -41,7 +31,7 @@
 							<div class="widget-user-image d-sm-flex">
                                 <img src="{{asset($empleado->profile->url_image)}}" class="avatar-xxl rounded-circle mb-1" alt="Foto producto" name="image" id="image">
 								{{-- <span class="avatar" style="background-image: url({{asset('images/usuario.png')}})"> --}}
-								</span>
+{{--								</span>--}}
 								<div class="ml-sm-3 mt-4">
 									<div class="form-group">
 										<label class="form-label">Foto de perfil</label>
@@ -104,9 +94,9 @@
 						<div class="form-group">
 							<label class="form-label">Departamento</label>
 							<select name="department_id" class="form-control custom-select select2" data-placeholder="Selecciona departamento">
-								<option value="{{$empleado->departments->first()->id}}">{{$empleado->departments->first()->name}}</option>	
+								<option value="{{$empleado->departments->first()->id}}">{{$empleado->departments->first()->name}}</option>
 								@foreach ($departamentos as $departamento)
-									<option value="{{$departamento->id}}">{{$departamento->name}}</option>	
+									<option value="{{$departamento->id}}">{{$departamento->name}}</option>
 								@endforeach
 							</select>
 						</div>
@@ -138,7 +128,7 @@
 					</div>
 				</div>
 
-				
+
 				<h4 class="mt-7 mb-5 font-weight-semibold">Cuenta de ingreso</h4>
 				<div class="row">
 					<div class="col-md-4">
