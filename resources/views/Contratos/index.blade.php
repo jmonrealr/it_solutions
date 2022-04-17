@@ -11,8 +11,10 @@
     <div class="page-rightheader ml-md-auto">
         <div class="align-items-end flex-wrap my-auto right-content breadcrumb-right">
             <div class="btn-list">
-                <a href="contratos/create" class="btn btn-primary mr-3">
-                    <i class="feather  feather-plus sidemenu_icon"></i>Agregar Contrato</a>
+                <a href="{{ route('contratos.create') }}" class="btn btn-primary mr-3">
+                    <i class="fa-solid fa-plus"></i>
+                    Agregar Contrato
+                </a>
             </div>
         </div>
     </div>
@@ -54,8 +56,12 @@
                                 <td>{{$contratos->initiated_by}}</td>
                                 <td>{{$contratos->start_date}}</td>
                                 <td>{{$contratos->end_date}}</td>
-                                <td>{{$contratos->status_id}}</td>
-                                <td>{{$contratos->type_contract_id}}</td>
+                                <td>
+                                    <span class="badge rounded-pill bg-info text-dark">{{$contratos->status->name}}</span>
+                                </td>
+                                <td>
+                                    <span class="badge rounded-pill bg-success">{{$contratos->type_contract->name}}</span>
+                                </td>
                                 <td>
                                     <div class="d-flex">
                                         <a href="{{route('contratos.show',$contratos->id)}}" class="action-btns1" data-toggle="tooltip" data-placement="top" title="Ver"><i class="fa-solid fa-eye text-primary"></i></a>

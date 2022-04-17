@@ -17,7 +17,7 @@ class ContratosController extends Controller
      */
     public function index()
     {
-        $contratos = Contract::all();
+        $contratos = Contract::with('status', 'type_contract')->get();
         return view('Contratos.index',get_defined_vars());
     }
 
@@ -74,7 +74,7 @@ class ContratosController extends Controller
      */
     public function edit($id)
     {
-        
+
         $contrato = Contract::findOrFail($id);
         return view('Contratos.editar',get_defined_vars());
     }
@@ -98,12 +98,12 @@ class ContratosController extends Controller
             'status_id'         =>  'required|numeric',
             'type_contract_id'  =>  'required|numeric',
         ]);
-        
+
         $contrato = Contract::findOrFail($id);
-        $contrato->update($request->all());  
+        $contrato->update($request->all());
         Alert::success('Éxito', 'Contrato actualizado con éxito');
         return redirect()->route('contratos.index');
-        
+
     }
 
     /**
