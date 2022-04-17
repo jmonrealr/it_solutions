@@ -27,7 +27,7 @@
 
 		<!-- DataTables -->
 		<link href="{{ asset('plugins/datatables/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
-
+        @yield('extra-css')
     </head>
 
 
@@ -69,7 +69,7 @@
 		<script src="{{ asset('plugins/p-scrollbar/p-scroll1.js') }}"></script>
 		<!-- Custom js-->
 		<script src="{{ asset('js/custom.js') }}"></script>
-		
+
 		<!-- DataTable -->
 		<script type="text/javascript" src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('plugins/datatables/dataTables.bootstrap5.min.js') }}"></script>
