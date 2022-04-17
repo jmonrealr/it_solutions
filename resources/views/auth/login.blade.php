@@ -1,4 +1,4 @@
-@extends('templates.main')
+@extends('templates.auth')
 
 @section('custom-css')
 <style>
@@ -18,9 +18,9 @@
 
 
 @section('content')
-<div class="container" Style="position: relative;">
+    <div class="container" style="position: relative; margin-top: 30px">
             <div class="row">
-                <div class="col-8  pt-5" Style="background: #EFEFBB;
+                <div class="col-8  pt-5" style="background: #EFEFBB;
                     background: -webkit-linear-gradient(to right, #D4D3DD, #EFEFBB);
                     background: linear-gradient(to right, #D4D3DD, #EFEFBB);">
                     <img src="{{asset('images/login.svg')}}" alt="logo" class="mx-auto d-block" id="logo_izq" style="width: 65%;">
@@ -28,9 +28,7 @@
 
 
                 <div class="col-4 bg-white pb-8 pt-5 pr-5 pl-5">
-                    <h2 class="fw-bold  py-5" Style="text-align: center; ">Inicio de sesión</h2>
-
-                    <div class="">
+                    <h2 class="fw-bold  py-5" style="text-align: center; ">Inicio de sesión</h2>
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
 
@@ -95,11 +93,10 @@
                                     @endif
                                 </div>
                             </div>
-                        </form>
-                    </div>
+                    </form>
                 </div>
             </div>
-        </div>
+    </div>
 
 @endsection
 

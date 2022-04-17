@@ -150,7 +150,13 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Project');
     }
 
-    public function tasks(){
+    /**
+     * Get the tasks that own the user
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function tasks(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
         return $this->hasMany('App\Models\Task');
     }
 }
