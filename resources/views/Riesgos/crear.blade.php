@@ -29,14 +29,24 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="form-label">Nombre del riesgo</label>
-                                    <input class="form-control" type="text" placeholder="Ingresa el nombre del riesgo" name="name" maxlength="22">
+                                    <input required class="form-control @error('name') is-invalid @enderror" type="text" placeholder="Ingresa el nombre del riesgo" name="name" maxlength="22" value="{{ old('name') }}">
+                                    @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong> {{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
                             {{-- Descripción --}}
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="form-label">Descripción:</label>
-                                    <textarea rows="3" class="form-control" name="description" placeholder="Agrega una breve descripción" maxlength="250"></textarea>
+                                    <textarea required rows="3" class="form-control @error('description') is-invalid @enderror" name="description" placeholder="Agrega una breve descripción" maxlength="250"></textarea>
+                                    @error('description')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong> {{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -45,7 +55,12 @@
                             <div class="col-md-10">
                                 <div class="form-group">
                                     <label class="form-label">Solución del riesgo:</label>
-                                    <textarea rows="3" class="form-control" name="solution" placeholder="Agrega una breve descripción" maxlength="250"></textarea>
+                                    <textarea required rows="3" class="form-control @error('solution') is-invalid @enderror" name="solution" placeholder="Agrega una breve descripción" maxlength="250"></textarea>
+                                    @error('solution')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong> {{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             </div>
                         </div>

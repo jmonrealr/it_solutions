@@ -69,7 +69,12 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="form-label">Titulo</label>
-                                                    <input class="form-control" type="text" placeholder="Ingresa el titulo de tu pregunta" name="name" maxlength="100">
+                                                    <input required class="form-control @error('name') is-invalid @enderror" type="text" placeholder="Ingresa el titulo de tu pregunta" name="name" maxlength="100" value="{{ old('name') }}">
+                                                    @error('name')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong> {{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
                                                 </div>
                                             </div>
                                         </div>
@@ -77,7 +82,12 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label class="form-label">Descripción</label>
-                                                    <textarea class="form-control" type="text" placeholder="Ingresa una breve descripción" name="description" maxlength="250" cols="50" rows="6"></textarea>
+                                                    <textarea required class="form-control @error('description') is-invalid @enderror" type="text" placeholder="Ingresa una breve descripción" name="description" maxlength="250" cols="50" rows="6"></textarea>
+                                                    @error('description')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong> {{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
                                                 </div>
                                             </div>
                                         </div>
@@ -137,7 +147,7 @@
                     <form action="{{route('respuestas.store', $pregunta->id)}}" method="POST">
                         @csrf
                         <div class="form-group">
-                            <textarea class="form-control" type="text" placeholder="Agrega una respuesta" name="description" maxlength="250" cols="40" rows="5"></textarea>
+                            <textarea required class="form-control" type="text" placeholder="Agrega una respuesta" name="description" maxlength="250" cols="40" rows="5"></textarea>
                         </div>
                         <div class="float-right">
                             <button type="submit" class="btn btn-outline-dark" onclick="">

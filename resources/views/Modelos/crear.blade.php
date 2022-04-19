@@ -29,13 +29,23 @@
                             <div class="col-md-4">
 								<div class="form-group">
 									<label class="form-label">Nombre</label>
-									<input class="form-control" type="text" placeholder="Ingresa el nombre del modelo" name="nombreModelo" maxlength="40">
+									<input required class="form-control @error('name') is-invalid @enderror" type="text" placeholder="Ingresa el nombre del modelo" name="nombreModelo" maxlength="40"  value="{{ old('nombreModelo') }}>
+									@error('nombreModelo')
+										<span class="invalid-feedback" role="alert">
+											<strong> {{ $message }}</strong>
+										</span>
+									@enderror
 								</div>
 							</div>
                             <div class="col-md-4">
 								<div class="form-group">
 									<label class="form-label" for="start">Fecha</label>
-									<input class="form-control" type="date" id="start" value="2022-04-02" min="2016-01-01" max="2030-12-31">
+									<input required class="form-control @error('start_date') is-invalid @enderror" type="date" id="start" value="2022-04-02" min="2016-01-01" max="2030-12-31"  value="{{ old('start_date') }}">
+									@error('start_date')
+										<span class="invalid-feedback" role="alert">
+											<strong> {{ $message }}</strong>
+										</span>
+									@enderror
 								</div>
 							</div>
                         </div>
@@ -43,7 +53,12 @@
 							<div class="col-md-4">
 								<div class="form-group">
 									<label class="form-label">Descripción</label>
-                                    <textarea class="form-control" type="text" rows="6" placeholder="Ingresa la descripción del modelo" name="descripcionModelo"></textarea>
+                                    <textarea required class="form-control @error('descripcionModelo') is-invalid @enderror" type="text" rows="6" placeholder="Ingresa la descripción del modelo" name="descripcionModelo"></textarea>
+									@error('descripcionModelo')
+										<span class="invalid-feedback" role="alert">
+											<strong> {{ $message }}</strong>
+										</span>
+									@enderror
 								</div>
 							</div>
 						</div>

@@ -66,35 +66,11 @@
                                     @csrf
                                     <div class="card-body">
                                     <h5 class="mb-5 font-weight-semibold">En esta sección podrás agregar un comentario exponiendo alguna duda o queja que se tenga contra algún trabajador. Sea libre de hacerlo.</h5>
-                                        {{-- <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label class="form-label">Área de trabajo</label>
-                                                    <input class="form-control" type="text" placeholder="Ingresa tu departamento" name="departamento" maxlength="22" readonly>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label class="form-label">Nombre completo</label>
-                                                     <input class="form-control" type="text" placeholder="Ingresa tu nombre completo" name="nombre" maxlength="16" value="{{$usuario->name}}"readonly>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label class="form-label">Correo electronico</label>
-                                                    <input class="form-control" type="text" placeholder="Ingresa tu correo electronico" name="email" maxlength="16" value="{{$usuario->email}}" readonly>
-                                                </div>
-                                            </div>
-                                        </div> --}}
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="body" class="form-label">Comentario</label>
-                                                    <textarea class="form-control @error('body') is-invalid @enderror" type="text" placeholder="Ingresa tu comentario"
+                                                    <textarea class="form-control @error('body') is-invalid @enderror" type="text" placeholder="Ingresa tu comentario" required
                                                               name="body" maxlength="250" cols="50" rows="6" id="body">{{ old('body') }}</textarea>
                                                     @error('body')
                                                         <span class="invalid-feedback" role="alert">

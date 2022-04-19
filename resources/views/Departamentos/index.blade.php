@@ -34,7 +34,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="name" class="form-label">Nombre del departamento</label>
-                                                    <input id="name" class="form-control @error('name')is-invalid @enderror" type="text"
+                                                    <input id="name" class="form-control @error('name')is-invalid @enderror" type="text" required
                                                            placeholder="Ej. Departamento de Finanzas" name="name" maxlength="250"
                                                            value="{{ old('name') }}">
                                                     @error('name')

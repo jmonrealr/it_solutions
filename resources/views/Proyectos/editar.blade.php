@@ -34,7 +34,7 @@
 							<div class="col-md-3">
 								<div class="form-group">
 									<label class="form-label">Nombre del proyecto:</label>
-									<input class="form-control @error('name') is-invalid @enderror" placeholder="Ingresa nombre del proyecto" name="name" type="text" maxlength="50" value="{{$project->name}}">
+									<input class="form-control @error('name') is-invalid @enderror" placeholder="Ingresa nombre del proyecto" name="name" type="text" maxlength="50" value="{{$project->name}}" required>
 									@error('name')
                                         <span class="invalid-feedback" role="alert">
                                             {{ $message }}
@@ -47,7 +47,7 @@
 								<div class="form-group">
 									<label class="form-label">Fecha de inicio:</label>
 									<div class="input-group">
-										<input class="form-control fc-datepicker @error('start_date') is-invalid @enderror" placeholder="YYYY-MM-DD" type="date" name="start_date" value="{{$project->start_date}}">
+										<input class="form-control fc-datepicker @error('start_date') is-invalid @enderror" placeholder="YYYY-MM-DD" type="date" name="start_date" value="{{$project->start_date}}" required>
 										@error('start_date')
                                         <span class="invalid-feedback" role="alert">
                                             {{ $message }}
@@ -61,7 +61,7 @@
 								<div class="form-group">
 									<label class="form-label">Fecha de finalización:</label>
 									<div class="input-group">
-										<input class="form-control fc-datepicker @error('end_date') is-invalid @enderror" placeholder="YYYY-MM-DD" type="date" name="end_date" value="{{$project->end_date}}">
+										<input class="form-control fc-datepicker @error('end_date') is-invalid @enderror" placeholder="YYYY-MM-DD" type="date" name="end_date" value="{{$project->end_date}}" required>
 										@error('end_date')
                                         <span class="invalid-feedback" role="alert">
                                             {{ $message }}
@@ -97,7 +97,12 @@
 							<div class="col-md-4">
 								<div class="form-group">
 									<label class="form-label">Descripción:</label>
-									<textarea rows="3" class="form-control" name="description" placeholder="Agrega una breve descripción" maxlength="250">{{$project->description}}</textarea>
+									<textarea rows="3" class="form-control @error('description') is-invalid @enderror" name="description" placeholder="Agrega una breve descripción" maxlength="250" required>{{$project->description}}</textarea>
+									@error('description')
+                                        <span class="invalid-feedback" role="alert">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
 								</div>
 							</div>
 						</div>
@@ -109,7 +114,12 @@
 							<div class="col-md-2">
 								<div class="form-group">
 									<label class="form-label">Costo por hora:</label>
-									<input type="number" name="cost_hour" id="cost_hour" maxlength="6" class="form-control mb-md-1 mb-5" onkeyup="updateCostActivities(event);" onchange="updateCostActivities(event);" value="{{$project->cost_hour}}">
+									<input type="number" name="cost_hour" id="cost_hour" maxlength="6" class="form-control mb-md-1 mb-5 @error('cost_hour') is-invalid @enderror" onkeyup="updateCostActivities(event);" onchange="updateCostActivities(event);" value="{{$project->cost_hour}}" required>
+									@error('cost_hour')
+                                        <span class="invalid-feedback" role="alert">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
 								</div>
 							</div>
 						</div>
@@ -142,7 +152,12 @@
 												<input type="number" name="activity_id[]" id="" class="form-control" value="{{$task->id}}" readonly>
 											</td>
 											<td>
-												<input type="text" name="activity_name[]" id="" placeholder="Ingresa titulo de actividad" style=" width:100%;" class="form-control" value="{{$task->name}}">
+												<input type="text" name="activity_name[]" id="" placeholder="Ingresa titulo de actividad" style=" width:100%;" class="form-control @error('activity_name[]') is-invalid @enderror" value="{{$task->name}}" required>
+												@error('activity_name[]')
+                                    			    <span class="invalid-feedback" role="alert">
+                                    			        {{ $message }}
+                                    			    </span>
+                                    			@enderror
 											</td>
 											<td>
 												<select name="user_id[]" id="" class="form-control custom-select select2 @error('user_id') is-invalid @enderror">
@@ -153,9 +168,28 @@
 														@endforeach
 													@endisset
 												</select>
+												@error('user_id[]')
+                                    			    <span class="invalid-feedback" role="alert">
+                                    			        {{ $message }}
+                                    			    </span>
+                                    			@enderror
 											</td>
-											<td><input type="date" name="activity_end_date[]" id="" class="form-control fc-datepicker" value="{{$task->end_date}}"></td>
-											<td><input type="number" class="form-control mb-md-1 mb-5 hours" value={{$task->time_hour}} min="1" align="right" name="time_hour[]" onchange="updateCostActivity(event);" onkeyup="updateCostActivity(event);"></td>
+											<td>
+												<input type="date" name="activity_end_date[]" id="" class="form-control fc-datepicker @error('activity_end_date[]') is-invalid @enderror" required value="{{$task->end_date}}">
+												@error('activity_end_date[]')
+                                    			    <span class="invalid-feedback" role="alert">
+                                    			        {{ $message }}
+                                    			    </span>
+                                    			@enderror
+											</td>
+											<td>
+												<input type="number" class="form-control mb-md-1 mb-5 hours @error('time_hour[]') is-invalid @enderror" value={{$task->time_hour}} min="1" align="right" name="time_hour[]" onchange="updateCostActivity(event);" onkeyup="updateCostActivity(event);" required>
+												@error('time_hour[]')
+                                    			    <span class="invalid-feedback" role="alert">
+                                    			        {{ $message }}
+                                    			    </span>
+                                    			@enderror
+											</td>
 											<td class="amounts">{{$task->amount}}</td>
 											<td  onclick="removeActivity(event);">
 												<a class="action-btns1" title="Remover"><i class="fa-solid fa-xmark text-danger"></i></a>
@@ -210,23 +244,50 @@
 
 			let row = document.createElement('tr');
 
-			row.innerHTML = 
-			'<td><input type="number" name="activity_id[]" id="" class="form-control" value=-1 readonly style="visibility:hidden;"></td>'+
-			'<td><input type="text" name="activity_name[]" id="" placeholder="Ingresa titulo de actividad" style=" width:100%;" class="form-control"></td>' +
-			'<td>' + 
-			'	<select name="user_id[]" id="" class="form-control custom-select select2 @error('user_id') is-invalid @enderror">' + 
-			'		<option value="-1" selected disabled>Asignar a...</option>' + 
-			'		@isset($employees)' + 
-			'			@foreach ($employees as $employee)' + 
-			'				<option value={{$employee->id}}>{{$employee->name}}</option>' + 
-			'			@endforeach' + 
-			'		@endisset' + 
-			'	</select>' + 
-			'</td>' + 
-			'<td><input type="date" name="activity_end_date[]" id="" class="form-control fc-datepicker"></td>'+
-			'<td><input type="number" class="form-control mb-md-1 mb-5 hours" value=0 min="1" align="right" name="time_hour[]" onchange="updateCostActivity(event);" onkeyup="updateCostActivity(event);"></td>' +
-			'<td class="amounts">$0.00</td>' + 
-			'<td  onclick="removeActivity(event);"><a class="action-btns1" title="Remover"><i class="fa-solid fa-xmark text-danger"></i></a></td>';
+			ro.innerHTML = '<td><input type="number" name="activity_id[]" id="" class="form-control" value=-1 readonly style="visibility:hidden;"></td>'+
+							'<td>'+
+							'	<input type="text" name="activity_name[]" id="" placeholder="Ingresa titulo de actividad" style=" width:100%;" class="form-control @error('activity_name[]') is-invalid @enderror" value="{{ old('activity_name[]') }}" required>'+
+							'	@error('activity_name[]')'+
+                            '	    <span class="invalid-feedback" role="alert">'+
+                            '	        {{ $message }}'+
+                            '	    </span>'+
+                            '	@enderror'+
+							'</td>'+
+							'<td>'+
+							'	<select name="user_id[]" id="" class="form-control custom-select select2 @error('user_id') is-invalid @enderror" required>'+
+							'		<option value="-1" selected  hidden>Asignar a...</option>'+
+							'		@isset($employees)'+
+							'			@foreach ($employees as $employee)'+
+							'				<option value={{$employee->id}}>{{$employee->name}}</option>'+
+							'			@endforeach'+
+							'		@endisset'+
+							'	</select>'+
+							'	@error('user_id[]')'+
+                            '	    <span class="invalid-feedback" role="alert">'+
+                            '	        {{ $message }}'+
+                            '	    </span>'+
+                            '	@enderror'+
+							'</td>'+
+							'<td>'+
+							'	<input type="date" name="activity_end_date[]" id="" class="form-control fc-datepicker @error('activity_end_date[]') is-invalid @enderror" required>'+
+							'	@error('activity_end_date[]')'+
+                            '	    <span class="invalid-feedback" role="alert">'+
+                            '	        {{ $message }}'+
+                            '	    </span>'+
+                            '	@enderror'+
+							'</td>'+
+							'<td>'+
+							'	<input type="number" class="form-control mb-md-1 mb-5 hours @error('time_hour[]') is-invalid @enderror" value=0 min="1" align="right" name="time_hour[]" onchange="updateCostActivity(event);" onkeyup="updateCostActivity(event);" value="{{ old('time_hour[]') }}" required>'+
+							'	@error('time_hour[]')'+
+                            '	    <span class="invalid-feedback" role="alert">'+
+                            '	        {{ $message }}'+
+                            '	    </span>'+
+                            '	@enderror'+
+							'</td>'+
+							'<td class="amounts">$0.00</td>'+
+							'<td  onclick="removeActivity(event);">'+
+							'	<a class="action-btns1" title="Remover"><i class="fa-solid fa-xmark text-danger"></i></a>'+
+							'</td>';
 
 			table.appendChild(row);
 		}

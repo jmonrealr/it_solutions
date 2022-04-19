@@ -36,10 +36,10 @@
 									<div class="form-group">
 										<label class="form-label">Foto de perfil</label>
 										<div class="input-group file-browser">
-											<input type="text" class="form-control border-right-0 browse-file" placeholder="Cargar otra imagen" readonly="" >
+											<input required type="text" class="form-control border-right-0 browse-file" placeholder="Cargar otra imagen" readonly="" >
 											<label class="input-group-append mb-0">
 												<span class="btn ripple btn-primary">
-													Examinar <input type="file" class="file-browserinput" style="display: none;" accept="image/*" name="url_image" id="url_image" onchange="previewImage(event)">
+													Examinar <input required type="file" class="file-browserinput" style="display: none;" accept="image/*" name="url_image" id="url_image" onchange="previewImage(event)">
 												</span>
 											</label>
 										</div>
@@ -55,19 +55,34 @@
 					<div class="col-md-4">
 						<div class="form-group">
 							<label class="form-label">Nombre</label>
-							<input class="form-control" type="text" placeholder="Ingresa el nombre del cliente" name="first_name" maxlength="22" value="{{$empleado->profile->first_name}}">
+							<input required class="form-control @error('first_name') is-invalid @enderror" type="text" placeholder="Ingresa el nombre del cliente" name="first_name" maxlength="22" value="{{$empleado->profile->first_name}}">
+							@error('first_name')
+								<span class="invalid-feedback" role="alert">
+									<strong> {{ $message }}</strong>
+								</span>
+							@enderror
 						</div>
 					</div>
 					<div class="col-md-4">
 						<div class="form-group">
 							<label class="form-label">Apellido Paterno</label>
-							<input class="form-control" type="text" placeholder="Ingresa su apellido paterno" name="paternal_last_name" maxlength="30" value="{{$empleado->profile->paternal_last_name}}">
+							<input required class="form-control @error('paternal_last_name') is-invalid @enderror" type="text" placeholder="Ingresa su apellido paterno" name="paternal_last_name" maxlength="30" value="{{$empleado->profile->paternal_last_name}}">
+							@error('paternal_last_name')
+								<span class="invalid-feedback" role="alert">
+									<strong> {{ $message }}</strong>
+								</span>
+							@enderror
 						</div>
 					</div>
 					<div class="col-md-4">
 						<div class="form-group">
 							<label class="form-label">Apellido Materno</label>
-							<input class="form-control" type="text" placeholder="Ingresa su apellido materno" name="maternal_last_name" maxlength="30" value="{{$empleado->profile->maternal_last_name}}">
+							<input required class="form-control @error('maternal_last_name') is-invalid @enderror" type="text" placeholder="Ingresa su apellido materno" name="maternal_last_name" maxlength="30" value="{{$empleado->profile->maternal_last_name}}">
+							@error('maternal_last_name')
+								<span class="invalid-feedback" role="alert">
+									<strong> {{ $message }}</strong>
+								</span>
+							@enderror
 						</div>
 					</div>
 				</div>
@@ -76,13 +91,23 @@
 					<div class="col-md-3">
 						<div class="form-group">
 							<label class="form-label">Edad</label>
-							<input class="form-control" type="text" placeholder="Ingresa su edad" name="age" maxlength="2" value="{{$empleado->profile->age}}">
+							<input required class="form-control @error('age') is-invalid @enderror" type="text" placeholder="Ingresa su edad" name="age" maxlength="2" value="{{$empleado->profile->age}}">
+							@error('age')
+								<span class="invalid-feedback" role="alert">
+									<strong> {{ $message }}</strong>
+								</span>
+							@enderror
 						</div>
 					</div>
 					<div class="col-md-3">
 						<div class="form-group">
 							<label class="form-label">Número telefonico</label>
-							<input class="form-control" type="tel" placeholder="8344444444" name="phone_number" value="{{$empleado->profile->phone_number}}">
+							<input required class="form-control @error('phone_number') is-invalid @enderror" type="tel" placeholder="8344444444" name="phone_number" value="{{$empleado->profile->phone_number}}">
+							@error('phone_number')
+								<span class="invalid-feedback" role="alert">
+									<strong> {{ $message }}</strong>
+								</span>
+							@enderror
 						</div>
 					</div>
 				</div>
@@ -93,29 +118,44 @@
 					<div class="col-md-4">
 						<div class="form-group">
 							<label class="form-label">Departamento</label>
-							<select name="department_id" class="form-control custom-select select2" data-placeholder="Selecciona departamento">
+							<select name="department_id" class="form-control custom-select select2 @error('department_id') is-invalid @enderror" data-placeholder="Selecciona departamento">
 								<option value="{{$empleado->departments->first()->id}}">{{$empleado->departments->first()->name}}</option>
 								@foreach ($departamentos as $departamento)
 									<option value="{{$departamento->id}}">{{$departamento->name}}</option>
 								@endforeach
 							</select>
+							@error('department_id')
+								<span class="invalid-feedback" role="alert">
+									<strong> {{ $message }}</strong>
+								</span>
+							@enderror
 						</div>
 					</div>
 					<div class="col-md-4">
 						<div class="form-group">
 							<label class="form-label">Cargo</label>
-							<input class="form-control" type="text" placeholder="Ingresa su cargo" name="cargo">
+							<input required class="form-control @error('cargo') is-invalid @enderror" type="text" placeholder="Ingresa su cargo" name="cargo">
+							@error('cargo')
+								<span class="invalid-feedback" role="alert">
+									<strong> {{ $message }}</strong>
+								</span>
+							@enderror
 						</div>
 					</div>
 					<div class="col-md-4">
 						<div class="form-group">
 							<label class="form-label">Tipo de contrato</label>
-							<select name="contract_id" class="form-control custom-select select2" data-placeholder="Selecciona contrato">
+							<select name="contract_id" class="form-control custom-select select2 @error('contract_id') is-invalid @enderror" data-placeholder="Selecciona contrato">
 								<option label="Selecciona contrato"></option>
 								<option value="1">Temporal</option>
 								<option value="2">Capacitación inicial</option>
 								<option value="2">Periodo de prueba</option>
 							</select>
+							@error('contract_id')
+								<span class="invalid-feedback" role="alert">
+									<strong> {{ $message }}</strong>
+								</span>
+							@enderror
 						</div>
 					</div>
 				</div>
@@ -134,7 +174,12 @@
 					<div class="col-md-4">
 						<div class="form-group">
 							<label class="form-label">Correo electronico</label>
-							<input class="form-control" type="email" placeholder="example@email.com" name="email" value="{{$empleado->email}}">
+							<input required class="form-control @error('email') is-invalid @enderror" type="email" placeholder="example@email.com" name="email" value="{{$empleado->email}}">
+							@error('email')
+								<span class="invalid-feedback" role="alert">
+									<strong> {{ $message }}</strong>
+								</span>
+							@enderror
 						</div>
 					</div>
 				</div>
@@ -142,7 +187,12 @@
 					<div class="col-md-4">
 						<div class="form-group">
 							<label class="form-label">Contraseña</label>
-							<input class="form-control" type="password" name="password">
+							<input required class="form-control @error('password') is-invalid @enderror" type="password" name="password">
+							@error('password')
+								<span class="invalid-feedback" role="alert">
+									<strong> {{ $message }}</strong>
+								</span>
+							@enderror
 						</div>
 					</div>
 				</div>

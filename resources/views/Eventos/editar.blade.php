@@ -61,7 +61,7 @@
 							<div class="col-md-4">
 								<div class="form-group">
 									<label for="start_date" class="form-label">Fecha</label>
-									<input id="start_date" class="form-control @error('start_date') is-invalid @enderror"
+									<input id="start_date" class="form-control @error('start_date') is-invalid @enderror" required
                                            type="date" name="start_date" value="{{ $evento->start_date }}" min="2016-01-01"
                                            max="2030-12-31" >
                                     @error('start_date')
@@ -77,7 +77,7 @@
                             <div class="col-md-10">
                                 <div class="form-group">
                                     <label for="location" class="form-label">Dirección</label>
-                                    <textarea id="location" rows="3" class="form-control @error('location') is-invalid @enderror"
+                                    <textarea id="location" rows="3" class="form-control @error('location') is-invalid @enderror" required
                                               name="location" placeholder="Agrega la dirección del evento"
                                               maxlength="250">{{ $evento->location }}</textarea>
                                     @error('location')
